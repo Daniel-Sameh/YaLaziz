@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Website</title>
+</head>
+<body>
+    <div class="page">
+        <nav>
+            <div class="nav">
+                <div class = "icon"><a href="main.html"><img  src="../Photos/Website image.png" alt="Recipe" width="50px" height="50px" title="Recipe" class="logo"></a></div>
+                <ul>
+                    <li class="recipe">
+                        <a href="recipes.html">Recipes</a>
+                        
+                    </li>
+                    <li class="categories">
+                        <a href="">Categories &nabla;</a>
+                        <ul>
+                            <li><a href="Categories/breakfast.html">Breakfast</a></li>
+                            <li><a href="Categories/lunch.html">Lunch</a></li>
+                            <li><a href="Categories/dinner.html">Dinner</a></li>
+                            <li><a href="">Desserts</a></li>
+                            <li><a href="">Drinks</a></li>
+                        </ul>
+                    </li>
+                    <li class = "seasonal">
+                        <a href="">Seasonal &nabla;</a>
+                        <ul>
+                            <li><a href="Season/ramadan.html">Ramadan</a></li>
+                            <li><a href="">Christmas</a></li>
+                            <li><a href="">ShamElNeseem</a></li>
+                        </ul>
+                    </li>
+                    <li class ="add recipe"><a href="add_recipe.html">Add Recipe</a></li>
+                    <li class="about"><a href="about.html">About Us</a></li>
+                    <li class="login"><button><a href="login.html">Login</a></button></li>
+                    <li class = "sign_up"><button><a href="sign.html">Sign Up</a></button></li>
+                </ul>
+            </div>
+        </nav>
+        <aside></aside>
+        <main>
+            <div class="Add">
+                <form>
+                <h1>Add your own Recipes</h1>
+                <div class="specify category">
+                    <h3>Recipe category:</h3>
+                    <input id="1" type="radio" name="meal" value="Breakfast">
+                    <label for="1">Breakfast</label>
+                    <input id="2" type="radio" name="meal" value="lunch">
+                    <label for="2">Lunch</label>
+                    <input id="3" type="radio" name="meal" value="Dinner">
+                    <label for="3">Dinner</label>
+                    <input id="4" type="radio" name="meal" value="Desserts">
+                    <label for="4">Desserts</label>
+                    <input id="5" type="radio" name="meal" value="Drinks">
+                    <label for="5">Drinks</label>
+                </div>
+                <div class="specify season">
+                    <h3>Recipe season:</h3>
+                    <input id="ramadan" type="checkbox" name="meal" value="Ramadan">
+                    <label for="ramadan">Ramadan</label>
+                    <input id="christmas" type="checkbox" name="meal" value="Christmas">
+                    <label for="christmas">Christmas</label>
+                    <input id="sham" type="checkbox" name="meal" value="Shamelneseem">
+                    <label for="sham">ShamElNeseem</label>
+                    <input id="none" type="checkbox" name="meal" value="General">
+                    <label for="sham">None</label>
+                </div>
+                <div class="type field">
+                    <h3>Ingredients:</h3>
+                    <textarea name="textbox" id="Ingredients" cols="50" rows="15" required></textarea>
+                    <h3>Instructions:</h3>
+                    <textarea name="textbox" id="Instructions" cols="50" rows="15" required></textarea>
+                </div>
+                <input type="submit">
+                </form>
+            </div>
+        </main>
+        <footer>
+            <hr>
+            <a href="main.html"><img  src="../Photos/Website image.png" alt="Recipe" height="70px" title="Recipe" class="logo"></a>
+            <h4>The Recipe Website!</h4>
+            <div>Made by:
+                 <div class="daniel">Daniel Sameh</div>
+                 <div class="youssef">Youssef Ehab</div>
+                 <div class="michael">Michael Reda</div>
+                 <div class="marcelino">Marcelino Maximos</div>
+                 <div class="Abanob">Abanob Essam</div>
+                 <div class="mariem">Mariam Ayman</div>
+            </div>
+            <div class="copyright">Copyright &#169; 2024</div>
+        </footer>
+        </div>
+</body>
+</html>
