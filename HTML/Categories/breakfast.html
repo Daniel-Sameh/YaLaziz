@@ -36,7 +36,9 @@
                 </li>
                 <li class ="add recipe"><a href="../add_recipe.html">Add Recipe</a></li>
                 <li class="about"><a href="../about.html">About Us</a></li>
-                <li><input type="search" placeholder="search"><button type="submit">Search</button></li>
+                <li>
+                    <form method="get" action=""><input type="search" placeholder="search"><button type="submit">&#128269;</button></form>
+                </li>
                 <li class="login"><button><a href="../login.html">Login</a></button></li>
                 <li class = "sign_up"><button><a href="../sign.html">Sign Up</a></button></li>
             </ul>
@@ -45,22 +47,22 @@
     <aside></aside>
     <main>
         <h1>Breakfast Recipes</h1>
-        <recipes>
-            <recipe>
+        <div class="grid">
+            <div class="recipe">
                 <a href="">
                     <img src="../../Photos/Shakshuka.jpg" alt="Shakshuka Image." width="200px" height="200px">
                     <h3>Shakshuka</h3>
                     <h5>50 to 60 mins</h5>
                 </a>
-            </recipe>
-            <recipe>
+            </div>
+            <div class="recipe">
                 <a href="">
                     <img src="../../Photos/Cheese-Omelet.jpg" alt="Cheese-Omelet Image." width="200px" height="200px">
                     <h3>Cheese-Omelet</h3>
                     <h5>6 to 10 mins.</h5>
                 </a>
-            </recipe>
-        </recipes>
+            </div>
+        </div>
     </main>
     <footer>
         <hr>
