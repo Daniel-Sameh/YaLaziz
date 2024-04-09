@@ -6,45 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <link rel="icon" href="../photos/yaLaziz.png">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
     <div class="page">
-    <nav>
-        <div class="nav">
-            <div class="icon"><a href="index.html"><img src="../Photos/yaLaziz.png" alt="Recipe" height="150px"
-                        title="Recipe"></a></div>
-            <ul>
-                <li class="recipes"><a href="recipes.html">Recipes</a></li>
-                <li class="categories">
-                    <a href="">Categories &nabla;</a>
-                    <ul>
-                        <li><a href="Categories/breakfast.html">Breakfast</a></li>
-                        <li><a href="Categories/lunch.html">Lunch</a></li>
-                        <li><a href="Categories/dinner.html">Dinner</a></li>
-                        <li><a href="Categories/desserts.html">Desserts</a></li>
-                        <li><a href="Categories/drinks.html">Drinks</a></li>
+        <nav>
+            <div class="nav container">
+                <div class="navBegin">
+                    <div class = "icon"><a href="index.html"><img  src="../Photos/yaLaziz.png" alt="Recipe" height="150px" title="Recipe" class="logo">YaLaziz</a></div>
+                    <div class="navToggle" id="navToggle">
+                        <p class="ri-menu-line navShow">&#9776;</p>
+                        <p class="ri-close-line navClose">&#10006;</p>
+                     </div>
+                </div>
+                <div class="links" id="links">
+                    <ul class="mainNav">
+                        <li class="recipes">
+                            <a href="recipes.html" class="navLink">Recipes</a>
+                        </li>
+                        <li class="categories">
+                            <div class="navLink">Categories <div class="arrow">&#11167;</div></div>
+                            <ul class="dropdownMenu">
+                                <li><a href="Categories/breakfast.html" class="dropdownLink" >Breakfast</a></li>
+                                <li><a href="Categories/lunch.html" class="dropdownLink">Lunch</a></li>
+                                <li><a href="Categories/dinner.html" class="dropdownLink">Dinner</a></li>
+                                <li><a href="Categories/desserts.html" class="dropdownLink">Desserts</a></li>
+                                <li><a href="Categories/drinks.html" class="dropdownLink">Drinks</a></li>
+                            </ul>
+                        </li>
+                        <li class = "seasonal">
+                            <div class="navLink">Seasonal <div class="arrow">&#11167;</div></div>
+                            <ul class="dropdownMenu">
+                                <li><a href="Season/ramadan.html" class="dropdownLink">Ramadan</a></li>
+                                <li><a href="Season/christmas.html" class="dropdownLink">Christmas</a></li>
+                                <li><a href="Season/summer.html" class="dropdownLink">Summer</a></li>
+                            </ul>
+                        </li>
+                        <li class ="add recipe"><a href="add_recipe.html" class="navLink">Add Recipe</a></li>
+                        <li class="about"><a href="about.html" class="navLink">About Us</a></li>
+                        <li id="searchItem">
+                            <form method="get" action="" id="searchForm"><input type="search" placeholder="search"><button type="submit">&#128269;</button></form>
+                        </li>
+                        <li class="account"><a href="my account.html" class="navLink">Account</a></li>
+                        <li class="login"><button><a href="login.html" class="navLink">Login</a></button></li>
+                        <li class = "sign_up"><button><a href="sign.html" class="navLink">Sign Up</a></button></li>
                     </ul>
-                </li>
-                <li class = "seasonal">
-                    <a href="">Seasonal &nabla;</a>
-                    <ul>
-                        <li><a href="Season/ramadan.html">Ramadan</a></li>
-                        <li><a href="Season/christmas.html">Christmas</a></li>
-                        <li><a href="Season/summer.html">Summer</a></li>
-                    </ul>
-                </li>
-                <li class ="add recipe"><a href="add_recipe.html">Add Recipe</a></li>
-                <li class="about"><a href="about.html">About Us</a></li>
-                <li>
-                    <form method="get" action=""><input type="search" placeholder="search"><button type="submit">&#128269;</button></form>
-                </li>
-                <li class="account"><a href="my account.html">Account</a></li>
-                <li class="login"><button><a href="login.html">Login</a></button></li>
-                <li class="sign_up"><button><a href="sign.html">Sign Up</a></button></li>
-            </ul>
-        </div>
-    </nav>
+                </div>
+            </div>
+        </nav>
     <main>
         <h1>Sign up form</h1>
         <form action="#" method="post">
@@ -101,6 +111,7 @@
         <div class="copyright">Copyright &#169; 2024</div>
     </footer>
     </div>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>
