@@ -263,53 +263,5 @@ button[type="submit"]{
         display: flex;
         justify-content: center;
     }
-
-    /* main{
-        display: grid;
-        grid-template-columns: 1fr repeat(9,2fr);
-        grid-template-rows: 500px auto;
-        grid-template-areas: "x laziz laziz laziz laziz laziz laziz laziz laziz x" "tmp cont cont cont cont cont cont cont cont cont" "end end end end end end end end end end" ;
-    } */
-    /* aside{
-        grid-area: x;
-    } */
     
-}
-
-/*Main Page*/
-.yaLaziz{
-    grid-area: laziz;
-    height: 40vh;
-    width: 75%;
-    /* background: url(../Photos/pexels-katrin-bolovtsova-4050078.jpg) center/cover no-repeat; */
-    margin-bottom: 2rem;
-    border-radius: 6px;
-    position: relative;
-    top: 1rem;
-    overflow: hidden;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.yaLaziz img{
-    transition: 0.4s;
-
-}
-.welcome{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transition: 0.4s;
-    border-radius: 6px;
-    /* background-color: rgb(0,0,0,0.4); */
-}
-.yaLaziz:hover .welcome{
-    background-color: rgb(0,0,0,0.4);
-}
-.yaLaziz:hover img{
-    opacity: 0.8;
-    transform: scale(1.3) rotate(1.1);
 }
