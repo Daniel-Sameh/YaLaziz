@@ -96,16 +96,26 @@ nav{
     opacity: 0;
 }
 
-.mainNav .login button, .mainNav .sign_up button{
+.mainNav .login button, .mainNav .sign_up button, .logout button{
     background-color: var(--secColor);
     border-radius: 3px;
-    border: 0px solid;
+    border: 2px solid transparent;
     box-sizing: border-box;
     padding: 5px;
+    transition: 0.3s;
+    cursor: pointer;
 }
 
-.mainNav .login button a, .mainNav .sign_up button a{
+.mainNav .login button a, .mainNav .sign_up button a, .logout button a{
     background-color: var(--secColor);
+    transition: 0.3s;
+}
+.mainNav .login button:hover, .mainNav .sign_up button:hover, .logout button:hover{
+    background-color: transparent;
+    border: 2px solid var(--secColor);
+}
+.mainNav .login button:hover a, .mainNav .sign_up button:hover a,.mainNav .logout button:hover a{
+    background-color: transparent;
 }
 
 @media screen and (max-width: 1118px) {
@@ -351,3 +361,8 @@ footer div{
     } */
     
 }
+
+.logout{
+    display: none;
+}
+
