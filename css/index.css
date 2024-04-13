@@ -49,10 +49,11 @@ nav{
     box-shadow: 0 2px 6px hsla(23, 32%, 8%, 0.3);
     z-index: 100;
 }
+
 .navShow, .navClose, .icon a{
     color: var(--backgroundColor);
-
 }
+
 .navBegin{
     /* width: 100%; */
     height: 100%;
@@ -94,6 +95,19 @@ nav{
 .navClose{
     opacity: 0;
 }
+
+.mainNav .login button, .mainNav .sign_up button{
+    background-color: var(--secColor);
+    border-radius: 3px;
+    border: 0px solid;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.mainNav .login button a, .mainNav .sign_up button a{
+    background-color: var(--secColor);
+}
+
 @media screen and (max-width: 1118px) {
     .links{
         position: absolute;
@@ -251,7 +265,7 @@ footer div{
 }
 
 
-@media screen and (min-width:200px) and (max-width:580px) {
+@media screen and (min-width:200px) and (max-width:1118px) {
     footer{
         flex-direction: column;
         height: auto;
