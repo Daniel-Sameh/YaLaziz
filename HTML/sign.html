@@ -54,30 +54,31 @@
                                     placeholder="search"><button type="submit">&#128269;</button></form>
                         </li>
                         <li class="account"><a href="my account.html" class="navLink">Account</a></li>
-                        <li class="login"><a href="login.html" class="navLink">Login</a></li>
-                        <li class="sign_up"><a href="sign.html" class="navLink">Sign Up</a></li>
+                        <li class="login"><button><a href="login.html" class="navLink">Login</a></button></li>
+                        <li class = "sign_up"><button><a href="sign.html" class="navLink">Sign Up</a></button></li>
+                        <li class = "logout"><button><a href="#" class="navLink">Log Out</a></button></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <main>
             <div class="block">
-                <form action="#" method="post">
+                <form action="" method="" id="signupForm">
                     <h1>Sign up form</h1>
                     <div id="Username" class="input-box">
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" placeholder="Username" id="username" required>
                     </div>
                     &nbsp;
                     <div id="Email" class="input-box">
-                        <input type="Email" name="Email" id="" required placeholder="Email">
+                        <input type="Email" name="Email" id="email" required placeholder="Email">
                     </div>
                     &nbsp;
                     <div id="passdiv" class="input-box">
-                        <input id="pass" type="password" placeholder="Password" required>
+                        <input id="password" type="password" placeholder="Password" required>
                     </div>
                     &nbsp;
                     <div id="confirmdiv" class="input-box">
-                        <input id="confirm" type="password" placeholder="Confirm Password" required>
+                        <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
                     </div>
 
                     <input class="admin" type="radio" id="Admin" name="type" value="Admin" required>
@@ -93,7 +94,6 @@
 
         </main>
         <footer>
-            <hr>
             <a href="index.html"><img src="../Photos/yaLaziz.png" alt="Recipe" height="250px" title="Recipe"
                     class="logo"></a>
             <h4>The Recipe Website!</h4>
