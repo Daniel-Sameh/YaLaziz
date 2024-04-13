@@ -8,32 +8,61 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
     var userType = document.querySelector('input[name="type"]:checked').value;
+    
+    //let password = document.getElementById("password").value;
+    //let confirmpassword = document.getElementById("confirmPassword").value;
+    let checkp = document.getElementById("check");
 
-    if(userType=="Admin"){
-        var cards = document.querySelectorAll('.card');
-        cards.forEach(function(card) {
-            var adminContainer = card.querySelector('.adminContainer');
-            adminContainer.style.display = 'block';
-        });
-     }
-     var isAdmin;
-     if(userType=="Admin"){
-        isAdmin=true;
-     }else{
-        isAdmin=false;
-     }
-     saveData('admin',isAdmin);
-     saveData('username',username);
-    //  var signedIn= true;
-     saveData('sign',true);
-     document.querySelector('.logout').style.display = 'flex';
-     document.querySelector('.logout').style.alignItems= 'center';
-     document.querySelector('.login').style.display = 'none';
-     document.querySelector('.sign_up').style.display = 'none';
-     
+    if (password.length <= 7) {
+        checkp.innerHTML = "*Password must be greater than 7 characters";
+        checkp.style.display = "block";
+        return false;
+    }
+    else if (containsNumber(password) == false) {
+        checkp.innerHTML = "*Password must contain numbers";
+        checkp.style.display = "block";
+        return false;
+    }
+    else if (password != confirmPassword) {
+        checkp.innerHTML = "*Passwords don't match try again";
+        checkp.style.display = "block";
+        return false;
+
+    }else{
+        if(userType=="Admin"){
+            var cards = document.querySelectorAll('.card');
+            cards.forEach(function(card) {
+                var adminContainer = card.querySelector('.adminContainer');
+                adminContainer.style.display = 'block';
+            });
+        }
+        var isAdmin;
+        if(userType=="Admin"){
+            isAdmin=true;
+        }else{
+            isAdmin=false;
+        }
+        // const jsonData={'username':username, 'admin':isAdmin};
+        // const json= JSON.stringify(jsonData);
+        // localStorage.setItem('user',json);
+        saveData('admin',isAdmin);
+        saveData('username',username);
+        //  var signedIn= true;
+        saveData('sign',true);
+        document.querySelector('.logout').style.display = 'flex';
+        document.querySelector('.logout').style.alignItems= 'center';
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.sign_up').style.display = 'none';
+        location.reload();
+    }
+    
 
  });
 
+function containsNumber(str) {
+    // Check if the string contains any digit between 0 and 9
+    return /\d/.test(str);
+}
 function saveData(key, value) {
     localStorage.setItem(key, value);
 }
@@ -42,3 +71,28 @@ function getData(key) {
     return localStorage.getItem(key);
 }
 
+/////////////////////////////////////
+
+// document.getElementById("btn").onclick = function check() {
+//     let password = document.getElementById("pass").value;
+//     let confirmpassword = document.getElementById("confirm").value;
+//     let checkp = document.getElementById("check");
+
+//     if (password.length <= 7) {
+//         checkp.innerHTML = "*Password must be greater than 7 characters";
+//         checkp.style.display = "block";
+//         return false;
+//     }
+//     else if (containsNumber(password) == false) {
+//         checkp.innerHTML = "*Password must contain numbers";
+//         checkp.style.display = "block";
+//         return false;
+//     }
+//     else if (password != confirmpassword) {
+//         checkp.innerHTML = "*Passwords don't match try again";
+//         checkp.style.display = "block";
+//         return false;
+
+//     }
+
+// }
