@@ -89,20 +89,41 @@ if(signedIn){
 
 }
 
-document.querySelector('.logout').addEventListener("click",function(event){
-    var logOut=window.confirm("Are you sure to log out from YaLaziz?");
-    if(logOut){
-        document.querySelector('.logout').style.display = 'none';
-        document.querySelector('.login').style.alignItems= 'center';
-        document.querySelector('.sign_up').style.alignItems= 'center';
-        document.querySelector('.login').style.display = 'flex';
-        document.querySelector('.sign_up').style.display = 'flex';
-        resetData();
-    }
+// document.querySelector('.logout').addEventListener("click",function(event){
+//     var logOut=window.confirm("Are you sure to log out from YaLaziz?");
+//     if(logOut){
+//         document.querySelector('.logout').style.display = 'none';
+//         document.querySelector('.login').style.alignItems= 'center';
+//         document.querySelector('.sign_up').style.alignItems= 'center';
+//         document.querySelector('.login').style.display = 'flex';
+//         document.querySelector('.sign_up').style.display = 'flex';
+//         resetData();
+//     }
     
-});
+// });
 
 
 
 
 
+favoriteButtons = document.querySelectorAll(".favorite_buttons");
+
+favoriteButtons.forEach(button => {
+   button.addEventListener("click", function() {
+       const addTitle = "Add to Your favorites";
+       const removeTitle = "Remove from Your favorites";
+       img = button.querySelector("img");
+       if (img.title == addTitle) {
+           img.src = "../../Photos/red heart.png";
+           img.title = removeTitle;
+       }
+       else {
+           img.src = "../../Photos/white heart.png"
+           img.title = addTitle;
+       }
+       img.style.opacity = 0;
+       setTimeout(() => {
+           img.style.opacity = 1; 
+       }, 100);
+   });
+ });
