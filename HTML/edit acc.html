@@ -7,6 +7,8 @@
     <title>Recipe Website</title>
     <link rel="icon" href="../photos/yaLaziz.png">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/edit acc.css">
+
 </head>
 <body>
     <div class="page">
@@ -56,41 +58,53 @@
         </nav>
     <aside></aside>
     <main>
-        <form action="#" method="post">
-            <div class="edit photo ">
-
-                <label for="myfile">Change your photo:</label>
-                <input type="file" id="myfile" name="myfile">
-            </div>
-            &nbsp;
-            <div class="edit name">
-                <label for="">Username</label>
-                <input type="text" placeholder="Username" required>
-            </div>
-            &nbsp;
-            <div class="edit mail">
-                <label for="">Email:</label>
-                <input type="Email" name="Email" id="" required placeholder="Email">
-            </div>
-            &nbsp;
-            <div class="edit pass">
-                <label for="">Password:</label>
-                <input type="password" placeholder="Password" required>
-            </div>
-            &nbsp;
-            <div class="confirm edited pass">
-                <label for="">Confirm Password:</label>
-                <input type="password" placeholder="Confirm Password" required>
-            </div>
-            &nbsp;
-            <input type="submit" value="Save changes">
-        </form>
-        <h2>Your Added Recipes:</h2>
-        <div class="grid">
-            <div class="recipe"></div>
-            <div class="recipe"></div>
-            <div class="recipe"></div>
-        </div>
+        <div class="form">
+            <form action="#" method="post">
+               <div class="editPhoto ">
+                   <div class="photo">
+                      <img  class="ph1"src="../Photos/acc pic.png" alt="../Photos/acc pic.png">
+                   </div>
+                   <div class="choosephoto">
+                      <label for="myfile"></label>
+                      <input type="file" id="myfile" name="myfile">
+                      </div>
+                      &nbsp;
+          
+                  </div>
+                  &nbsp;
+                  <label for="name">Username:</label>
+                  <div id="name"class="edit name">
+                   
+                   <input type="text" placeholder="Enter full name" required>
+                  </div>
+                  &nbsp;
+                  <label for="mail">Email:</label>
+                  <div  id="emil"class="edit mail">
+                   
+                   <input type="Email" name="Email" id="" required placeholder="Enter email">
+                  </div>
+                  &nbsp;
+                  <label for="oldPass">old Password:</label>
+                  <div id="oldPass"class="old pass">
+                      <input type="password" placeholder="Enter old password" required>
+                  </div>
+                  &nbsp;
+                  <label for="edpass">Password:</label>
+                  <div id="edpass"class="edit pass">
+                   <input type="password" placeholder="Enter new password" required>
+                  </div>
+                  &nbsp;
+                  <label for="conFpass">Confirm Password:</label>
+                  <div  id="confPass"class="confirm edited pass">
+                   <input type="password" placeholder="Confirm Password" required>
+                  </div>
+                  &nbsp;
+               <input type="submit" value="Save Changes">
+              </form>
+          </div>
+         
+  
+  
     </main>
     <footer>
         
