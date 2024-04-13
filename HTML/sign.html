@@ -7,6 +7,7 @@
     <title>Sign up</title>
     <link rel="icon" href="../photos/yaLaziz.png">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/sign.css">
 </head>
 
 <body>
@@ -14,11 +15,12 @@
         <nav>
             <div class="nav container">
                 <div class="navBegin">
-                    <div class = "icon"><a href="index.html"><img  src="../Photos/yaLaziz.png" alt="Recipe" height="150px" title="Recipe" class="logo">YaLaziz</a></div>
+                    <div class="icon"><a href="index.html"><img src="../Photos/yaLaziz.png" alt="Recipe" height="150px"
+                                title="Recipe" class="logo">YaLaziz</a></div>
                     <div class="navToggle" id="navToggle">
                         <p class="ri-menu-line navShow">&#9776;</p>
                         <p class="ri-close-line navClose">&#10006;</p>
-                     </div>
+                    </div>
                 </div>
                 <div class="links" id="links">
                     <ul class="mainNav">
@@ -26,92 +28,94 @@
                             <a href="recipes.html" class="navLink">Recipes</a>
                         </li>
                         <li class="categories">
-                            <div class="navLink">Categories <div class="arrow">&#11167;</div></div>
+                            <div class="navLink">Categories <div class="arrow">&#11167;</div>
+                            </div>
                             <ul class="dropdownMenu">
-                                <li><a href="Categories/breakfast.html" class="dropdownLink" >Breakfast</a></li>
+                                <li><a href="Categories/breakfast.html" class="dropdownLink">Breakfast</a></li>
                                 <li><a href="Categories/lunch.html" class="dropdownLink">Lunch</a></li>
                                 <li><a href="Categories/dinner.html" class="dropdownLink">Dinner</a></li>
                                 <li><a href="Categories/desserts.html" class="dropdownLink">Desserts</a></li>
                                 <li><a href="Categories/drinks.html" class="dropdownLink">Drinks</a></li>
                             </ul>
                         </li>
-                        <li class = "seasonal">
-                            <div class="navLink">Seasonal <div class="arrow">&#11167;</div></div>
+                        <li class="seasonal">
+                            <div class="navLink">Seasonal <div class="arrow">&#11167;</div>
+                            </div>
                             <ul class="dropdownMenu">
                                 <li><a href="Season/ramadan.html" class="dropdownLink">Ramadan</a></li>
                                 <li><a href="Season/christmas.html" class="dropdownLink">Christmas</a></li>
                                 <li><a href="Season/summer.html" class="dropdownLink">Summer</a></li>
                             </ul>
                         </li>
-                        <li class ="add recipe"><a href="add_recipe.html" class="navLink">Add Recipe</a></li>
+                        <li class="add recipe"><a href="add_recipe.html" class="navLink">Add Recipe</a></li>
                         <li class="about"><a href="about.html" class="navLink">About Us</a></li>
                         <li id="searchItem">
-                            <form method="get" action="" id="searchForm"><input type="search" placeholder="search"><button type="submit">&#128269;</button></form>
+                            <form method="get" action="" id="searchForm"><input type="search"
+                                    placeholder="search"><button type="submit">&#128269;</button></form>
                         </li>
                         <li class="account"><a href="my account.html" class="navLink">Account</a></li>
-                        <li class="login"><button><a href="login.html" class="navLink">Login</a></button></li>
-                        <li class = "sign_up"><button><a href="sign.html" class="navLink">Sign Up</a></button></li>
+                        <li class="login"><a href="login.html" class="navLink">Login</a></li>
+                        <li class="sign_up"><a href="sign.html" class="navLink">Sign Up</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-    <main>
-        <h1>Sign up form</h1>
-        <form action="#" method="post">
-            <div class="Username">
-                <label for="">Username</label>
-                <input type="text" placeholder="Username" required>
-            </div>
-            &nbsp;
-            <div class="Email">
-                <label for="">Email:</label>
-                <input type="Email" name="Email" id="" required placeholder="Email">
-            </div>
-            &nbsp;
-            <div class="pass">
-                <label for="">Password:</label>
-                <input type="password" placeholder="Password" required>
-            </div>
-            &nbsp;
-            <div class="confirm">
-                <label for="">Confirm Password:</label>
-                <input type="password" placeholder="Confirm Password" required>
-            </div>
-            <div>
+        <main>
+            <div class="block">
+                <form action="#" method="post">
+                    <h1>Sign up form</h1>
+                    <div id="Username" class="input-box">
+                        <input type="text" placeholder="Username" required>
+                    </div>
+                    &nbsp;
+                    <div id="Email" class="input-box">
+                        <input type="Email" name="Email" id="" required placeholder="Email">
+                    </div>
+                    &nbsp;
+                    <div id="passdiv" class="input-box">
+                        <input id="pass" type="password" placeholder="Password" required>
+                    </div>
+                    &nbsp;
+                    <div id="confirmdiv" class="input-box">
+                        <input id="confirm" type="password" placeholder="Confirm Password" required>
+                    </div>
 
-                <input type="radio" id="Admin" name="type" value="Admin" required>
-                <label for="Admin">Admin</label>
-            </div>
-            <div>
-                <input type="radio" id="User" name="type" value="User" required>
-                <label for="User">User</label>
-            </div>
-            <input type="submit" value="Sign Up">
+                    <input class="admin" type="radio" id="Admin" name="type" value="Admin" required>
+                    <label class="admintxt" for="Admin">Admin</label>
 
-        </form>
-    </main>
-    <footer>
-        
-        <a href="index.html"><img  src="../Photos/yaLaziz.png" alt="Recipe" height="250px" title="Recipe" class="logo"></a>
-        <h4>The Recipe Website!</h4>
-        <div>
-            <div>
-                <label for="prob"> Got a problem?</label>
-                <a id="prob" href="Report_a_problem.html">Report a problem</a> 
+                    <input class="user" type="radio" id="User" name="type" value="User" required>
+                    <label class="usertxt" for="User">User</label>
+                    <p id="check"></p>
+                    <button id="btn" class="btn" type="submit">Sign Up</button>
+
+                </form>
             </div>
+
+        </main>
+        <footer>
+            <hr>
+            <a href="index.html"><img src="../Photos/yaLaziz.png" alt="Recipe" height="250px" title="Recipe"
+                    class="logo"></a>
+            <h4>The Recipe Website!</h4>
             <div>
-                <label for="suggest"> Have a suggestion?</label>
-                <a id="suggest" href="mailto:suggestion@mail.com">Mail us</a>
+                <div>
+                    <label for="prob"> Got a problem?</label>
+                    <a id="prob" href="Report_a_problem.html">Report a problem</a>
+                </div>
+                <div>
+                    <label for="suggest"> Have a suggestion?</label>
+                    <a id="suggest" href="mailto:suggestion@mail.com">Mail us</a>
+                </div>
+                <div>
+                    <label for="help"> Need help?</label>
+                    <a id="help" href="Help.html">Help</a>
+                </div>
             </div>
-            <div>
-                <label for="help"> Need help?</label>
-                <a id="help" href="Help.html">Help</a>
-            </div>
-        </div>
-        <div class="copyright">Copyright &#169; 2024</div>
-    </footer>
+            <div class="copyright">Copyright &#169; 2024</div>
+        </footer>
     </div>
     <script src="../js/main.js"></script>
+    <script src="../js/sign.js"></script>
 </body>
 
 </html>
