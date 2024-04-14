@@ -97,11 +97,11 @@ favoriteButtons.forEach(button => {
        const removeTitle = "Remove from Your favorites";
        img = button.querySelector("img");
        if (img.title == addTitle) {
-           img.src = "../../Photos/red heart.png";
+           img.src = "../../Photos/heartRed.svg";
            img.title = removeTitle;
        }
        else {
-           img.src = "../../Photos/white heart.png"
+           img.src = "../../Photos/heartWhite.svg"
            img.title = addTitle;
        }
        img.style.opacity = 0;
@@ -120,11 +120,11 @@ favoriteButtonsMain.forEach(button => {
        const removeTitle = "Remove from Your favorites";
        img = button.querySelector("img");
        if (img.title == addTitle) {
-           img.src = "../Photos/red heart.png";
+           img.src = "../Photos/heartRed.svg";
            img.title = removeTitle;
        }
        else {
-           img.src = "../Photos/white heart.png"
+           img.src = "../Photos/heartWhite.svg"
            img.title = addTitle;
        }
        img.style.opacity = 0;

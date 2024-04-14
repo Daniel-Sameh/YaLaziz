@@ -31,7 +31,7 @@
     border-radius: 4px;
     box-shadow: 5px 5px 20px black;
     box-sizing: border-box;
-    transition: 0.3s;
+    transition: 0.3s ease-in;
     
 }
 
@@ -61,7 +61,7 @@
     text-align: center;
     top: 8px;
     color: white;
-    transition: 0.3s ease;
+    transition: 0.3s ease-in;
 }
 
 .page main div.grid .recipe .info h5 {
@@ -71,7 +71,7 @@
     text-align: center;
     top: 35px;  
     color: white;
-    transition: 0.3s ease-in;
+    transition: 0.3s;
 }
 
 .page main div.grid .recipe .info h5 span {
@@ -83,7 +83,7 @@
     opacity: 0;
     color: white;
     bottom: -100px;
-    text-align: center;
+    text-align: left;
     padding: 10px;
     transition: 0.3s ease-in;
 }
@@ -116,8 +116,9 @@
 
 .page main div.grid .recipe:hover .info h3 {
     opacity: 1;
-    top: 60%;
-    
+    top: 35%;
+    text-align: 10%;
+    transform: scale(1.1);
 }
 
 .page main div.grid .recipe:hover .info h5 {
@@ -126,11 +127,11 @@
 
 .page main div.grid .recipe:hover .info p{
     opacity: 1;
-    bottom: 60px;
+    top: 50%;
 }
 
 .page main div.grid .recipe:hover .info{
-    transition: 0.3s;
+    transition: 0.3s ease-in;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 5;
@@ -162,7 +163,7 @@
     padding: 7px;
     margin: 12px;
     cursor: pointer;
-    /* transition: 0.3s ease; */
+    transition: 0.3s ease;
 }
 
 
