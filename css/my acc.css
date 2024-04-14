@@ -60,6 +60,10 @@
     border-radius: 4px;
     margin-left: 80px;
 }
-.content{
+
+.add{
+    margin-left: 20px;
+}
+.favorite{
     margin-left: 20px;
 }
