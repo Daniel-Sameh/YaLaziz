@@ -61,7 +61,7 @@
     text-align: center;
     top: 8px;
     color: white;
-    transition: 0.3s ease-in;
+    transition: 0.3s ease;
 }
 
 .page main div.grid .recipe .info h5 {
@@ -114,7 +114,13 @@
     width: 100%;
 }
 
-.page main div.grid .recipe:hover .info h3, .page main div.grid .recipe:hover .info h5{
+.page main div.grid .recipe:hover .info h3 {
+    opacity: 1;
+    top: 60%;
+    
+}
+
+.page main div.grid .recipe:hover .info h5 {
     opacity: 0;
 }
 
@@ -125,7 +131,7 @@
 
 .page main div.grid .recipe:hover .info{
     transition: 0.3s;
-    height: 110px;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 5;
 }
@@ -146,7 +152,7 @@
 }
 
 
-.favorite_buttons img {
+.favorite_buttons img, .favorite_buttons_main img {
     position: absolute;
     width: 45px;
     height: 45px;

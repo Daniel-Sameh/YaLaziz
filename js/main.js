@@ -112,6 +112,29 @@ favoriteButtons.forEach(button => {
  });
 
 
+ favoriteButtonsMain = document.querySelectorAll(".favorite_buttons_main");
+
+favoriteButtonsMain.forEach(button => {
+   button.addEventListener("click", function() {
+       const addTitle = "Add to Your favorites";
+       const removeTitle = "Remove from Your favorites";
+       img = button.querySelector("img");
+       if (img.title == addTitle) {
+           img.src = "../Photos/red heart.png";
+           img.title = removeTitle;
+       }
+       else {
+           img.src = "../Photos/white heart.png"
+           img.title = addTitle;
+       }
+       img.style.opacity = 0;
+       setTimeout(() => {
+           img.style.opacity = 1; 
+       }, 100);
+   });
+ });
+
+
 
  document.querySelector('.logout').addEventListener("click",function(event){
      var logOut=window.confirm("Are you sure to log out from YaLaziz?");
