@@ -97,7 +97,7 @@ favoriteButtons.forEach(button => {
        const removeTitle = "Remove from Your favorites";
        img = button.querySelector("img");
        if (img.title == addTitle) {
-           img.src = "../../Photos/heartRed.svg";
+           img.src = "../../Photos/heartRed.png";
            img.title = removeTitle;
        }
        else {
@@ -120,7 +120,7 @@ favoriteButtonsMain.forEach(button => {
        const removeTitle = "Remove from Your favorites";
        img = button.querySelector("img");
        if (img.title == addTitle) {
-           img.src = "../Photos/heartRed.svg";
+           img.src = "../Photos/heartRed.png";
            img.title = removeTitle;
        }
        else {
