@@ -101,7 +101,7 @@ favoriteButtons.forEach(button => {
            img.title = removeTitle;
        }
        else {
-           img.src = "../../Photos/heartWhite.svg"
+           img.src = "../../Photos/heartWhite.png"
            img.title = addTitle;
        }
        img.style.opacity = 0;
@@ -124,7 +124,7 @@ favoriteButtonsMain.forEach(button => {
            img.title = removeTitle;
        }
        else {
-           img.src = "../Photos/heartWhite.svg"
+           img.src = "../Photos/heartWhite.png"
            img.title = addTitle;
        }
        img.style.opacity = 0;
