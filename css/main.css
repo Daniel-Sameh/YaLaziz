@@ -1,3 +1,22 @@
+:root{
+    --backgroundColor: hsl(217, 43%, 92%);
+    --mainColor: #E8751A;
+    --secColor: #FDA403;
+    --textColor: var(--grey-900);
+    --max-width: 1120px;
+    --fixed-width: 600px;
+    --grey-900: #0f172a;
+    --navColor:#231336; 
+    /*--------------*/
+    --clr-primary: #d50000;
+    --clr-primary-hover: #29e6a7;
+    --clr-primary-dark: #039d69;
+    --clr-gray100: #f0f7f8;
+    --clr-gray200: #cfd8dc;
+    --clr-gray300: #a7b7be;
+    --clr-gray400: #6b7e86;
+    --clr-gray500: #425a65;
+}
 .yaLaziz{
     grid-area: laziz;
     height: 60vh;
@@ -59,4 +78,130 @@
     font-family: "Alkatra", system-ui;
     font-size: 20px;
     transition: 0.4s;
+}
+button,a{
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.adminContainer{
+    display: none;
+}
+.adminAccess {
+    position: absolute; /* Position the adminAccess div absolutely */
+    top: 0; /* Align to the top of the card */
+    z-index: 1; /* Ensure it's positioned in front of other elements */
+    display: flex;
+    align-items: center;
+}
+
+.adminAccess button{
+    padding: 1.5rem;
+}
+
+
+
+
+.splitContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    max-height: 1000px;
+    height: 500px;
+    width: 100%;
+    background-image: url(https://static.pexels.com/photos/76093/pexels-photo-76093.jpeg);
+	/* background-position: top; */
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y:60px;
+    border-radius: 0 15px 15px 0;
+    transition: 0.4s;
+    
+  }
+  
+ .Scontainer {
+    position: relative;
+    width: 100%;
+    transition: 0.4s;
+  }
+  
+#hSplit{
+    position: absolute;
+    text-align: left;
+    top: 35%;
+    left: 10%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.329);
+    border-radius: 5px;
+    padding: 5px;
+}
+#txt {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 80%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+#dan{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 22%;
+    padding: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+.splitContainer:hover .Scontainer{
+    transform: scale(1.1) translateX(-10px);
+}
+.splitContainer:hover{
+    border-radius: 0 200px 200px 0;
+    width: 90%;
+    background-position-y: 80px;
+}
+
+.new {
+    text-align: center;
+    /* background-color: #f8f9fa; */
+    background-color: #E8A41A;
+    padding: 20px;
+    border-radius: 10px 10px 120px 120px;
+    border-top: 2px solid var(--clr-gray500);
+    border-left: 2px solid var(--clr-gray500);
+    border-right: 2px solid var(--clr-gray500);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+  }
+  
+  .title h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+  }
+  
+.newRecipe{
+    background: linear-gradient(to bottom, #E8A41A, var(--mainColor));
+    min-height: max-content;
+    padding: 50px;
+    border-radius: 150px 150px 0 0;
+    border-left: 2px solid var(--clr-gray500);
+    border-right: 2px solid var(--clr-gray500);
+    
 }
