@@ -32,6 +32,7 @@
     box-shadow: 5px 5px 20px black;
     box-sizing: border-box;
     transition: 0.3s ease-in;
+    cursor:help;
     
 }
 
@@ -52,6 +53,7 @@
     background-color:#e8914a;
     height: 90px;
     width: 100%;
+    transition: 0.5s;
 }
 
 .page main div.grid .recipe .info h3{
@@ -109,7 +111,7 @@
 
 .page main div.grid .recipe:hover > img{
     filter: blur(1px);
-    transform: scale(1.2);
+    transform: scale(1.5) rotate(10deg);
     height: 100%;
     width: 100%;
 }
