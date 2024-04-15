@@ -109,7 +109,7 @@
 
 .page main div.grid .recipe:hover > img{
     filter: blur(1px);
-    transform: scale(1.2) ;
+    transform: scale(1.2);
     height: 100%;
     width: 100%;
 }
