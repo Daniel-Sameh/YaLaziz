@@ -7,6 +7,8 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
+    let passwordiv = document.getElementById("passdiv");
+    let confirmdiv = document.getElementById("confirmdiv");
     var userType = document.querySelector('input[name="type"]:checked').value;
     
     //let password = document.getElementById("password").value;
@@ -16,16 +18,23 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     if (password.length <= 7) {
         checkp.innerHTML = "*Password must be greater than 7 characters";
         checkp.style.display = "block";
+        passwordiv.style.border = "2px solid red";
+        passwordiv.style.borderRadius = "40px";
         return false;
     }
     else if (containsNumber(password) == false) {
         checkp.innerHTML = "*Password must contain numbers";
         checkp.style.display = "block";
+        passwordiv.style.border = "2px solid red";
+        passwordiv.style.borderRadius = "40px";
         return false;
     }
     else if (password != confirmPassword) {
         checkp.innerHTML = "*Passwords don't match try again";
         checkp.style.display = "block";
+        confirmdiv.style.border = "2px solid red";
+        confirmdiv.style.borderRadius = "40px";
+        passwordiv.style.border = "none";
         return false;
 
     }else{
