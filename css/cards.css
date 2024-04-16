@@ -32,7 +32,7 @@
     box-shadow: 5px 5px 20px black;
     box-sizing: border-box;
     transition: 0.3s ease-in;
-    cursor:help;
+    cursor: default;
     
 }
 

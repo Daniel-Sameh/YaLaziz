@@ -171,9 +171,9 @@ button,a{
     background-position-y: 80px;
 }
 
-.new {
+/* .new {
     text-align: center;
-    /* background-color: #f8f9fa; */
+    /* background-color: #f8f9fa; */ /*
     background-color: #E8A41A;
     padding: 20px;
     border-radius: 10px 10px 120px 120px;
@@ -188,6 +188,7 @@ button,a{
     margin-top: 50px;
     margin-bottom: 0px;
   }
+*/
   
   .title h1 {
     font-size: 24px;
@@ -196,7 +197,7 @@ button,a{
     padding: 10px;
   }
   
-.newRecipe{
+/* .newRecipe{
     background: linear-gradient(to bottom, #E8A41A, var(--mainColor));
     min-height: max-content;
     padding: 50px;
@@ -204,4 +205,4 @@ button,a{
     border-left: 2px solid var(--clr-gray500);
     border-right: 2px solid var(--clr-gray500);
     
-}
+} */
