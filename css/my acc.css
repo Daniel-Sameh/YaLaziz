@@ -7,13 +7,16 @@
 }
 
 .page main .main {
-    
+    display: flex;
+    align-items: center;
     min-height: 100vh;
 }
 
 .page main .container {
     display: flex;
-    margin-left: 20px;
+    align-items: center;
+    margin-left: 3.125rem;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -30,13 +33,13 @@
 
 }
 .page main .user{
-    margin-left: 8px;
+    margin-left: 0.5rem;
 }
 
 .page main .userPhoto {
-    margin: 20px 20px 5px;
-    height: 10%;
-    width: 10%;
+    margin: 1.25rem 1.25rem 0.3125rem;
+    height: 13%;
+    width: 13%;
 
 }
 
@@ -53,18 +56,18 @@
     background-color: var(--mainColor);
     border: none;
     color: white;
-    padding: 10px 10px;
+    padding: 0.625rem 0.625rem;
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
-    margin: 0 30px;
+    margin: 0 1.9rem;
     cursor: pointer;
     border-radius: 4px;
-    margin-left: 80px;
+    margin-left: 5rem;
 }
 
 .page main .add{
-    margin-left: 20px;
+    margin-left: 1.25rem;
 }
 .page main .favorite{
-    margin-left: 20px;
+    margin-left: 1.25rem;
 }
