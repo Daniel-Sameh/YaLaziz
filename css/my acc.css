@@ -15,7 +15,7 @@
 .page main .container {
     display: flex;
     align-items: center;
-    margin-left: 3.125rem;
+    margin-left: 1.125rem;
     margin-bottom: 1.5rem;
 }
 
@@ -23,17 +23,20 @@
 
 .page main .added {
     font-family: "Montserrat", sans-serif;
+    color:#0f172a ;
 
 
 }
 
 .page main .fav {
     font-family: "Montserrat", sans-serif;
+    color:#0f172a ;
 
 
 }
 .page main .user{
     margin-left: 0.5rem;
+    color:#0f172a
 }
 
 .page main .userPhoto {
