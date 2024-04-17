@@ -56,7 +56,7 @@
 
 }
 
-.page main .edit {
+.page main .editButton {
     background-color: var(--mainColor);
     border: none;
     color: white;

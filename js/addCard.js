@@ -12,14 +12,14 @@ if (rName && rId && rPhoto) {
 
     const cardDetails = `
     <div class="edit">
-    <form action="" method="post" id="" class="del"><button>&#9998;</button></form>
-    <form action="" method="post" id="" class="ok"><button>&#10006;</button></form>
+        <img src="../Photos/editButton.png" alt="" class="editRecipe" title="Edit Recipe">
+        <img src="../Photos/deleteButton.png" alt="" class="deleteRecipe" title="Delete Recipe">
     </div>
-    <div class="favorite_buttons">
+    <div class="favorite_buttons_main">
     <img src="../Photos/heartWhite.png" alt="" title="Add to Your favorites">
     </div>   
     <img src="../Photos/${rPhoto}" alt="${rName}">
-    <div class="info">                    
+    <div class="info">
         <h3>${rName}</h3>
         <h5>&#x23F0; 2 to 3 hrs</h5> 
         <p>From the most delicious recipes in the christmas</p>
