@@ -1,10 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-}
-
 main {
     display: flex;
     background-image: linear-gradient(to bottom, rgba(145, 146, 122, 0.42), rgba(35, 19, 54, 0.9)), url("../Photos/pexels-engin-akyurt-1435895.jpg");
