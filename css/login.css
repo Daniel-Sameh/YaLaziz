@@ -83,3 +83,10 @@ h1 {
     color: hsl(217, 43%, 92%);
 
 }
+.dont a{
+    text-decoration: none;
+    color: #FDA403;
+}
+.dont a:active{
+    color: antiquewhite;
+}
