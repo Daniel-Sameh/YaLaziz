@@ -53,6 +53,10 @@ h1 {
     border-radius: 40px;
     font-size: 16px;
     padding: 20px 45px 20px 20px;
+    transition: 0.3s;
+}
+.input-box input:focus{
+    box-shadow: 0 0 7px;
 }
 
 .block .btn {
@@ -68,8 +72,10 @@ h1 {
 }
 
 .block .btn:hover {
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     background-color: #FDA403;
+    box-shadow: 0 0 13px;
+    color: #0f172a;
 
 }
 
