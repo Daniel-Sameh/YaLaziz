@@ -136,7 +136,7 @@ favoriteButtonsMain.forEach(button => {
 
 
 
- document.querySelector('.logout').addEventListener("click",function(event){
+/*  document.querySelector('.logout').addEventListener("click",function(event){
      var logOut=window.confirm("Are you sure to log out from YaLaziz?");
      if(logOut){
          document.querySelector('.logout').style.display = 'none';
@@ -147,4 +147,4 @@ favoriteButtonsMain.forEach(button => {
          resetData();
      }
     
- });
+ }); */

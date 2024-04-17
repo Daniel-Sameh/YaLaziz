@@ -4,7 +4,7 @@
     text-align: center;
 }
 
-.page main div.grid{
+div.grid{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -19,7 +19,7 @@
     margin-right: 0;
 }
 
-.page main div.grid .recipe{
+div.grid .recipe{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +36,7 @@
     
 }
 
-.page main div.grid .recipe > img{
+div.grid .recipe > img{
     border-radius: 3px;
     position: absolute;
     height: 100%;
@@ -47,7 +47,7 @@
     object-fit: cover;
 }
 
-.page main div.grid .recipe .info {
+div.grid .recipe .info {
     position: absolute;
     bottom: 0;
     background-color:#e8914a;
@@ -56,7 +56,7 @@
     transition: 0.5s;
 }
 
-.page main div.grid .recipe .info h3{
+ div.grid .recipe .info h3{
     position: absolute;
     width: 100%;
     font-size: 23px;
@@ -66,7 +66,7 @@
     transition: 0.3s ease-in;
 }
 
-.page main div.grid .recipe .info h5 {
+div.grid .recipe .info h5 {
     position: absolute;
     width: 100%;
     font-size: 17px;
@@ -76,11 +76,11 @@
     transition: 0.3s;
 }
 
-.page main div.grid .recipe .info h5 span {
+ div.grid .recipe .info h5 span {
     font-size: 15px;
 }
 
-.page main div.grid .recipe .info p{
+ div.grid .recipe .info p{
     position: absolute;
     opacity: 0;
     color: white;
@@ -90,7 +90,7 @@
     transition: 0.3s ease-in;
 }
 
-.page main div.grid .recipe .info .btn{
+ div.grid .recipe .info .btn{
     opacity: 0;
     bottom: -20px;
     width: 60%;
@@ -109,37 +109,37 @@
     transition: 0.3s ease-in;
 }
 
-.page main div.grid .recipe:hover > img{
+div.grid .recipe:hover > img{
     filter: blur(1px);
     transform: scale(1.5) rotate(10deg);
     height: 100%;
     width: 100%;
 }
 
-.page main div.grid .recipe:hover .info h3 {
+ div.grid .recipe:hover .info h3 {
     opacity: 1;
     top: 35%;
     text-align: 10%;
     transform: scale(1.1);
 }
 
-.page main div.grid .recipe:hover .info h5 {
+ div.grid .recipe:hover .info h5 {
     opacity: 0;
 }
 
-.page main div.grid .recipe:hover .info p{
+div.grid .recipe:hover .info p{
     opacity: 1;
     top: 50%;
 }
 
-.page main div.grid .recipe:hover .info{
+div.grid .recipe:hover .info{
     transition: 0.3s ease-in;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 5;
 }
 
-.page main div.grid .recipe:hover .info .btn{
+div.grid .recipe:hover .info .btn{
     opacity: 1;
     bottom: 20px;
 }
@@ -170,6 +170,13 @@
 
 
 
-.page main div.grid .recipe .info .btn:hover {
+div.grid .recipe .info .btn:hover {
     background-color: #ffffffe5;
+}
+
+div.grid .edit .ok,div.grid .edit .del{
+    display: flex;
+    flex-direction: row;
+    row-gap: 2px;
+    z-index: 15;
 }
