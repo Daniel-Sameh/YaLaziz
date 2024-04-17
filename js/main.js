@@ -80,14 +80,14 @@ if(isAdmin=='true'){
     console.log('admin is null!');
 }
 
-// var signedIn= getData('sign');
-// if(signedIn){
-//     document.querySelector('.logout').style.display = 'flex';
-//     document.querySelector('.logout').style.alignItems= 'center';
-//     document.querySelector('.login').style.display = 'none';
-//     document.querySelector('.sign_up').style.display = 'none';
+var signedIn= getData('sign');
+if(signedIn){
+    document.querySelector('.logout').style.display = 'flex';
+    document.querySelector('.logout').style.alignItems= 'center';
+    document.querySelector('.login').style.display = 'none';
+    document.querySelector('.sign_up').style.display = 'none';
 
-// }
+}
 
 favoriteButtons = document.querySelectorAll(".favorite_buttons");
 
