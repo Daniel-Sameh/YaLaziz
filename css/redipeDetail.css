@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Caveat:wght@400..700&family=Chivo:ital,wght@0,100..900;1,100..900&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+:root{
+    --backgroundColor: hsl(217, 43%, 92%);
+    --mainColor: #E8751A;
+    --secColor: #FDA403;
+    --textColor: var(--grey-900);
+    --max-width: 1120px;
+    --fixed-width: 600px;
+    --grey-900: #0f172a;
+    --navColor:#231336; 
+    /*--------------*/
+    --clr-primary: #d50000;
+    --clr-primary-hover: #29e6a7;
+    --clr-primary-dark: #039d69;
+    --clr-gray100: #f0f7f8;
+    --clr-gray200: #cfd8dc;
+    --clr-gray300: #a7b7be;
+    --clr-gray400: #6b7e86;
+    --clr-gray500: #425a65;
+}
+
+div.recipe{
+    background-image: linear-gradient(to bottom, rgba(145, 146, 122, 0.42), rgba(35, 19, 54, 0.9)), url("../Photos/pexels-engin-akyurt-1435895.jpg");
+    background-size: cover;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+}
+
+div.recipe .recipeImg{
+    position: relative;
+    /* position: fixed; */
+
+    box-sizing: border-box;
+    /* padding: 15px */;
+    justify-content: flex-start;
+    box-shadow: 5px 5px 20px black;
+    /* position: fixed; */
+    top: 60px;
+    left: 0px;
+    width: 40%;
+    height: 50%;
+    background-color: aliceblue;
+    
+}
+
+.recipe .recipeImg img{
+    position: absolute;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.recipe .recipeImg #recipe_title{
+    position: absolute;
+    top: 360px;
+    left: 15px;
+    /* font-size: larger; */
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.405);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.recipe .recipeImg #recipe_time{
+    position: absolute;
+    top: 405px;
+    left: 15px;
+    /* font-size: larger; */
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.405);
+    border-radius: 4px;
+    text-align: center;
+}
+
+div.recipe .recipeBody{
+    flex: 1;
+    /* width: 90%; */
+    margin: 20px;
+    height: 100%;
+    box-shadow: 4px;
+    background-color: #425a658c;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 5px 5px 20px black;
+    color: var(--clr-gray100);
+}
