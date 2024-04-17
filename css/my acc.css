@@ -75,9 +75,4 @@
 .page main .favorite{
     margin-left: 1.25rem;
 }
-@media screen and (max-width:340px) {
-    .page main .header{
-        height: 100%;
-        width: 100%;
-    }
-}
+
