@@ -178,7 +178,7 @@ div.grid .recipe .edit {
     display: none;
     width: 50px;
     height: 50px;
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     position: absolute;
     z-index: 15;
