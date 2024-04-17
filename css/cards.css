@@ -174,20 +174,24 @@ div.grid .recipe .info .btn:hover {
     background-color: #ffffffe5;
 }
 
-div.grid .edit .ok,div.grid .edit .del{
+div.grid .recipe .edit {
+    display: none;
+    width: 50px;
+    height: 50px;
     display: flex;
     flex-direction: row;
-    row-gap: 2px;
-    z-index: 15;
-}
-
-div.grid .recipe .edit form {
     position: absolute;
     z-index: 15;
     top: 0;
-    left: 0;
+    left: 15px;
+    
 }
 
-div.grid .recipe .edit form#deleteRecipe {
-    left: 14px;
+
+div.grid .recipe .edit img#deleteRecipe, div.grid .recipe .edit img#editRecipe {
+    margin-top: 20px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }

@@ -67,10 +67,10 @@ function resetData(){
 }
 
 if(isAdmin=='true'){
-    var cards = document.querySelectorAll('.card');
+    var cards = document.querySelectorAll('.recipe');
     cards.forEach(function(card) {
              // Get the adminContainer within each card
-             var adminContainer = card.querySelector('.adminContainer');
+             var adminContainer = card.querySelector('.edit');
              adminContainer.style.display = 'block';
          });
     console.log('admin is true!');
