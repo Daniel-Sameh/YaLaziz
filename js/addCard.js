@@ -18,7 +18,7 @@ if (rName && rId && rPhoto) {
     <div class="favorite_buttons">
     <img src="../Photos/heartWhite.png" alt="" title="Add to Your favorites">
     </div>   
-    <img src="../Photos/${rPhoto}" alt="Beef wellington">
+    <img src="../Photos/${rPhoto}" alt="${rName}">
     <div class="info">                    
         <h3>${rName}</h3>
         <h5>&#x23F0; 2 to 3 hrs</h5> 

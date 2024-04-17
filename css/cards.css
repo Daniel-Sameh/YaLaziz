@@ -180,3 +180,14 @@ div.grid .edit .ok,div.grid .edit .del{
     row-gap: 2px;
     z-index: 15;
 }
+
+div.grid .recipe .edit form {
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    left: 0;
+}
+
+div.grid .recipe .edit form#deleteRecipe {
+    left: 14px;
+}

@@ -14,7 +14,7 @@ const showMenu = (toggleId, navId) =>{
  showMenu('navToggle','links');
 
 
- var deleteButtons = document.querySelectorAll('.delete');
+ var deleteButtons = document.querySelectorAll('#deleteRecipe');
 
  // Add event listener to each delete button
  deleteButtons.forEach(function(button) {
@@ -28,7 +28,7 @@ const showMenu = (toggleId, navId) =>{
          // If user confirms, delete the card
          if (result) {
              // Find the parent card element and remove it
-             var card = button.closest('.card');
+             var card = button.closest('.recipe');
              if (card) {
                  card.remove();
              }
