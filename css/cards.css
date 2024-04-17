@@ -188,7 +188,7 @@ div.grid .recipe .edit {
 }
 
 
-div.grid .recipe .edit img#deleteRecipe, div.grid .recipe .edit img#editRecipe {
+div.grid .recipe .edit img.deleteRecipe, div.grid .recipe .edit img.editRecipe {
     margin-top: 20px;
     margin-right: 10px;
     width: 30px;

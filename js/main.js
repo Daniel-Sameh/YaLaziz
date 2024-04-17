@@ -14,7 +14,7 @@ const showMenu = (toggleId, navId) =>{
  showMenu('navToggle','links');
 
 
- var deleteButtons = document.querySelectorAll('#deleteRecipe');
+ var deleteButtons = document.querySelectorAll('.deleteRecipe');
 
  // Add event listener to each delete button
  deleteButtons.forEach(function(button) {
