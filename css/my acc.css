@@ -12,6 +12,7 @@
     min-height: 100vh;
 }
 
+
 .page main .container {
     display: flex;
     align-items: center;
@@ -41,8 +42,8 @@
 
 .page main .userPhoto {
     margin: 1.25rem 1.25rem 0.3125rem;
-    height: 15%;
-    width: 15%;
+    height: 10%;
+    width: 10%;
 
 }
 
@@ -73,4 +74,10 @@
 }
 .page main .favorite{
     margin-left: 1.25rem;
+}
+@media screen and (max-width:340px) {
+    .page main .header{
+        height: 100%;
+        width: 100%;
+    }
 }
