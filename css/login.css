@@ -52,6 +52,9 @@ h1 {
     font-size: 16px;
     padding: 20px 45px 20px 20px;
 }
+.input-box input:focus{
+    box-shadow: 0 0 7px;
+}
 
 .block .btn {
     width: 100%;
