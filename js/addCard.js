@@ -26,7 +26,7 @@ if (rName && rId && rPhoto) {
         <button class="btn">view Recipe</button>
     </div>`;
     
-
+    
     
     card.innerHTML = cardDetails;
     accountCard.appendChild(card);

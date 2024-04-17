@@ -57,7 +57,7 @@
         <aside></aside>
         <main>
             <div class="Add">
-                <form>
+                <form id="form">
                 <h1>Add your own Recipes</h1>
                 <label for="name">Recipe name:</label>
                 <input id="name" type="text">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="type field">
                     <h3>Upload cover:</h3>
-                    <input type="file">
+                    <input type="file" id="image">
                     <h3>Ingredients:</h3>
                     <textarea name="textbox" id="Ingredients" cols="50" rows="15" required></textarea>
                     <h3>add image: </h3>
@@ -98,7 +98,7 @@
                     <h3>Instructions:</h3>
                     <textarea name="textbox" id="Instructions" cols="50" rows="15" required></textarea>
                 </div>
-                <input type="submit">
+                <button type="submit" class="btn">Submit</button>
                 </form>
             </div>
         </main>
@@ -124,5 +124,6 @@
         </footer>
         </div>
         <script src="../js/main.js"></script>
+        <script src="../js/addRecipe.js"></script>
 </body>
 </html>
