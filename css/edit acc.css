@@ -73,23 +73,28 @@ input[type=password] {
     border-radius: 4px;
     border: 2px solid black;
 }
-input[type=text]:focus{
+.editName input:focus{
     border:5px solid  #E8751A;
     cursor:text;
  }
- input[type=password]:focus{
+ .editPass input:focus{
     border:5px solid  #E8751A;
     cursor:text;
  }
- input[type=Email]:focus{
+ .oldPass input:focus{
+    border:5px solid  #E8751A;
+    cursor:text;
+ }
+ .confirmEditedPass input:focus{
+    border:5px solid  #E8751A;
+    cursor:text;
+ }
+ .editMail input:focus{
     border:5px solid  #E8751A;
     cursor:text;
  }
 
-
-
-
-input[type=submit] {
+.submitChanges input {
     background-color: var(--mainColor);
     border: none;
     color: white;
