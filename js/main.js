@@ -154,3 +154,13 @@ document.querySelector('.account').addEventListener('click', function(event){
     }
 })
 
+//------------------------------------------------------------------------
+
+var recipeLinkBtn = document.querySelectorAll("#recipeLink");
+
+recipeLinkBtn.forEach(button => {
+    button.addEventListener('click', function(){
+        location.href = "../HTML/recipe_detail.html";
+    })
+})
+

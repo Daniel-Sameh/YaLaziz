@@ -1,28 +1,43 @@
-const form = document.getElementById('add-form');
+const formPage = document.getElementById('add-form');
 
 const recipeName = document.getElementById('rname-id');
 const recipeId = document.getElementById('rid-id');
 const recipePhoto = document.getElementById('rimage-id');
 
-const submitButton = document.querySelectorAll(".submit-btn");
-
-submitButton.forEach(button => {
+let submitButton = document.querySelector('.submit-btn');
+let recipeArr= new Array();
+if(localStorage.getItem('recipeArr')){
+    recipeArr=JSON.parse(localStorage.getItem('recipeArr'));
+}
+/* submitButton.forEach(button => { */
     
-    form.addEventListener('submit', function (e) {
+    submitButton.addEventListener('click', function (e) {
         e.preventDefault();
         
+       
         const reader = recipePhoto.files[0];
         console.log(reader);
         
         const recipeName_value = recipeName.value;
         const recipeId_value = recipeId.value;
         const recipePhoto_value = reader.name;
-        
-        window.localStorage.setItem('recipeName', recipeName_value);
-        window.localStorage.setItem('recipeId', recipeId_value);
-        window.localStorage.setItem('recipePhoto', recipePhoto_value);
-    })
-});
+        console.log(recipeName_value);
+        console.log(recipeId_value);
+        console.log(recipePhoto_value);
+        let myRecipe = {
+            recipeName: recipeName_value,
+            recipeId:recipeId_value,
+            recipePhoto:recipePhoto_value
+        } 
+        recipeArr.push(myRecipe);
+        localStorage.setItem('recipeArr',JSON.stringify(recipeArr));
+        // window.localStorage.setItem('recipeName', recipeName_value);
+        // window.localStorage.setItem('recipeId', recipeId_value);
+        // window.localStorage.setItem('recipePhoto', recipePhoto_value);
+        document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
+        document.getElementById('popUp').style.display='block';
+    });
+/* }); */
 
 
 function addIngredient() {
@@ -46,8 +61,8 @@ function addIngredient() {
         listItem.appendChild(removeButton);
         document.getElementById("ingredients-list").appendChild(listItem);
 
-        document.getElementById("ingredient-quantity").value = "";
-        document.getElementById("ingredient-name").value = "";
+       /*  document.getElementById("ingredient-quantity").value = "";
+        document.getElementById("ingredient-name").value = ""; */
         //supposed to clear input field but not working
        
     } else {
