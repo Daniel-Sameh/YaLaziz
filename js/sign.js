@@ -56,12 +56,15 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         // localStorage.setItem('user',json);
         saveData('admin',isAdmin);
         saveData('username',username);
+        saveData('password',password);
         //  var signedIn= true;
-        saveData('sign',true);
-        document.querySelector('.logout').style.display = 'flex';
-        document.querySelector('.logout').style.alignItems= 'center';
-        document.querySelector('.login').style.display = 'none';
-        document.querySelector('.sign_up').style.display = 'none';
+        // saveData('sign',true);
+        // document.querySelector('.logout').style.display = 'flex';
+        // document.querySelector('.logout').style.alignItems= 'center';
+        // document.querySelector('.login').style.display = 'none';
+        // document.querySelector('.sign_up').style.display = 'none';
+        // location.reload();
+        alert("Welcome "+username+" to Yalaziz!");
         location.reload();
     }
     
@@ -82,26 +85,3 @@ function getData(key) {
 
 /////////////////////////////////////
 
-// document.getElementById("btn").onclick = function check() {
-//     let password = document.getElementById("pass").value;
-//     let confirmpassword = document.getElementById("confirm").value;
-//     let checkp = document.getElementById("check");
-
-//     if (password.length <= 7) {
-//         checkp.innerHTML = "*Password must be greater than 7 characters";
-//         checkp.style.display = "block";
-//         return false;
-//     }
-//     else if (containsNumber(password) == false) {
-//         checkp.innerHTML = "*Password must contain numbers";
-//         checkp.style.display = "block";
-//         return false;
-//     }
-//     else if (password != confirmpassword) {
-//         checkp.innerHTML = "*Passwords don't match try again";
-//         checkp.style.display = "block";
-//         return false;
-
-//     }
-
-// }
