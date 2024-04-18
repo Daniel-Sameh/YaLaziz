@@ -86,7 +86,7 @@
                             <div class="ingredients-input-area">
                                 <h3>Add ingredients</h3>
                                 <div class="add-ing-grouping">
-                                    <input type="text" name="quantity" class="ingredient-input-field" id="quantity-id"
+                                    <input type="number" name="quantity" class="ingredient-input-field" id="quantity-id"
                                         placeholder="Quantity" required>
                                     <select name="unit" id="unit-id" class="ingredient-input-field" required>
                                         <option value="" disabled selected>Select unit</option>
@@ -99,10 +99,10 @@
                                         <option value="cup">Cup</option>
                                         <option value="none">no unit</option> <!--2 eggs-->
                                     </select>
-                                    <input type="number" name="ingredient" id="ingredient-id"
+                                    <input type="text" name="ingredient" id="ingredient-id"
                                         class="ingredient-input-field" placeholder="Ingredient" required>
                                     <div class="add-ing-btn">
-                                        <button type='button' class="ingredient-btn" onclick="addIngredient()">Add
+                                        <button type="button" class="ingredient-btn" onclick="addIngredient()">Add
                                             ingredient</button>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                     <div class="right">
                         <h2>Preview Recipe</h2>
                         <div class="preview">
-                            <h3>Recipe Name and Image:</h3>
+                            <h3 id="prevRecipeName">Recipe Name and Image:</h3>
                             <div class="image-preview">
                             </div>
                         </div>
