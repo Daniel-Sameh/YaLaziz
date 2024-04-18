@@ -228,17 +228,17 @@ input[type="search"]:focus {
 /* input[type="search"]:active{
     border: #E8751A;
 } */
-button[type="submit"]{
+#searchBtn{
     /* border-radius: 6px; */
     outline: none;
     border: 0px solid transparent;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
-button[type="submit"]:hover{
+#searchBtn:hover{
     box-shadow: 1px -1px 5px inset var(--secColor);
 }
-button[type="submit"]:active{
+#searchBtn:active{
     box-shadow: 2px -2px 5px inset var(--secColor);
 }
 #searchItem, .login, .sign_up{
