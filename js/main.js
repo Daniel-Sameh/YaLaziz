@@ -33,6 +33,12 @@ deleteButtons.forEach(function(button) {
              var card = button.closest('.recipe');
              if (card) {
                  card.remove();
+                 let cardId= card.getAttribute('id');
+                 let arrIdx= localStorage.getItem(cardId);
+                 let arr= JSON.parse(localStorage.getItem('recipeArr'));
+                 arr.splice(arrIdx,1);
+                 localStorage.setItem('recipeArr',JSON.stringify(arr));
+                 localStorage.removeItem(cardId);
              }
          }
      });
@@ -73,7 +79,7 @@ if(isAdmin=='true'&&isSignned){
     cards.forEach(function(card) {
              // Get the adminContainer within each card
              var adminContainer = card.querySelector('.edit');
-             adminContainer.style.display = 'block';
+             adminContainer.style.display = 'flex';
          });
     console.log('admin is true!');
 }else{
@@ -118,7 +124,7 @@ favoriteButtonsMain.forEach(button => {
    });
  });
 
- favoriteButtons = document.querySelectorAll(".favorite_buttons");
+favoriteButtons = document.querySelectorAll(".favorite_buttons");
 
 favoriteButtons.forEach(button => {
    button.addEventListener("click", function() {
@@ -185,4 +191,3 @@ recipeLinkBtn.forEach(button => {
         location.href = "../HTML/recipe_detail.html";
     })
 })
-
