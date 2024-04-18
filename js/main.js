@@ -118,6 +118,28 @@ favoriteButtonsMain.forEach(button => {
    });
  });
 
+ favoriteButtons = document.querySelectorAll(".favorite_buttons");
+
+favoriteButtons.forEach(button => {
+   button.addEventListener("click", function() {
+       const addTitle = "Add to Your favorites";
+       const removeTitle = "Remove from Your favorites";
+       img = button.querySelector("img");
+       if (img.title == addTitle) {
+           img.src = "../../Photos/heartRed.png";
+           img.title = removeTitle;
+       }
+       else {
+           img.src = "../../Photos/heartWhite.png"
+           img.title = addTitle;
+       }
+       img.style.opacity = 0;
+       setTimeout(() => {
+           img.style.opacity = 1; 
+       }, 100);
+   });
+ });
+
 
 //--------------------------------------------------------------------
 
