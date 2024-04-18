@@ -109,3 +109,6 @@ h1 {
     }
     
 }
+.block:hover{
+    animation-play-state: paused;
+}
