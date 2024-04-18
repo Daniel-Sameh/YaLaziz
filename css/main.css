@@ -19,10 +19,7 @@
     --clr-gray500: #425a65;
 }
 
-.page{
-    background-image: linear-gradient(to bottom, rgba(145, 146, 122, 0.42), rgba(35, 19, 54, 0.9)), url("../Photos/pexels-engin-akyurt-1435895.jpg");
-    background-size: cover;
-}
+
 
 .yaLaziz{
     grid-area: laziz;
@@ -307,6 +304,13 @@ button,a{
     transition: 0.4s;
     
 }
+
+.recipeDetailPage, .recipesPage, .breakfastPage, .lunchPage, .dinnerPage, .ramadanPage, .christmasPage, .summerPage, 
+.drinksPage, .dessertsPage{
+    background-image: linear-gradient(to bottom, rgba(145, 146, 122, 0.42), rgba(35, 19, 54, 0.9)), url("../Photos/pexels-engin-akyurt-1435895.jpg");
+    background-size: cover;
+}
+
 .Scontainer1 {
     position: relative;
     display: flex;
