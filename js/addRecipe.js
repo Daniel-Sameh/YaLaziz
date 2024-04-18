@@ -4,6 +4,8 @@ const recipeName = document.getElementById('rname-id');
 const recipeId = document.getElementById('rid-id');
 const recipePhoto = document.getElementById('rimage-id');
 
+
+
 let submitButton = document.querySelector('.submit-btn');
 let recipeArr= new Array();
 if(localStorage.getItem('recipeArr')){
@@ -13,8 +15,7 @@ if(localStorage.getItem('recipeArr')){
     
     submitButton.addEventListener('click', function (e) {
         e.preventDefault();
-        
-       
+
         const reader = recipePhoto.files[0];
         console.log(reader);
         
@@ -27,19 +28,29 @@ if(localStorage.getItem('recipeArr')){
         let myRecipe = {
             recipeName: recipeName_value,
             recipeId:recipeId_value,
-            recipePhoto:recipePhoto_value
+            recipePhoto:recipePhoto_value,
+            // ingredients: localStorage.getItem('ingredients'),
+            // instructions: localStorage.getItem('instructions')
         } 
         recipeArr.push(myRecipe);
+        let arrIdx= recipeArr.length-1;
         localStorage.setItem('recipeArr',JSON.stringify(recipeArr));
+        localStorage.setItem(recipeId_value,arrIdx);
         // window.localStorage.setItem('recipeName', recipeName_value);
         // window.localStorage.setItem('recipeId', recipeId_value);
         // window.localStorage.setItem('recipePhoto', recipePhoto_value);
         document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
         document.getElementById('popUp').style.display='block';
+        // localStorage.removeItem('ingredients');
+        // localStorage.removeItem('instructions');
     });
 /* }); */
 
 
+// let ingredientsArr= new Array();
+// if(localStorage.getItem('ingredients')){
+//     ingredientsArr= localStorage.getItem('ingredients');
+// }
 function addIngredient() {
     var unit = document.getElementById("unit-id").value;
     var quantity = document.getElementById("quantity-id").value;
@@ -48,6 +59,10 @@ function addIngredient() {
     if (quantity && name && unit) {
         var listItem = document.createElement("li");
         listItem.textContent = quantity + " " + unit + " " + name;
+        
+        //Add Ingredients to localStorage
+        // ingredientsArr.push(listItem.textContent);
+        // localStorage.setItem('ingredients', JSON.stringify(ingredientsArr));
 
         var removeButton = document.createElement("button");
         var trashIcon = document.createElement("i");
@@ -56,6 +71,8 @@ function addIngredient() {
         removeButton.className = "Remove-button";
         removeButton.onclick = function () {
             listItem.remove();
+            // ingredientsArr.pop();
+            // localStorage.setItem('ingredients', JSON.stringify(ingredientsArr));
         };
 
         listItem.appendChild(removeButton);
@@ -70,12 +87,21 @@ function addIngredient() {
     }
 }
 
+// let instructionsArr= new Array();
+// if(localStorage.getItem('instructions')){
+//     instructionsArr= localStorage.getItem('instructions');
+// }
 function addInstruction() {
     var instructionText = document.getElementById("instructions-id").value;
 
     if (instructionText) {
         var listItem = document.createElement("li");
         listItem.textContent = instructionText;
+        
+        // instructionsArr.push(instructionText);
+        // localStorage.setItem('instructions',JSON.stringify(instructionsArr));
+
+
 
         var removeButton = document.createElement("button");
         var trashIcon = document.createElement("i");
@@ -84,6 +110,8 @@ function addInstruction() {
         removeButton.className = "Remove-button";
         removeButton.onclick = function () {
             listItem.remove();
+            // instructionsArr.pop();
+            // localStorage.setItem('instructions',JSON.stringify(instructionsArr));
         };
 
         listItem.appendChild(removeButton);
@@ -113,6 +141,8 @@ function uploadphoto() {
             imagePreview.innerHTML = '';
 
             imagePreview.appendChild(img);
+            //Preview the recipe name
+            document.getElementById('prevRecipeName').innerHTML="The "+name.value+" recipe"
         };
 
         // Read the uploaded file as a URL
