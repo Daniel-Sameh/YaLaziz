@@ -304,7 +304,7 @@ footer div{
      display: flex;
      /* align-items: center; */
      justify-content: center;
-     column-gap: 0.5rem;
+     column-gap: 1rem;
     }
     .navLink{
         height: 100%;
@@ -367,4 +367,6 @@ footer div{
 .logout{
     display: none;
 }
-
+.addRecipe{
+    display: none;
+}
