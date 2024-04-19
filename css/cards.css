@@ -37,7 +37,7 @@ div.grid .recipe{
     
 }
 
-div.grid .recipe > img{
+div.grid .recipe > img.mainImg{
     border-radius: 3px;
     position: absolute;
     height: 100%;
@@ -110,7 +110,7 @@ div.grid .recipe .info h5 {
     transition: 0.3s ease-in;
 }
 
-div.grid .recipe:hover > img{
+div.grid .recipe:hover > img.mainImg{
     filter: blur(1px);
     transform: scale(1.5) rotate(10deg);
     height: 100%;
@@ -156,7 +156,7 @@ div.grid .recipe:hover .info .btn{
 }
 
 
-.favorite_buttons img, .favorite_buttons_main img {
+.favorite_button, .favorite_button_main{
     position: absolute;
     width: 45px;
     height: 45px;

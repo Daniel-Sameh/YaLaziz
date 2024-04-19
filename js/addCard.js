@@ -21,10 +21,8 @@ for(var i=0;i<cardArr.length;++i){
                 <img src="../Photos/editButton.png" alt="" class="editRecipe" title="Edit Recipe">
                 <img src="../Photos/deleteButton.png" alt="" class="deleteRecipe" title="Delete Recipe">
             </div>
-            <div class="favorite_buttons_main">
-            <img src="../Photos/heartWhite.png" alt="" title="Add to Your favorites">
-            </div>   
-            <img src="../Photos/${cardArr[i].recipePhoto}" alt="${cardArr[i].recipeName}">
+            <img src="../Photos/heartWhite.png" alt="" title="Add to Your favorites" class="favorite_button_main">
+            <img src="../Photos/${cardArr[i].recipePhoto}" alt="${cardArr[i].recipeName}" class="mainImg">
             <div class="info">
                 <h3>${cardArr[i].recipeName}</h3>
                 <h5>&#x23F0; 2 to 3 hrs</h5> 

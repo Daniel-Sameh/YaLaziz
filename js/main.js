@@ -102,46 +102,45 @@ if(isSignned){
 //-----------------------------------------------------------------------
 
 //For Recipes:
-favoriteButtonsMain = document.querySelectorAll(".favorite_buttons_main");
+favoriteButtonsMain = document.querySelectorAll(".favorite_button_main");
 
 favoriteButtonsMain.forEach(button => {
    button.addEventListener("click", function() {
        const addTitle = "Add to Your favorites";
        const removeTitle = "Remove from Your favorites";
-       img = button.querySelector("img");
-       if (img.title == addTitle) {
-           img.src = "../Photos/heartRed.png";
-           img.title = removeTitle;
+       
+       if (button.title == addTitle) {
+           button.src = "../Photos/heartRed.png";
+           button.title = removeTitle;
        }
        else {
-           img.src = "../Photos/heartWhite.png"
-           img.title = addTitle;
+           button.src = "../Photos/heartWhite.png"
+           button.title = addTitle;
        }
-       img.style.opacity = 0;
+       button.style.opacity = 0;
        setTimeout(() => {
-           img.style.opacity = 1; 
+           button.style.opacity = 1; 
        }, 100);
    });
  });
 
-favoriteButtons = document.querySelectorAll(".favorite_buttons");
+favoriteButtons = document.querySelectorAll(".favorite_button");
 
 favoriteButtons.forEach(button => {
    button.addEventListener("click", function() {
        const addTitle = "Add to Your favorites";
        const removeTitle = "Remove from Your favorites";
-       img = button.querySelector("img");
-       if (img.title == addTitle) {
-           img.src = "../../Photos/heartRed.png";
-           img.title = removeTitle;
+       if (button.title == addTitle) {
+           button.src = "../../Photos/heartRed.png";
+           button.title = removeTitle;
        }
        else {
-           img.src = "../../Photos/heartWhite.png"
-           img.title = addTitle;
+           button.src = "../../Photos/heartWhite.png"
+           button.title = addTitle;
        }
-       img.style.opacity = 0;
+       button.style.opacity = 0;
        setTimeout(() => {
-           img.style.opacity = 1; 
+           button.style.opacity = 1; 
        }, 100);
    });
  });
@@ -176,9 +175,9 @@ document.querySelector('.account').addEventListener('click', function(event){
         // const acc=document.querySelector('.account');
         // acc.appendChild(note);
         alert("You are not logged in yet!");
-        window.location.href="login.html";
+        window.location.href="../../HTML/login.html";
     }else{
-        window.location.href="my account.html";
+        window.location.href="../../HTML/my account.html";
     }
 })
 
