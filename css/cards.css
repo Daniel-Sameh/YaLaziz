@@ -156,7 +156,7 @@ div.grid .recipe:hover .info .btn{
 }
 
 
-.favorite_button, .favorite_button_main{
+.favorite_button {
     position: absolute;
     width: 45px;
     height: 45px;
@@ -189,6 +189,7 @@ div.grid .recipe .edit {
 
 div.grid .recipe .edit img.deleteRecipe, div.grid .recipe .edit img.editRecipe {
     margin-top: 10px;
+    margin-right: 10px;
     width: 30px;
     height: 30px;
     cursor: pointer;

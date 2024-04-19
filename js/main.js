@@ -103,49 +103,36 @@ if(isSignned){
 //-----------------------------------------------------------------------
 
 //For Recipes:
-favoriteButtonsMain = document.querySelectorAll(".favorite_button_main");
 
-favoriteButtonsMain.forEach(button => {
-    button.addEventListener("click", function() {
-        const addTitle = "Add to Your favorites";
-        const removeTitle = "Remove from Your favorites";
-        
-        if (button.title == addTitle) {
-            button.src = "../Photos/heartRed.png";
-            button.title = removeTitle;
-        }
-        else {
-            button.src = "../Photos/heartWhite.png"
-            button.title = addTitle;
-        }
-        button.style.opacity = 0;
-        setTimeout(() => {
-            button.style.opacity = 1; 
-        }, 100);
-    });
-  });
- 
- favoriteButtons = document.querySelectorAll(".favorite_button");
- 
- favoriteButtons.forEach(button => {
-    button.addEventListener("click", function() {
-        const addTitle = "Add to Your favorites";
-        const removeTitle = "Remove from Your favorites";
-        if (button.title == addTitle) {
-            button.src = "../../Photos/heartRed.png";
-            button.title = removeTitle;
-        }
-        else {
-            button.src = "../../Photos/heartWhite.png"
-            button.title = addTitle;
-        }
-        button.style.opacity = 0;
-        setTimeout(() => {
-            button.style.opacity = 1; 
-        }, 100);
-    });
-  });
- 
+favoriteButtons = document.querySelectorAll(".favorite_button");
+
+favoriteButtons.forEach(button => {
+   button.addEventListener("click", function() {
+       const hrefValue = button.getAttribute("src");
+       const addTitle = "Add to Your favorites";
+       const removeTitle = "Remove from Your favorites";
+       if (hrefValue == "../../Photos/heartWhite.png") {
+           button.src = "../../Photos/heartRed.png";
+           button.title = removeTitle;
+       }
+       else if (hrefValue == "../../Photos/heartRed.png") {
+           button.src = "../../Photos/heartWhite.png"
+           button.title = addTitle;
+       }
+       else if (hrefValue == "../Photos/heartWhite.png") {
+           button.src = "../Photos/heartRed.png";
+           button.title = removeTitle;
+       }
+       else {
+           button.src = "../Photos/heartWhite.png";
+           button.title = addTitle;
+       }
+       button.style.opacity = 0;
+       setTimeout(() => {
+           button.style.opacity = 1; 
+       }, 100);
+   });
+ }); 
 
 
 //--------------------------------------------------------------------
@@ -178,9 +165,9 @@ document.querySelector('.account').addEventListener('click', function(event){
         // const acc=document.querySelector('.account');
         // acc.appendChild(note);
         alert("You are not logged in yet!");
-        window.location.href="login.html";
+        window.location.href=document.querySelector(".login").firstChild.firstChild.getAttribute("href");
     }else{
-        window.location.href="my account.html";
+        window.location.href=document.querySelector(".account").firstChild.getAttribute("href");
     }
 })
 
