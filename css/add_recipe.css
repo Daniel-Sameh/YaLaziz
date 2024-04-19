@@ -68,6 +68,10 @@ padding: 2%;
     flex-direction: column;
     align-items: center;
 }
+.recipe-info input[type=file]{
+    width: 100%;
+    margin: auto;
+}
 .recipe-info-input-field{
     width: 75%;
     padding:10px 12px;
@@ -76,9 +80,17 @@ padding: 2%;
     border-radius: 40px;
 }
 .recipe-info-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width : 75%
 }
-
+.recipe-info-btn label{
+    margin-top: 2%;
+}
+/* .recipe-info-button{
+    margin-left: 2%;
+} */
 ::-webkit-file-upload-button,
 .ingredient-btn,
 .instruction-btn{
@@ -199,17 +211,20 @@ input[type="checkbox"]{
     padding: 6px;
     border-radius: 5px;
     width: 100%;
+    cursor: pointer;
     /* word-wrap: break-word; */
 }
 .check-label{
     margin: 2%;
     padding: 6px;
-    width:fit-content;  
+    width:fit-content; 
+
 }
 
-input[type="checkbox"]:checked+label{
+.occasions input[type="checkbox"]:checked+label{
     background-color: #7e7676;
     color: white;
+    cursor: pointer;
 }
 /* .submit-btn{
     width: 50%;
@@ -255,7 +270,8 @@ h1, h2, h3{
     width: 80%;
     align-items: center;
 }
-.image-preview{
+.image-preview,
+.photo-preview{
     background-color: #bbbbbb;
     border-radius: 20px;
     font-weight:500;
@@ -292,8 +308,11 @@ h1, h2, h3{
     transform: scale(1.2) ;
 }
 .image-preview,
-.image-preview img{
+.image-preview img,
+.photo-preview,
+.photo-preview img{
     width: 100%;
+    height: fit-content;
     border-radius: 20px;
 }
 #popUp{
@@ -331,3 +350,7 @@ h1, h2, h3{
     background-color: #FDA403;
 }
 
+.photos-preview{
+    display: flex;
+    flex-direction: row;
+}

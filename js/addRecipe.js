@@ -128,7 +128,6 @@ function addInstruction() {
 
 function uploadphoto() {
     var name = document.getElementById('rname-id');
-    var id = document.getElementById('rid-id');
     var input = document.getElementById('rimage-id');
 
     if (input.files&&input.files[0]) {
@@ -144,8 +143,32 @@ function uploadphoto() {
             imagePreview.innerHTML = '';
 
             imagePreview.appendChild(img);
+            
             //Preview the recipe name
             document.getElementById('prevRecipeName').innerHTML="The "+name.value+" recipe"
+        };
+
+        // Read the uploaded file as a URL
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function uploadphototwo() {
+    var input = document.getElementById('rphoto-id');
+
+    if (input.files&&input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Get the image preview element
+            var imagePreview = document.querySelector('.photo-preview');
+            var img = new Image();
+            img.src = e.target.result;
+            img.alt = 'Preview';
+
+            imagePreview.innerHTML = '';
+
+            imagePreview.appendChild(img);
         };
 
         // Read the uploaded file as a URL

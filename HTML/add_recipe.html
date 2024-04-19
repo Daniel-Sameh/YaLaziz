@@ -78,8 +78,12 @@
                                     placeholder="Recipe ID" required>
                                 <!-- <label for="rimage-id" id="rimagelabel-id">Upload a cover image</label> -->
                                 <div class="recipe-info-btn">
+                                    <label for="rimage-id">Choose a cover: </label>
                                     <input type="file" name="recipe image" id="rimage-id" class="recipe-info-btn"
                                         onchange="uploadphoto()">
+                                        <label for="rphoto-id">Choose a photo: </label>
+                                    <input type="file" name="recipe image" id="rphoto-id" class="recipe-info-btn"
+                                        onchange="uploadphototwo()">
                                 </div>
 
                             </div>
@@ -171,18 +175,25 @@
                     <div class="right">
                         <h2>Preview Recipe</h2>
                         <div class="preview">
-                            <h3 id="prevRecipeName">Recipe Name and Image:</h3>
-                            <div class="image-preview">
+                            <h3 id="prevRecipeName">Recipe Name and photos:</h3>
+                            <div class="photos-preview">
+                                <div class="image-preview">
+                                </div>
+                                <div class="photo-preview">
+                                </div>
                             </div>
+                            
                         </div>
                         <div class="preview" id="ingredients-preview">
                             <h3>Ingredients: </h3>
                             <ol id="ingredients-list"></ol>
                         </div>
+                        
                         <div class="preview" id="instructions-preview">
                             <h3>Instructions: </h3>
                             <ol id="instructions-list"></ol>
                         </div>
+
                     </div>
                 </div>
             </div>
