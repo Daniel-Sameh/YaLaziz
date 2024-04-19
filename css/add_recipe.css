@@ -296,16 +296,38 @@ h1, h2, h3{
     width: 100%;
     border-radius: 20px;
 }
-/* #popUp{
+#popUp{
     position: fixed;
-    background-color: #000;
+    background-color: #231336;
     color: #fff;
     width: 400px;
     height: 400px;
     top: 50%;
     left: 50%;
-    bottom: 50%;
-    right: 50%;
+    transform: translate(-50%, -50%);
+    /* bottom: 50%; */
+    /* right: 50%; */
     border-radius: 10px;
+    z-index: 2000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    flex-wrap: wrap;
 }
- */
+#popUp button{
+    padding: 10px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 20px;
+    width: 150px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+#popUp button:hover{
+    background-color: #FDA403;
+}
+
