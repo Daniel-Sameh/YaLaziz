@@ -91,6 +91,7 @@ if(isAdmin=='true'&&isSignned){
 
 if(isSignned){
     document.querySelector('.logout').style.display = 'flex';
+    document.querySelector('.addRecipe').style.display = 'flex';
     document.querySelector('.logout').style.alignItems= 'center';
     document.querySelector('.login').style.display = 'none';
     document.querySelector('.sign_up').style.display = 'none';
@@ -105,45 +106,46 @@ if(isSignned){
 favoriteButtonsMain = document.querySelectorAll(".favorite_button_main");
 
 favoriteButtonsMain.forEach(button => {
-   button.addEventListener("click", function() {
-       const addTitle = "Add to Your favorites";
-       const removeTitle = "Remove from Your favorites";
-       
-       if (button.title == addTitle) {
-           button.src = "../Photos/heartRed.png";
-           button.title = removeTitle;
-       }
-       else {
-           button.src = "../Photos/heartWhite.png"
-           button.title = addTitle;
-       }
-       button.style.opacity = 0;
-       setTimeout(() => {
-           button.style.opacity = 1; 
-       }, 100);
-   });
- });
-
-favoriteButtons = document.querySelectorAll(".favorite_button");
-
-favoriteButtons.forEach(button => {
-   button.addEventListener("click", function() {
-       const addTitle = "Add to Your favorites";
-       const removeTitle = "Remove from Your favorites";
-       if (button.title == addTitle) {
-           button.src = "../../Photos/heartRed.png";
-           button.title = removeTitle;
-       }
-       else {
-           button.src = "../../Photos/heartWhite.png"
-           button.title = addTitle;
-       }
-       button.style.opacity = 0;
-       setTimeout(() => {
-           button.style.opacity = 1; 
-       }, 100);
-   });
- });
+    button.addEventListener("click", function() {
+        const addTitle = "Add to Your favorites";
+        const removeTitle = "Remove from Your favorites";
+        
+        if (button.title == addTitle) {
+            button.src = "../Photos/heartRed.png";
+            button.title = removeTitle;
+        }
+        else {
+            button.src = "../Photos/heartWhite.png"
+            button.title = addTitle;
+        }
+        button.style.opacity = 0;
+        setTimeout(() => {
+            button.style.opacity = 1; 
+        }, 100);
+    });
+  });
+ 
+ favoriteButtons = document.querySelectorAll(".favorite_button");
+ 
+ favoriteButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        const addTitle = "Add to Your favorites";
+        const removeTitle = "Remove from Your favorites";
+        if (button.title == addTitle) {
+            button.src = "../../Photos/heartRed.png";
+            button.title = removeTitle;
+        }
+        else {
+            button.src = "../../Photos/heartWhite.png"
+            button.title = addTitle;
+        }
+        button.style.opacity = 0;
+        setTimeout(() => {
+            button.style.opacity = 1; 
+        }, 100);
+    });
+  });
+ 
 
 
 //--------------------------------------------------------------------
@@ -152,6 +154,7 @@ favoriteButtons.forEach(button => {
     var logOut=window.confirm("Are you sure to log out from YaLaziz?");
     if(logOut){
         document.querySelector('.logout').style.display = 'none';
+        document.querySelector('.addRecipe').style.display = 'none';
         document.querySelector('.login').style.alignItems= 'center';
         document.querySelector('.sign_up').style.alignItems= 'center';
         document.querySelector('.login').style.display = 'flex';
@@ -175,9 +178,9 @@ document.querySelector('.account').addEventListener('click', function(event){
         // const acc=document.querySelector('.account');
         // acc.appendChild(note);
         alert("You are not logged in yet!");
-        window.location.href="../../HTML/login.html";
+        window.location.href="login.html";
     }else{
-        window.location.href="../../HTML/my account.html";
+        window.location.href="my account.html";
     }
 })
 
