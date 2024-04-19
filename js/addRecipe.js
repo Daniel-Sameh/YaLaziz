@@ -39,13 +39,16 @@ if(localStorage.getItem('recipeArr')){
         // window.localStorage.setItem('recipeName', recipeName_value);
         // window.localStorage.setItem('recipeId', recipeId_value);
         // window.localStorage.setItem('recipePhoto', recipePhoto_value);
-        document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
-        document.getElementById('popUp').style.display='block';
+        // document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
+        document.getElementById('popUp').style.display='flex';
         // localStorage.removeItem('ingredients');
         // localStorage.removeItem('instructions');
     });
 /* }); */
-
+document.getElementById('popBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('popUp').style.display='none';
+})
 
 // let ingredientsArr= new Array();
 // if(localStorage.getItem('ingredients')){
