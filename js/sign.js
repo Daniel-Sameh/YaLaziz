@@ -65,7 +65,7 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         // document.querySelector('.sign_up').style.display = 'none';
         // location.reload();
         alert("Welcome "+username+" to Yalaziz!");
-        location.reload();
+        location.href = "login.html";
     }
     
 

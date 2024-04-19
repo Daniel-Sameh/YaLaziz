@@ -104,35 +104,82 @@ if(isSignned){
 
 //For Recipes:
 
+let favoriteRecipeArr = new Array();
+    if(localStorage.getItem('favoriteRecipeArr')){
+        favoriteRecipeArr=JSON.parse(localStorage.getItem('favoriteRecipeArr'));
+    }
+
+
 favoriteButtons = document.querySelectorAll(".favorite_button");
 
 favoriteButtons.forEach(button => {
    button.addEventListener("click", function() {
-       const hrefValue = button.getAttribute("src");
-       const addTitle = "Add to Your favorites";
-       const removeTitle = "Remove from Your favorites";
-       if (hrefValue == "../../Photos/heartWhite.png") {
-           button.src = "../../Photos/heartRed.png";
-           button.title = removeTitle;
-       }
-       else if (hrefValue == "../../Photos/heartRed.png") {
-           button.src = "../../Photos/heartWhite.png"
-           button.title = addTitle;
-       }
-       else if (hrefValue == "../Photos/heartWhite.png") {
-           button.src = "../Photos/heartRed.png";
-           button.title = removeTitle;
-       }
-       else {
-           button.src = "../Photos/heartWhite.png";
-           button.title = addTitle;
-       }
-       button.style.opacity = 0;
-       setTimeout(() => {
-           button.style.opacity = 1; 
-       }, 100);
+    console.log('clicked');
+
+    if (!isSignned) {
+        alert("You Have to Login First!");
+        return;
+    }
+
+    const recipeId = button.closest('.recipe').getAttribute('id');
+
+    const hrefValue = button.getAttribute("src");
+    const addTitle = "Add to Your favorites";
+    const removeTitle = "Remove from Your favorites";
+    if (hrefValue == "../../Photos/heartWhite.png") {
+        button.src = "../../Photos/heartRed.png";
+        button.title = removeTitle;
+        addRecipeToFavorite(recipeId);
+    }
+    else if (hrefValue == "../../Photos/heartRed.png") {
+        button.src = "../../Photos/heartWhite.png"
+        button.title = addTitle;
+        deleteRecipeFromFavorite(recipeId);
+    }
+    else if (hrefValue == "../Photos/heartWhite.png") {
+        button.src = "../Photos/heartRed.png";
+        button.title = removeTitle;
+        addRecipeToFavorite(recipeId);
+    }
+    else {
+        button.src = "../Photos/heartWhite.png";
+        button.title = addTitle;
+        deleteRecipeFromFavorite(recipeId);
+    }
+    button.style.opacity = 0;
+    setTimeout(() => {
+        button.style.opacity = 1; 
+    }, 100);
    });
  }); 
+
+ function deleteRecipeFromFavorite(recipeId) {
+    let arrIdx = localStorage.getItem(recipeId);
+    let arr = JSON.parse(localStorage.getItem('favoriteRecipeArr'));
+    arr.splice(arrIdx,1);
+    localStorage.setItem('favoriteRecipeArr',JSON.stringify(arr));
+    localStorage.removeItem(recipeId);
+ }
+
+ function addRecipeToFavorite(recipeId) {
+    const recipe = document.getElementById(recipeId);
+    const recipeName = recipe.getElementsByTagName('h3')[0].innerHTML;
+    const recipePhoto = recipe.querySelector('.coverImg').src;
+    console.log(recipeName);
+    console.log(recipeId);
+    console.log(recipePhoto);
+    let myRecipe = {
+        recipeName : recipeName,
+        recipeId : recipeId,
+        recipePhoto : recipePhoto,
+        // ingredients: localStorage.getItem('ingredients'),
+        // instructions: localStorage.getItem('instructions')
+    } 
+    favoriteRecipeArr.push(myRecipe);
+    let arrIdx= favoriteRecipeArr.length - 1;
+    localStorage.setItem('favoriteRecipeArr',JSON.stringify(favoriteRecipeArr));
+    localStorage.setItem(recipeId, arrIdx);
+ }
 
 
 //--------------------------------------------------------------------

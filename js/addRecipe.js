@@ -4,47 +4,62 @@ const recipeName = document.getElementById('rname-id');
 const recipeId = document.getElementById('rid-id');
 const recipePhoto = document.getElementById('rimage-id');
 
-
-
 let submitButton = document.querySelector('.submit-btn');
+
 let recipeArr= new Array();
 if(localStorage.getItem('recipeArr')){
     recipeArr=JSON.parse(localStorage.getItem('recipeArr'));
 }
-/* submitButton.forEach(button => { */
-    
-    submitButton.addEventListener('click', function (e) {
-        e.preventDefault();
 
-        const reader = recipePhoto.files[0];
-        console.log(reader);
-        
-        const recipeName_value = recipeName.value;
-        const recipeId_value = recipeId.value;
-        const recipePhoto_value = reader.name;
-        console.log(recipeName_value);
-        console.log(recipeId_value);
-        console.log(recipePhoto_value);
-        let myRecipe = {
-            recipeName: recipeName_value,
-            recipeId:recipeId_value,
-            recipePhoto:recipePhoto_value,
-            // ingredients: localStorage.getItem('ingredients'),
-            // instructions: localStorage.getItem('instructions')
-        } 
-        recipeArr.push(myRecipe);
-        let arrIdx= recipeArr.length-1;
-        localStorage.setItem('recipeArr',JSON.stringify(recipeArr));
-        localStorage.setItem(recipeId_value,arrIdx);
-        // window.localStorage.setItem('recipeName', recipeName_value);
-        // window.localStorage.setItem('recipeId', recipeId_value);
-        // window.localStorage.setItem('recipePhoto', recipePhoto_value);
-        // document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
-        document.getElementById('popUp').style.display='flex';
-        // localStorage.removeItem('ingredients');
-        // localStorage.removeItem('instructions');
-    });
-/* }); */
+
+function handlePhotoSaving(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+  
+    reader.onload = function(event) {
+      const base64String = event.target.result;
+      localStorage.setItem('tempPhoto', base64String);
+    };
+  
+    reader.readAsDataURL(file);
+}
+
+const coverImageInput = document.getElementById('rimage-id');
+coverImageInput.addEventListener('change', handlePhotoSaving);
+
+submitButton.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const reader = recipePhoto.files[0];
+    console.log(reader);
+
+    const recipeName_value = recipeName.value;
+    const recipeId_value = recipeId.value;
+    const recipePhoto_value = localStorage.getItem('tempPhoto');
+    localStorage.removeItem('tempPhoto');
+    console.log(recipeName_value);
+    console.log(recipeId_value);
+    console.log(recipePhoto_value);
+    let myRecipe = {
+        recipeName: recipeName_value,
+        recipeId:recipeId_value,
+        recipePhoto:recipePhoto_value,
+        // ingredients: localStorage.getItem('ingredients'),
+        // instructions: localStorage.getItem('instructions')
+    } 
+    recipeArr.push(myRecipe);
+    let arrIdx= recipeArr.length-1;
+    localStorage.setItem('recipeArr',JSON.stringify(recipeArr));
+    localStorage.setItem(recipeId_value,arrIdx);
+    // window.localStorage.setItem('recipeName', recipeName_value);
+    // window.localStorage.setItem('recipeId', recipeId_value);
+    // window.localStorage.setItem('recipePhoto', recipePhoto_value);
+    // document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
+    document.getElementById('popUp').style.display='flex';
+    // localStorage.removeItem('ingredients');
+    // localStorage.removeItem('instructions');
+});
+
 document.getElementById('popBtn').addEventListener('click', function(e){
     e.preventDefault();
     document.getElementById('popUp').style.display='none';

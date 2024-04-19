@@ -37,7 +37,7 @@ div.grid .recipe{
     
 }
 
-div.grid .recipe > img.mainImg{
+div.grid .recipe > img.coverImg{
     border-radius: 3px;
     position: absolute;
     height: 100%;
@@ -110,7 +110,7 @@ div.grid .recipe .info h5 {
     transition: 0.3s ease-in;
 }
 
-div.grid .recipe:hover > img.mainImg{
+div.grid .recipe:hover > img.coverImg{
     filter: blur(1px);
     transform: scale(1.5) rotate(10deg);
     height: 100%;
