@@ -160,7 +160,7 @@ function uploadphoto() {
             imagePreview.appendChild(img);
             
             //Preview the recipe name
-            document.getElementById('prevRecipeName').innerHTML="The "+name.value+" recipe"
+           // document.getElementById('prevRecipeName').innerHTML="The "+name.value+" recipe"
         };
 
         // Read the uploaded file as a URL
@@ -188,5 +188,58 @@ function uploadphototwo() {
 
         // Read the uploaded file as a URL
         reader.readAsDataURL(input.files[0]);
+    }
+}
+// function preview(){
+//     var name = document.getElementById('rname-id').value;
+//     // var id = document.getElementById('rid-id').value;
+//     // var from = document.getElementById('rfrom-id').value;
+//     // var to = document.getElementById('rto-id').value;
+
+//     if(name && id && from && to ){
+//         var addnamestamp = document.createElement('h5');
+//         var addnameinfo = document.createElement('p');
+//         addnamestamp.innerHTML= "Recipe name: ";
+//         addnameinfo.innerHTML = name;
+//         var addin = document.querySelector('.name-info-preview');
+//         addin.appendChild(addnamestamp);
+//         addin.appendChild(addnameinfo);
+//     }
+// }
+
+var isnameadded = false;
+function preview(){
+    var name = document.getElementById('rname-id').value;
+    var id = document.getElementById('rid-id').value;
+    var from = document.getElementById('rfrom-id').value;
+    var fromunit = document.getElementById('from-unit').value;
+    var to = document.getElementById('rto-id').value;
+    var tounit = document.getElementById('to-unit').value;
+    
+    if(name && id && from && to && fromunit && tounit && !isnameadded){
+        var addnamestamp = document.createElement('h4');
+        var addnameinfo = document.createElement('p');
+        addnamestamp.innerHTML= "1- Recipe name: ";
+        addnameinfo.innerHTML = name;
+        var addname = document.querySelector('.name-info-preview');
+        addname.appendChild(addnamestamp);
+        addname.appendChild(addnameinfo);
+        isnameadded = true;
+//-----------------------------------------------------------------------------       
+        var addidstamp = document.createElement('h4');
+        var addidinfo = document.createElement('p');
+        addidstamp.innerHTML= "2- Recipe ID: ";
+        addidinfo.innerHTML = id;
+        var addid = document.querySelector('.id-info-preview');
+        addid.appendChild(addidstamp);
+        addid.appendChild(addidinfo);
+//------------------------------------------------------------------------------
+        var addfromtostamp = document.createElement('h4');
+        var addfromtoinfo = document.createElement('p');
+        addfromtostamp.innerHTML= "3- Recipe Duration: ";
+        addfromtoinfo.innerHTML = "From " + from + " " + fromunit + " to " + to + " " + tounit;
+        var addfromto = document.querySelector('.fromto-info-preview');
+        addfromto.appendChild(addfromtostamp);
+        addfromto.appendChild(addfromtoinfo);
     }
 }

@@ -77,19 +77,43 @@
                                 <input type="text" name="recipe id" class="recipe-info-input-field" id="rid-id"
                                     placeholder="Recipe ID" required>
                                 <!-- <label for="rimage-id" id="rimagelabel-id">Upload a cover image</label> -->
-                                <div class="recipe-info-btn">
-                                    <label for="rimage-id">Choose a cover: </label>
-                                    <input type="file" name="recipe image" id="rimage-id" class="recipe-info-btn">
-                                        <label for="rphoto-id">Choose a photo: </label>
-                                    <input type="file" name="recipe image" id="rphoto-id" class="recipe-info-btn"
-                                        onchange="uploadphototwo()">
+                                    <div class="recipe-info-btn">
+                                        <h3>Choose a cover: </h3>
+                                        <input type="file" name="recipe image" id="rimage-id" class="recipe-info-btn">
+                                            <h3>Choose a photo: </h3>
+                                        <input type="file" name="recipe image" id="rphoto-id" class="recipe-info-btn"
+                                            onchange="uploadphototwo()">
+                                    </div>
+                                <div class="recipe-time">
+                                    <h3>Duration: </h3>
+                                    <div class="from">
+                                        <input type="number" step="0.25" placeholder="from" required class="recipe-info-input-field" id="rfrom-id">
+                                        <select name="time-unit"  class="time-unit-field" id="from-unit">
+                                            <option value="" disabled selected>select time unit</option>
+                                            <option value="Seconds">Seconds</option>
+                                            <option value="Minutes">Minutes</option>
+                                            <option value="Hours">Hours</option>
+                                        </select>
+                                    </div>
+                                    <div class="to">
+                                        <input type="number" step="0.25" placeholder="to" required class="recipe-info-input-field" id="rto-id">
+                                        <select name="time-unit"  class="time-unit-field" id="to-unit">
+                                            <option value="" disabled selected>select time unit</option>
+                                            <option value="Seconds">Seconds</option>
+                                            <option value="Minutes">Minutes</option>
+                                            <option value="Hours">Hours</option>
+                                        </select>
+                                    </div>
+                                   
                                 </div>
+                                    <button type="button" class="preview-button" id="preview-button" onclick="preview()">Preview Recipe info</button>
+
 
                             </div>
                             <div class="ingredients-input-area">
                                 <h3>Add ingredients</h3>
                                 <div class="add-ing-grouping">
-                                    <input type="number" name="quantity" class="ingredient-input-field" id="quantity-id"
+                                    <input type="number" step="0.5" name="quantity" class="ingredient-input-field" id="quantity-id"
                                         placeholder="Quantity" required>
                                     <select name="unit" id="unit-id" class="ingredient-input-field" required>
                                         <option value="" disabled selected>Select unit</option>
@@ -174,7 +198,19 @@
                     <div class="right">
                         <h2>Preview Recipe</h2>
                         <div class="preview">
-                            <h3 id="prevRecipeName">Recipe Name and photos:</h3>
+                            <h3 id="prevRecipeName">Recipe info:</h3>
+                            <div class="info-preview">
+                                <div class="name-info-preview">
+
+                                </div>
+                                <div class="id-info-preview">
+
+                                </div>
+                                <div class="fromto-info-preview">
+
+                                </div>
+                            </div>
+                            <h3>Recipe photos: </h3>
                             <div class="photos-preview">
                                 <div class="image-preview">
                                 </div>

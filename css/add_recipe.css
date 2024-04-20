@@ -93,9 +93,10 @@ padding: 2%;
 } */
 ::-webkit-file-upload-button,
 .ingredient-btn,
-.instruction-btn{
+.instruction-btn,
+.preview-button{
     
-     width: 50%;
+    width: 50%;
     margin-top: 3%;
     margin-left: 5px;
     padding: 5px;
@@ -103,11 +104,18 @@ padding: 2%;
     border: 2px solid white;
     border-radius: 12px;
 }
+.buttons-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 
 ::-webkit-file-upload-button:hover,
 .ingredient-btn:hover,
 .instruction-btn:hover,
-.submit-btn:hover{
+.submit-btn:hover,
+.preview-button:hover{
     color: black;
     cursor: pointer;
     background-color: whitesmoke;
@@ -124,7 +132,8 @@ padding: 2%;
     align-items: center;
     width : 100%
 }
-.ingredient-input-field{
+.ingredient-input-field,
+.time-unit-field{
     width: 75%;
     padding:10px 12px;
     margin: 5px;
@@ -226,26 +235,11 @@ input[type="checkbox"]{
     color: white;
     cursor: pointer;
 }
-/* .submit-btn{
-    width: 50%;
-    margin-top: 3%;
-    margin-left: 5px;
-    padding: 12px;
-    color: gray;
-    border: 2px solid white;
-    border-radius: 12px;
-}
 
-.submit-btn:hover{
-    color: black;
-    cursor: pointer;
-    background-color: whitesmoke;
-    transition: 0.5s;
-} */
 
 h1, h2, h3{
     text-align: center;
-    margin: 5%;
+    margin: 5% auto 1.5%;
 }
 
 .submit-btn{
@@ -271,7 +265,8 @@ h1, h2, h3{
     align-items: center;
 }
 .image-preview,
-.photo-preview{
+.photo-preview,
+.info-preview{
     background-color: #bbbbbb;
     border-radius: 20px;
     font-weight:500;
@@ -354,3 +349,42 @@ h1, h2, h3{
     display: flex;
     flex-direction: row;
 }
+
+.from,
+.to{
+    display: flex;
+    flex-direction: row;    
+}
+
+.name-info-preview ,
+.id-info-preview,
+.fromto-info-preview{
+    text-align: center;
+    margin: 2%;
+    padding: 2%;
+}
+
+.name-info-preview p,
+.id-info-preview p,
+.fromto-info-preview p{
+    font-weight: 550;
+    margin: 2%;
+    padding: 1%;
+}
+
+/* .submit-btn{
+    width: 50%;
+    margin-top: 3%;
+    margin-left: 5px;
+    padding: 12px;
+    color: gray;
+    border: 2px solid white;
+    border-radius: 12px;
+}
+
+.submit-btn:hover{
+    color: black;
+    cursor: pointer;
+    background-color: whitesmoke;
+    transition: 0.5s;
+} */
