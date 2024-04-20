@@ -49,14 +49,15 @@ if(username&&isSignned){
 
 
 
-if(isSignned){
+if (isSignned) {
     document.querySelector('.logout').style.display = 'flex';
-    
-    document.querySelector('.logout').style.alignItems= 'center';
+    if (localStorage.getItem('admin') == "true") {
+        document.querySelector('.addRecipe').style.display = 'flex';
+    }
+    document.querySelector('.logout').style.alignItems = 'center';
     document.querySelector('.login').style.display = 'none';
     document.querySelector('.sign_up').style.display = 'none';
 }
-
 //-------------------------------------------------------------------
 // Admin 
 var isAdmin= getData('admin');
