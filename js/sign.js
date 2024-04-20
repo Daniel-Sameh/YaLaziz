@@ -65,8 +65,19 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         // document.querySelector('.login').style.display = 'none';
         // document.querySelector('.sign_up').style.display = 'none';
         // location.reload();
-        alert("Welcome "+username+" to Yalaziz!");
-        location.href = "login.html";
+
+        // alert("Welcome "+username+" to Yalaziz!");
+        var popUp= document.createElement('div');
+        popUp.id = "popUp";
+        popUp.innerHTML = `Welcome ${username} to YaLaziz!🥳<button id="popBtn">login</button>`;
+        document.querySelector('main').appendChild(popUp);
+        popUp.style.display = "flex";
+        document.getElementById('popBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('main').removeChild(popUp);
+            location.href = "login.html";
+        })
+        
     }
     
 
