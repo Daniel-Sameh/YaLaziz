@@ -51,13 +51,30 @@ if(username&&isSignned){
 
 if(isSignned){
     document.querySelector('.logout').style.display = 'flex';
-    document.querySelector('.addRecipe').style.display = 'flex';
+    
     document.querySelector('.logout').style.alignItems= 'center';
     document.querySelector('.login').style.display = 'none';
     document.querySelector('.sign_up').style.display = 'none';
 }
 
-
+//-------------------------------------------------------------------
+// Admin 
+var isAdmin= getData('admin');
+if(isAdmin=='true'&&isSignned){
+    document.querySelector('.addRecipe').style.display = 'flex';
+    var cards = document.querySelectorAll('.recipe');
+    cards.forEach(function(card) {
+             // Get the adminContainer within each card
+             var adminContainer = card.querySelector('.edit');
+             adminContainer.style.display = 'flex';
+         });
+    console.log('admin is true!');
+}else{
+    // let adminControl= document.querySelector('.adminContainer');
+    // adminControl.style.display='none';
+    console.log('admin is null!');
+}
+//-------------------------------------------------------------------
 
 
 //-----------------------------------------------------------------------
