@@ -105,15 +105,19 @@ submitButton.addEventListener("click", function (e) {
   };
   allRecipe.push(myRecipe);
   localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-  document.getElementById("popUp").style.display = "flex";
+  var popUp= document.createElement('div');
+  popUp.id = "popUp";
+  popUp.innerHTML = 'Your Recipe is added successfully!<button id="popBtn">Done</button>';
+  document.querySelector('main').appendChild(popUp);
+  popUp.style.display = "flex";
+  document.getElementById('popBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('main').removeChild(popUp);
+  })
   // localStorage.removeItem('ingredients');
   // localStorage.removeItem('instructions');
 });
 
-document.getElementById("popBtn").addEventListener("click", function (e) {
-  e.preventDefault();
-  document.getElementById("popUp").style.display = "none";
-});
 
 // let ingredientsArr= new Array();
 // if(localStorage.getItem('ingredients')){
