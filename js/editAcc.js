@@ -5,6 +5,7 @@ fileInput.addEventListener('change', function(event) {
     file = event.target.files[0]; // Get the selected file
     if (file) {
         image.src = URL.createObjectURL(file); // Set the image source to a URL created from the file
+        saveData('img',file);
         
     } else {
         image.src = '#'; // Reset the image source if no file is selected
@@ -64,11 +65,9 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         if(pass!=localStorage.getItem('password')){
             saveData('password',pass);
         }
-        if(file){saveData('img',file);}
 
         alert("Your changes have been successfully saved!");
         location.href = "index.html";
-
 
     }
 

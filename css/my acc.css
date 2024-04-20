@@ -55,6 +55,10 @@
     border-style: solid;
 
 }
+.page main .photo:hover{
+    border-color:#FDA403; ;
+}
+
 
 .page main .editButton {
     background-color: var(--mainColor);
@@ -67,6 +71,9 @@
     cursor: pointer;
     border-radius: 4px;
     margin-left: 5rem;
+}
+.page main .editButton:hover{
+    background-color: #FDA403;;
 }
 
 .page main .add{
