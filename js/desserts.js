@@ -21,6 +21,13 @@ for (var i = 0; i < cardArr.length; ++i) {
             favoriteSrc = "../../Photos/heartWhite.png";
             favoriteTitle = "Add to Your favorites";
         }
+        let recipePhotoSrc;
+        if (cardArr[i].userMadeRecipe) {
+            recipePhotoSrc = cardArr[i].recipePhoto;
+        }
+        else {
+            recipePhotoSrc = `"../${cardArr[i].recipePhoto}"`;
+        }
         const card = document.createElement('div');
         card.classList.add('recipe');
         card.id = cardArr[i].recipeId;
@@ -31,7 +38,7 @@ for (var i = 0; i < cardArr.length; ++i) {
                 <img src="../../Photos/deleteButton.png" alt="" class="deleteRecipe" title="Delete Recipe">
             </div>
             <img src=${favoriteSrc} alt="" title=${favoriteTitle} class="favorite_button">
-            <img src="../${cardArr[i].recipePhoto}" alt="${cardArr[i].recipeName}" class="coverImg">
+            <img src=${recipePhotoSrc} alt=${cardArr[i].recipeName} class="coverImg">
             <div class="info">
                 <h3>${cardArr[i].recipeName}</h3>
                 <h5>&#x23F0; ${cardArr[i].recipeDuration}</h5> 

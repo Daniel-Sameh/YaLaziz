@@ -115,7 +115,8 @@ else {
         recipeCategory: "Supper",
         recipeSeason: "ramadan",
         recipeDuration: "30 to 60 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -127,7 +128,8 @@ else {
         recipeCategory: "breakfast",
         recipeSeason: "general",
         recipeDuration: "50 to 60 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -139,7 +141,8 @@ else {
         recipeCategory: "lunch",
         recipeSeason: "general",
         recipeDuration: "2 to 3 hrs",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -151,7 +154,8 @@ else {
         recipeCategory: "breakfast",
         recipeSeason: "general",
         recipeDuration: "6 to 10 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -163,7 +167,8 @@ else {
         recipeCategory: "drinks",
         recipeSeason: "general",
         recipeDuration: "10 to 15 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -175,7 +180,8 @@ else {
         recipeCategory: "drinks",
         recipeSeason: "general",
         recipeDuration: "3 to 5 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -187,7 +193,8 @@ else {
         recipeCategory: "lunch",
         recipeSeason: "general",
         recipeDuration: "65 to 85 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -199,7 +206,8 @@ else {
         recipeCategory: "lunch",
         recipeSeason: "general",
         recipeDuration: "25 to 30 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -211,7 +219,8 @@ else {
         recipeCategory: "dinner",
         recipeSeason: "general",
         recipeDuration: "10 to 15 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -223,7 +232,8 @@ else {
         recipeCategory: "dinner",
         recipeSeason: "general",
         recipeDuration: "25 to 30 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -235,7 +245,8 @@ else {
         recipeCategory: "desserts",
         recipeSeason: "general",
         recipeDuration: "50 to 60 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -247,7 +258,8 @@ else {
         recipeCategory: "desserts",
         recipeSeason: "general",
         recipeDuration: "20 to 25 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -259,7 +271,8 @@ else {
         recipeCategory: "desserts",
         recipeSeason: "ramadan",
         recipeDuration: "50 to 60 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -271,7 +284,8 @@ else {
         recipeCategory: "Supper",
         recipeSeason: "ramadan",
         recipeDuration: "20 to 30 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -283,7 +297,8 @@ else {
         recipeCategory: "lunch",
         recipeSeason: "christmas",
         recipeDuration: "2 to 3 hrss",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -295,7 +310,8 @@ else {
         recipeCategory: "desserts",
         recipeSeason: "christmas",
         recipeDuration: "60 to 90 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }
@@ -307,7 +323,8 @@ else {
         recipeCategory: "drinks",
         recipeSeason: "summer",
         recipeDuration: "5 to 10 mins",
-        favoriteState: false
+        favoriteState: false,
+        userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     }

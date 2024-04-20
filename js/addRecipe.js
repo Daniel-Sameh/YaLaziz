@@ -106,16 +106,18 @@ submitButton.addEventListener('click', function (e) {
         recipeId: recipeId_value,
         recipePhoto: recipePhoto_value,
         recipeCategory: recipeCategory_value,
-        recipeSeason: recipeSeason_value
+        recipeSeason: recipeSeason_value,
+        favoriteState: false,
+        userMadeRecipe: true
         // ingredients: localStorage.getItem('ingredients'),
         // instructions: localStorage.getItem('instructions')
     } 
+    allRecipe.push(myRecipe);
     userRecipeArr.push(myRecipe);
     let arrIdx= userRecipeArr.length-1;
     localStorage.setItem('userRecipeArr',JSON.stringify(userRecipeArr));
     localStorage.setItem(recipeId_value,arrIdx);
-    let allRecipe = JSON.parse(localStorage.getItem('allRecipe')) || [];
-    allRecipe.push(myRecipe);
+    
     localStorage.setItem('allRecipe', JSON.stringify(allRecipe));
     // window.localStorage.setItem('recipeName', recipeName_value);
     // window.localStorage.setItem('recipeId', recipeId_value);
