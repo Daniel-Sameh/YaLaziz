@@ -67,7 +67,7 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         if(file){saveData('img',file);}
 
         alert("Your changes have been successfully saved!");
-        location.href = "my account.html";
+        location.href = "index.html";
 
 
     }
