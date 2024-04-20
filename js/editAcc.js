@@ -1,3 +1,11 @@
+
+var storedName=localStorage.getItem('username');
+var storedMail=localStorage.getItem('email');
+var nameIn=document.getElementById("inName");
+nameIn.value=storedName;
+var emilIn=document.getElementById("inEmil");
+emilIn.value=storedMail;
+
 const fileInput=document.getElementById('myfile');
 var file;
 image=document.querySelector('.ph1');
@@ -18,7 +26,6 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
     var oldPass = document.getElementById("inOldPass").value;
     var pass = document.getElementById("inEdPass").value;
     var confirmPass = document.getElementById("inConfPass").value;
-
     let checkOldPass=document.getElementById("checksOldPass");
     let checkPass=document.getElementById("checksPass");
     let check = document.getElementById("checks");
