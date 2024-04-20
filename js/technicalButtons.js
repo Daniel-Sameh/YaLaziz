@@ -111,35 +111,46 @@ recipeLinkBtnMain.forEach((button) => {
 //Delete Recipe Button :
 var deleteButtons = document.querySelectorAll(".deleteRecipe");
 
-// Add event listener to each delete button
-deleteButtons.forEach(function (button) {
-  button.addEventListener("click", function (event) {
-    // Prevent the default action of the button
-    event.preventDefault();
+deleteButtons.forEach(function(button) {
+     button.addEventListener('click', function(event) {
+         event.preventDefault();
+ 
+         // Ask for confirmation before deleting
+        // var result = confirm("Are you sure you want to delete this recipe?");
+        var popUp= document.createElement('div');
+        popUp.id = "popUp";
+        popUp.innerHTML = 'Are you sure you want to delete this recipe?<button id="popBtn">delete</button> <button id="cancel">cancel</button>';
+        document.querySelector('main').appendChild(popUp);
+        popUp.style.display = "flex";
+        
+        document.getElementById('popBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            // Find the parent card element and remove it
+            var card = button.closest('.recipe');
+            if (card) {
+                card.remove();
+                let cardId= card.getAttribute('id');
+                let arrIdx;
+                for (let i = 0; i < allRecipe.length; i++) {
+                   if (allRecipe[i].recipeId == cardId) {
+                       arrIdx = i;
+                       break;
+                   }
+                }
+                let arr= JSON.parse(localStorage.getItem('allRecipe'));
+                arr.splice(arrIdx,1);
+                localStorage.setItem('allRecipe',JSON.stringify(arr));
+            }
+            document.querySelector('main').removeChild(popUp);
+        })
 
-    // Ask for confirmation before deleting
-    var result = confirm("Are you sure you want to delete this recipe?");
-
-    // If user confirms, delete the card
-    if (result) {
-      // Find the parent card element and remove it
-      var card = button.closest(".recipe");
-      if (card) {
-        card.remove();
-        let cardId = card.getAttribute("id");
-        let arrIdx;
-        for (let i = 0; i < allRecipe.length; i++) {
-          if (allRecipe[i].recipeId == cardId) {
-            arrIdx = i;
-            break;
-          }
-        }
-        let arr = JSON.parse(localStorage.getItem("allRecipe"));
-        arr.splice(arrIdx, 1);
-        localStorage.setItem("allRecipe", JSON.stringify(arr));
-      }
-    }
-  });
+        document.getElementById('cancel').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('main').removeChild(popUp);
+        })
+ 
+         
+     });
 });
 
 var isAdmin = getData("admin");
