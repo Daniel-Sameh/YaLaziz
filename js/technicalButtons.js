@@ -7,7 +7,16 @@ favoriteButtons.forEach(button => {
         console.log('clicked');
 
         if (!isSignned) {
-            alert("You Have to Login First!");
+            // alert("You Have to Login First!");
+            var popUp= document.createElement('div');
+            popUp.id = "popUp";
+            popUp.innerHTML = 'Login to add this recipe to your favorites😉<button id="popBtn">OK</button>';
+            document.querySelector('main').appendChild(popUp);
+            popUp.style.display = "flex";
+            document.getElementById('popBtn').addEventListener('click', function(e){
+                e.preventDefault();
+                document.querySelector('main').removeChild(popUp);
+            })
             return;
         }
 
