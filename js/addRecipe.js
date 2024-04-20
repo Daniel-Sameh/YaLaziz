@@ -71,7 +71,7 @@ submitButton.addEventListener("click", function (e) {
   const recipePhoto_value = localStorage.getItem("tempPhoto");
   localStorage.removeItem("tempPhoto");
   const recipeDetail_value = `
-      <div class="recipeDetail">
+  <div class="recipeDetail">
       <div class="detailContainer">
           <div class="recipeImg">
               <img src="${recipePhoto_value}" alt="sambosa picture">
@@ -82,14 +82,14 @@ submitButton.addEventListener("click", function (e) {
       <div class="recipeBody">
           <h2 id="ingredients">&#10149; Ingredients:</h2>
           <div id="ingredientsText">
-          ${document.getElementById("ingredients-list").innerHTML}
+              ${document.getElementById("ingredients-list").innerHTML}
+          </div>
+          <h2 id="instructions">&#10149; Instructions:</h2>
+          <div id="instructionsText">
+              ${document.getElementById("instructions-list").innerHTML}
+          </div>
       </div>
-      <h2 id="instructions">&#10149; Instructions:</h2>
-      <div id="instructionsText">
-      ${document.getElementById("instructions-list").innerHTML}
-      </div>
-      </div>
-      </div>`;
+  </div>`;
   let myRecipe = {
     recipeName: recipeName_value,
     recipeId: recipeId_value,

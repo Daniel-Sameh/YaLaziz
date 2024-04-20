@@ -153,9 +153,31 @@ else {
         recipeSeason: "ramadan",
         recipeDuration: "30 to 60 mins",
         favoriteState: false,
-        userMadeRecipe: false
-        // ingredients: localStorage.getItem('ingredients'),
-        // instructions: localStorage.getItem('instructions')
+        userMadeRecipe: false,
+        recipeDetail: `
+        <div class="recipeDetail">
+            <div class="detailContainer">
+                <div class="recipeImg">
+                    <img src="../Photos/" alt="">
+                    <h1 id="recipe_title"></h1>
+                    <h4 id="recipe_time"></h4>
+                </div>
+            </div>
+            <div class="recipeBody">
+                <h2 id="ingredients">&#10149; Ingredients:</h2>
+                <div id="ingredientsText">
+                    <ol id="ingredients-list">
+                        <li></li>
+                    </ol>
+                </div>
+                <h2 id="instructions">&#10149; Instructions:</h2>
+                <div id="instructionsText">
+                    <ol id="instructions-list">
+                        <li></li>
+                    </ol>
+                </div>
+            </div>
+        </div>`
     }
     allRecipe.push(myRecipe);
     myRecipe = {

@@ -5,7 +5,7 @@ for (var i = 0; i < allRecipe.length; ++i) {
     if (allRecipe[i].recipeName && allRecipe[i].recipeId && allRecipe[i].recipePhoto) {
         let favoriteSrc;
         let favoriteTitle; 
-        if (allRecipe[i].favoriteState) {
+        if (allRecipe[i].favoriteState && isSignned) {
             favoriteSrc = "../Photos/heartRed.png";
             favoriteTitle = "Remove from Your favorites";
         }

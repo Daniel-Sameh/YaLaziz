@@ -13,7 +13,7 @@ for (var i = 0; i < cardArr.length; ++i) {
     if (cardArr[i].recipeName && cardArr[i].recipeId && cardArr[i].recipePhoto) {
         let favoriteSrc;
         let favoriteTitle; 
-        if (cardArr[i].favoriteState) {
+        if (cardArr[i].favoriteState && isSignned) {
             favoriteSrc = "../../Photos/heartRed.png";
             favoriteTitle = "Remove from Your favorites";
         }

@@ -77,14 +77,10 @@ const viewButton = document.querySelectorAll("#recipeLink");
 
 viewButton.forEach((button) => {
   button.addEventListener("click", function () {
-    const clickedCard = button.closest(".recipe");
-    const clickedCardId = clickedCard.getAttribute("id");
+    const clickedCard = button.closest(".recipe").getAttribute("id");
     for (i = 0; i < allRecipe.length; i++) {
-      console.log(allRecipe[i].recipeId);
-      console.log(clickedCardId);
-      if (allRecipe[i].recipeId == clickedCardId) {
+      if (allRecipe[i].recipeId == clickedCard) {
         const clickedRecipeDetail = allRecipe[i].recipeDetail;
-        console.log(clickedRecipeDetail);
         localStorage.setItem("tmpRecipeDetail", clickedRecipeDetail);
         location.href = "../recipe_detail.html";
         break;
@@ -98,13 +94,9 @@ var recipeLinkBtnMain = document.querySelectorAll("#recipeLinkMain");
 recipeLinkBtnMain.forEach((button) => {
   button.addEventListener("click", function () {
     const clickedCard = button.closest(".recipe").getAttribute("id");
-    const clickedCardId = clickedCard;
     for (i = 0; i < allRecipe.length; i++) {
-      console.log(allRecipe[i].recipeId);
-      console.log(clickedCardId);
       if (allRecipe[i].recipeId == clickedCard) {
         const clickedRecipeDetail = allRecipe[i].recipeDetail;
-        console.log(clickedRecipeDetail);
         localStorage.setItem("tmpRecipeDetail", clickedRecipeDetail);
         location.href = "recipe_detail.html";
         break;
@@ -113,21 +105,7 @@ recipeLinkBtnMain.forEach((button) => {
   });
 });
 
-var recipeLinkBtn = document.querySelectorAll("#recipeLink");
 
-recipeLinkBtn.forEach((button) => {
-  button.addEventListener("click", function () {
-    location.href = "../recipe_detail.html";
-  });
-});
-
-var recipeLinkBtnMain = document.querySelectorAll("#recipeLinkMain");
-
-recipeLinkBtnMain.forEach((button) => {
-  button.addEventListener("click", function () {
-    location.href = "recipe_detail.html";
-  });
-});
 //-------------------------------------------------------------------------------------
 
 //Delete Recipe Button :
