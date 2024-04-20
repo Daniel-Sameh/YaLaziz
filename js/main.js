@@ -51,9 +51,7 @@ if(username&&isSignned){
 
 if (isSignned) {
     document.querySelector('.logout').style.display = 'flex';
-    if (localStorage.getItem('admin') == "true") {
-        document.querySelector('.addRecipe').style.display = 'flex';
-    }
+
     document.querySelector('.logout').style.alignItems = 'center';
     document.querySelector('.login').style.display = 'none';
     document.querySelector('.sign_up').style.display = 'none';
