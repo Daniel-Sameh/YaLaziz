@@ -51,13 +51,13 @@ if(username&&isSignned){
 
 if(isSignned){
     document.querySelector('.logout').style.display = 'flex';
-    
+
     document.querySelector('.logout').style.alignItems= 'center';
     document.querySelector('.login').style.display = 'none';
     document.querySelector('.sign_up').style.display = 'none';
 }
+//----------------------------------------------------------------
 
-//-------------------------------------------------------------------
 // Admin 
 var isAdmin= getData('admin');
 if(isAdmin=='true'&&isSignned){
@@ -74,8 +74,6 @@ if(isAdmin=='true'&&isSignned){
     // adminControl.style.display='none';
     console.log('admin is null!');
 }
-//-------------------------------------------------------------------
-
 
 //-----------------------------------------------------------------------
 
@@ -86,16 +84,37 @@ if(isAdmin=='true'&&isSignned){
 //--------------------------------------------------------------------
 
  document.querySelector('.logout').addEventListener('click',function(event){
-    var logOut=window.confirm("Are you sure to log out from YaLaziz?");
-    if(logOut){
-        document.querySelector('.logout').style.display = 'none';
-        document.querySelector('.addRecipe').style.display = 'none';
-        document.querySelector('.login').style.alignItems= 'center';
-        document.querySelector('.sign_up').style.alignItems= 'center';
-        document.querySelector('.login').style.display = 'flex';
-        document.querySelector('.sign_up').style.display = 'flex';
-        resetData();
-    }
+    // var logOut=window.confirm("Are you sure to log out from YaLaziz?");
+    var popUp= document.createElement('div');
+        popUp.id = "popUp";
+        popUp.innerHTML = 'Are you sure to log out from YaLaziz?<button id="popBtn">Logout</button> <button id="cancel">cancel</button>';
+        document.querySelector('main').appendChild(popUp);
+        popUp.style.display = "flex";
+        document.getElementById('popBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            document.getElementById('popUp').style.display='none';
+            document.querySelector('.logout').style.display = 'none';
+            document.querySelector('.addRecipe').style.display = 'none';
+            document.querySelector('.login').style.alignItems= 'center';
+            document.querySelector('.sign_up').style.alignItems= 'center';
+            document.querySelector('.login').style.display = 'flex';
+            document.querySelector('.sign_up').style.display = 'flex';
+            resetData();
+        })
+        document.getElementById('cancel').addEventListener('click', function(e){
+            e.preventDefault();
+            // document.getElementById('popUp').style.display='none';
+            document.querySelector('main').removeChild(popUp);
+        })
+    // if(logOut){
+    //     document.querySelector('.logout').style.display = 'none';
+    //     document.querySelector('.addRecipe').style.display = 'none';
+    //     document.querySelector('.login').style.alignItems= 'center';
+    //     document.querySelector('.sign_up').style.alignItems= 'center';
+    //     document.querySelector('.login').style.display = 'flex';
+    //     document.querySelector('.sign_up').style.display = 'flex';
+    //     resetData();
+    // }
     
 });
 //----------------------------------------------------------------------
@@ -103,17 +122,18 @@ if(isAdmin=='true'&&isSignned){
 document.querySelector('.account').addEventListener('click', function(event){
     event.preventDefault();
     if(!isSignned){
-        // const note= document.createElement('ul');
-        // note.classList.add("account");
-        // note.innerHTML="Your are not Logged In yet!";
-        // note.style.zIndex=2000;
-        // note.style.color="red";
-        // note.style.backgroundColor="#FDA403";
-        // note.style.width="100px";
-        // const acc=document.querySelector('.account');
-        // acc.appendChild(note);
-        alert("You are not logged in yet!");
-        window.location.href=document.querySelector(".login").firstChild.firstChild.getAttribute("href");
+        var popUp= document.createElement('div');
+        popUp.id = "popUp";
+        popUp.innerHTML = 'You are not logged in yet!<button id="popBtn">Login</button>';
+        document.querySelector('main').appendChild(popUp);
+        popUp.style.display = "flex";
+        document.getElementById('popBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('main').removeChild(popUp);
+            window.location.href=document.querySelector(".login").firstChild.firstChild.getAttribute("href");
+        })
+        // alert("You are not logged in yet!");
+        
     }else{
         window.location.href=document.querySelector(".account").firstChild.getAttribute("href");
     }
@@ -133,9 +153,31 @@ else {
         recipeSeason: "ramadan",
         recipeDuration: "30 to 60 mins",
         favoriteState: false,
-        userMadeRecipe: false
-        // ingredients: localStorage.getItem('ingredients'),
-        // instructions: localStorage.getItem('instructions')
+        userMadeRecipe: false,
+        recipeDetail: `
+        <div class="recipeDetail">
+            <div class="detailContainer">
+                <div class="recipeImg">
+                    <img src="../Photos/" alt="">
+                    <h1 id="recipe_title"></h1>
+                    <h4 id="recipe_time"></h4>
+                </div>
+            </div>
+            <div class="recipeBody">
+                <h2 id="ingredients">&#10149; Ingredients:</h2>
+                <div id="ingredientsText">
+                    <ol id="ingredients-list">
+                        <li></li>
+                    </ol>
+                </div>
+                <h2 id="instructions">&#10149; Instructions:</h2>
+                <div id="instructionsText">
+                    <ol id="instructions-list">
+                        <li></li>
+                    </ol>
+                </div>
+            </div>
+        </div>`
     }
     allRecipe.push(myRecipe);
     myRecipe = {
