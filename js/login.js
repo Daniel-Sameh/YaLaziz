@@ -25,6 +25,7 @@ document.addEventListener('submit', function (event) {
         checkp.style.display = "block";
         document.getElementById('Pass').style.border = "2px solid red";
         document.getElementById('Pass').style.borderRadius = "40px";
+        document.getElementById('UserName').style.border = "none";
     }
 
-});
+})
