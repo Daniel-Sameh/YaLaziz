@@ -111,10 +111,16 @@ deleteButtons.forEach(function(button) {
              if (card) {
                  card.remove();
                  let cardId= card.getAttribute('id');
-                 let arrIdx= localStorage.getItem(cardId);
-                 let arr= JSON.parse(localStorage.getItem('userRecipeArr'));
+                 let arrIdx;
+                 for (let i = 0; i < allRecipe.length; i++) {
+                    if (allRecipe[i].recipeId == cardId) {
+                        arrIdx = i;
+                        break;
+                    }
+                 }
+                 let arr= JSON.parse(localStorage.getItem('allRecipe'));
                  arr.splice(arrIdx,1);
-                 localStorage.setItem('userRecipeArr',JSON.stringify(arr));
+                 localStorage.setItem('allRecipe',JSON.stringify(arr));
                  localStorage.removeItem(cardId);
              }
          }

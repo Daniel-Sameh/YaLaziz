@@ -8,58 +8,6 @@ let submitButton = document.querySelector('.submit-btn');
 const recipeCategory = document.getElementsByName('meal');
 const recipeSeason = document.getElementsByName('occasion');
 
-let breakfastArr = new Array();
-let lunchArr = new Array();
-let dinnerArr = new Array();
-let dessertsArr = new Array();
-let drinksArr = new Array();
-let summerArr = new Array();
-let ramadanArr = new Array();
-let christmasArr = new Array();
-
-
-let userRecipeArr= new Array();
-if(localStorage.getItem('userRecipeArr')){
-    userRecipeArr=JSON.parse(localStorage.getItem('userRecipeArr'));
-}
-// if(localStorage.getItem('lunchArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('lunchArr'));
-// }
-// if(localStorage.getItem('dinnerArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('dinnerArr'));
-// }
-// if(localStorage.getItem('summerArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('summerArr'));
-// }
-// if(localStorage.getItem('ramadanArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('ramadanArr'));
-// }
-// if(localStorage.getItem('christmasArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('christmasArr'));
-// }
-// if(localStorage.getItem('breakfastArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('breakfastArr'));
-// }
-// if(localStorage.getItem('dessertsArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('dessertsArr'));
-// }
-// if(localStorage.getItem('drinksArr')){
-//     recipeArr=JSON.parse(localStorage.getItem('drinksArr'));
-// }
-
-let recipeCategory_value;
-for (i = 0; i < recipeCategory.length; i++){
-    if (recipeCategory[i].checked) {
-        recipeCategory_value = recipeCategory[i].value;
-    }
-}
-let recipeSeason_value;
-for (i = 0; i < recipeSeason.length; i++){
-    if (recipeSeason[i].checked) {
-        recipeSeason_value = recipeSeason[i].value;
-    }
-}
-
 
 function handlePhotoSaving(event) {
     const file = event.target.files[0];
@@ -98,9 +46,6 @@ submitButton.addEventListener('click', function (e) {
     }
     const recipePhoto_value = localStorage.getItem('tempPhoto');
     localStorage.removeItem('tempPhoto');
-    console.log(recipeName_value);
-    console.log(recipeId_value);
-    console.log(recipePhoto_value);
     let myRecipe = {
         recipeName: recipeName_value,
         recipeId: recipeId_value,
@@ -113,11 +58,6 @@ submitButton.addEventListener('click', function (e) {
         // instructions: localStorage.getItem('instructions')
     } 
     allRecipe.push(myRecipe);
-    userRecipeArr.push(myRecipe);
-    let arrIdx= userRecipeArr.length-1;
-    localStorage.setItem('userRecipeArr',JSON.stringify(userRecipeArr));
-    localStorage.setItem(recipeId_value,arrIdx);
-    
     localStorage.setItem('allRecipe', JSON.stringify(allRecipe));
     // window.localStorage.setItem('recipeName', recipeName_value);
     // window.localStorage.setItem('recipeId', recipeId_value);
@@ -128,43 +68,6 @@ submitButton.addEventListener('click', function (e) {
     // localStorage.removeItem('instructions');
 });
 
-// localStorage.setItem(recipeId_value, arrIdx);
-//     switch (recipeCategory_value) {
-//         case "lunch":
-//             lunchArr.push(myRecipe);
-//             localStorage.setItem('breakfastArr', JSON.stringify(lunchArr));
-//             break;
-//         case "dinner":
-//             dinnerArr.push(myRecipe);
-//             localStorage.setItem('breakfastArr', JSON.stringify(dinnerArr));
-//             break;
-//         case "breakfast":
-//             breakfastArr.push(myRecipe);
-//             localStorage.setItem('breakfastArr', JSON.stringify(breakfastArr));
-//             break;
-//         case "drink":
-//             drinksArr.push(myRecipe);
-//             localStorage.setItem('breakfastArr', JSON.stringify(drinksArr));
-//             break;
-//         case "dessert":
-//             dessertsArr.push(myRecipe);
-//             localStorage.setItem('breakfastArr', JSON.stringify(dessertsArr));
-//             break;
-//     }
-//     switch (recipeSeason_value) {
-//         case "summer":
-//             summerArr.push(myRecipe);
-//             localStorage.setItem('summerArr', JSON.stringify(summerArr));
-//             break;
-//         case "christmas":
-//             christmasArr.push(myRecipe);
-//             localStorage.setItem('christmasArr', JSON.stringify(christmasArr));
-//             break;
-//         case "ramadan":
-//             ramadanArr.push(myRecipe);
-//             localStorage.setItem('ramadanArr', JSON.stringify(ramadanArr));
-//             break;
-//     }
 
 document.getElementById('popBtn').addEventListener('click', function(e){
     e.preventDefault();
