@@ -31,9 +31,12 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    border:3px #E8751A;
+    border:3px #FDA403;
     border-style:solid;
 
+}
+.ph1:hover{
+    border-color: #E8751A;
 }
 
 
@@ -95,7 +98,7 @@ input[type=file]{
  }
 
 .submitChanges input {
-    background-color: var(--mainColor);
+    background-color:  #FDA403;
     border: none;
     color: white;
     padding: 1rem 2rem;
@@ -104,4 +107,28 @@ input[type=file]{
     margin: 0.5rem 0;
     cursor: pointer;
     border-radius: 4px;
+}
+.submitChanges input:hover{
+    background-color: #E8751A;
+}
+#checksOldPass{
+    color: red;
+    padding-left: 10px;
+    margin-top: 3px;
+    font-size: 16px;
+    display: none;
+}
+#checksPass{
+    color: red;
+    padding-left: 10px;
+    margin-top: 3px;
+    font-size: 16px;
+    display: none;
+}
+#checks{
+    color: red;
+    padding-left: 10px;
+    margin-top: 3px;
+    font-size: 16px;
+    display: none;
 }

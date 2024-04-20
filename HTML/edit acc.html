@@ -62,14 +62,14 @@
     <!-- test -->
     <main>
         <div class="form">
-            <form action="#" method="post">
+            <form action="" method="" id="editAcc">
                <div class="editPhoto ">
                    <div class="photo1">
-                      <img  class="ph1"src="../Photos/acc pic.png" alt="../Photos/acc pic.png">
+                      <img  class="ph1"src="../Photos/acc pic.png" alt="../Photos/acc pic.png"></image>
                    </div>
                    <div class="choosephoto">
                       <label for="myfile"></label>
-                      <input type="file" id="myfile" name="myfile">
+                      <input type="file" id="myfile" name="myfile" accept="image/*">
                       </div>
                       &nbsp;
           
@@ -77,33 +77,35 @@
                   &nbsp;
                   <label for="name">Username:</label>
                   <div id="name"class="editName">
-                   
-                   <input type="text" placeholder="Enter full name" required>
+                   <input  id="inName" type="text" placeholder="Enter full name" required>
                   </div>
                   &nbsp;
                   <label for="mail">Email:</label>
                   <div  id="emil" class="editMail">
-                   
-                   <input type="Email" name="Email" id="" required placeholder="Enter email">
+                   <input  id="inEmil"  type="Email" name="Email" id="" required placeholder="Enter email">
                   </div>
                   &nbsp;
                   <label for="oldPass">old Password:</label>
                   <div id="oldPass" class="oldPass">
-                      <input type="password" placeholder="Enter old password" required>
+                      <input  id="inOldPass"    type="password" placeholder="Enter old password" required>
                   </div>
+                  <p id="checksOldPass"></p>
                   &nbsp;
                   <label for="edpass">Password:</label>
                   <div id="edpass" class="editPass">
-                   <input type="password" placeholder="Enter new password" required>
+                   <input  id="inEdPass"   type="password" placeholder="Enter new password" required>
                   </div>
+                  <p id="checksPass"></p>
                   &nbsp;
                   <label for="conFpass">Confirm Password:</label>
                   <div  id="confPass" class="confirmEditedPass">
-                   <input type="password" placeholder="Confirm Password" required>
+                   <input id="inConfPass"    type="password" placeholder="Confirm Password" required>
                   </div>
+                  <p id="checks"></p>
                   &nbsp;
+            
                   <div id="sub" class="submitChanges">
-                    <input type="submit" value="Save Changes">
+                    <input  class="save" id="save" type="submit" value="Save Changes">
                   </div>
               </form>
           </div>
@@ -133,6 +135,8 @@
     </footer>
     </div>
     <script src="../js/main.js"></script>
+    <script src="../js/editAcc.js"></script>
+
 </body>
 </html>
 

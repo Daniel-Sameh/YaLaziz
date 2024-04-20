@@ -57,6 +57,7 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         saveData('admin',isAdmin);
         saveData('username',username);
         saveData('password',password);
+        saveData('email',email);
         //  var signedIn= true;
         // saveData('sign',true);
         // document.querySelector('.logout').style.display = 'flex';
