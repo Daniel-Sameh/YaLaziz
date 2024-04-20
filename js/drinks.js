@@ -37,7 +37,7 @@ for (var i = 0; i < cardArr.length; ++i) {
                 <img src="../../Photos/editButton.png" alt="" class="editRecipe" title="Edit Recipe">
                 <img src="../../Photos/deleteButton.png" alt="" class="deleteRecipe" title="Delete Recipe">
             </div>
-            <img src=${favoriteSrc} alt="" title=${favoriteTitle} class="favorite_button">
+            <img src=${favoriteSrc} alt="" title="${favoriteTitle}" class="favorite_button">
             <img src=${recipePhotoSrc} alt=${cardArr[i].recipeName} class="coverImg">
             <div class="info">
                 <h3>${cardArr[i].recipeName}</h3>

@@ -32,6 +32,14 @@ submitButton.addEventListener('click', function (e) {
 
     const recipeName_value = recipeName.value;
     const recipeId_value = recipeId.value;
+
+    for (let i = 0; i < allRecipe.length; i++) {
+        if (allRecipe[i].recipeId == recipeId_value) {
+            alert("Recipe Id must be Unique!");
+            return;
+        }
+    }
+
     let recipeCategory_value;
     for (i = 0; i < recipeCategory.length; i++){
         if (recipeCategory[i].checked) {
@@ -59,10 +67,6 @@ submitButton.addEventListener('click', function (e) {
     } 
     allRecipe.push(myRecipe);
     localStorage.setItem('allRecipe', JSON.stringify(allRecipe));
-    // window.localStorage.setItem('recipeName', recipeName_value);
-    // window.localStorage.setItem('recipeId', recipeId_value);
-    // window.localStorage.setItem('recipePhoto', recipePhoto_value);
-    // document.getElementById('popUp').innerHTML="The Recipe Is Added Succesfully!";
     document.getElementById('popUp').style.display='flex';
     // localStorage.removeItem('ingredients');
     // localStorage.removeItem('instructions');

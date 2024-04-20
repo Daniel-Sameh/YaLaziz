@@ -11,7 +11,7 @@ favoriteButtons.forEach(button => {
             return;
         }
 
-        const recipeId = button.closest('.recipe').getAttribute('id');
+        const recipeID = button.closest('.recipe').getAttribute('id');
 
         const hrefValue = button.getAttribute("src");
         const addTitle = "Add to Your favorites";
@@ -19,22 +19,22 @@ favoriteButtons.forEach(button => {
         if (hrefValue == "../../Photos/heartWhite.png") {
             button.src = "../../Photos/heartRed.png";
             button.title = removeTitle;
-            addRecipeToFavorite(recipeId);
+            addRecipeToFavorite(recipeID);
         }
         else if (hrefValue == "../../Photos/heartRed.png") {
             button.src = "../../Photos/heartWhite.png"
             button.title = addTitle;
-            deleteRecipeFromFavorite(recipeId);
+            deleteRecipeFromFavorite(recipeID);
         }
         else if (hrefValue == "../Photos/heartWhite.png") {
             button.src = "../Photos/heartRed.png";
             button.title = removeTitle;
-            addRecipeToFavorite(recipeId);
+            addRecipeToFavorite(recipeID);
         }
         else {
             button.src = "../Photos/heartWhite.png";
             button.title = addTitle;
-            deleteRecipeFromFavorite(recipeId);
+            deleteRecipeFromFavorite(recipeID);
         }
         button.style.opacity = 0;
         setTimeout(() => {
@@ -43,32 +43,24 @@ favoriteButtons.forEach(button => {
     });
 });
 
-function deleteRecipeFromFavorite(recipeId) {
-    let arrIdx = localStorage.getItem(recipeId);
-    let arr = JSON.parse(localStorage.getItem('favoriteRecipeArr'));
-    arr.splice(arrIdx, 1);
-    localStorage.setItem('favoriteRecipeArr', JSON.stringify(arr));
-    localStorage.removeItem(recipeId);
+function deleteRecipeFromFavorite(recipeID) {
+    for (let i = 0; i < allRecipe.length; i++) {
+        if (allRecipe[i].recipeId == recipeID) {
+            allRecipe[i].favoriteState = false;
+            localStorage.setItem('allRecipe',JSON.stringify(allRecipe));
+            break;
+        }
+    }
 }
 
-function addRecipeToFavorite(recipeId) {
-    const recipe = document.getElementById(recipeId);
-    const recipeName = recipe.getElementsByTagName('h3')[0].innerHTML;
-    const recipePhoto = recipe.querySelector('.coverImg').src;
-    console.log(recipeName);
-    console.log(recipeId);
-    console.log(recipePhoto);
-    let myRecipe = {
-        recipeName: recipeName,
-        recipeId: recipeId,
-        recipePhoto: recipePhoto,
-        // ingredients: localStorage.getItem('ingredients'),
-        // instructions: localStorage.getItem('instructions')
+function addRecipeToFavorite(recipeID) {
+    for (let i = 0; i < allRecipe.length; i++) {
+        if (allRecipe[i].recipeId == recipeID) {
+            allRecipe[i].favoriteState = true;
+            localStorage.setItem('allRecipe',JSON.stringify(allRecipe));
+            break;
+        }
     }
-    favoriteRecipeArr.push(myRecipe);
-    let arrIdx = favoriteRecipeArr.length - 1;
-    localStorage.setItem('favoriteRecipeArr', JSON.stringify(favoriteRecipeArr));
-    localStorage.setItem(recipeId, arrIdx);
 }
 
 //-----------------------------------------------------------------------------------
@@ -121,7 +113,6 @@ deleteButtons.forEach(function(button) {
                  let arr= JSON.parse(localStorage.getItem('allRecipe'));
                  arr.splice(arrIdx,1);
                  localStorage.setItem('allRecipe',JSON.stringify(arr));
-                 localStorage.removeItem(cardId);
              }
          }
      });
