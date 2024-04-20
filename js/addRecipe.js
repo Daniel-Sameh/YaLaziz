@@ -179,8 +179,6 @@ function uploadphoto() {
 
             imagePreview.appendChild(img);
             
-            //Preview the recipe name
-           // document.getElementById('prevRecipeName').innerHTML="The "+name.value+" recipe"
         };
 
         // Read the uploaded file as a URL
@@ -210,33 +208,21 @@ function uploadphototwo() {
         reader.readAsDataURL(input.files[0]);
     }
 }
-// function preview(){
-//     var name = document.getElementById('rname-id').value;
-//     // var id = document.getElementById('rid-id').value;
-//     // var from = document.getElementById('rfrom-id').value;
-//     // var to = document.getElementById('rto-id').value;
 
-//     if(name && id && from && to ){
-//         var addnamestamp = document.createElement('h5');
-//         var addnameinfo = document.createElement('p');
-//         addnamestamp.innerHTML= "Recipe name: ";
-//         addnameinfo.innerHTML = name;
-//         var addin = document.querySelector('.name-info-preview');
-//         addin.appendChild(addnamestamp);
-//         addin.appendChild(addnameinfo);
-//     }
-// }
 
-var isnameadded = false;
 function preview(){
+    //incase the user wants to change the input
+    document.querySelector('.name-info-preview').innerHTML = '';
+    document.querySelector('.id-info-preview').innerHTML = '';
+    document.querySelector('.fromto-info-preview').innerHTML = '';
+
     var name = document.getElementById('rname-id').value;
     var id = document.getElementById('rid-id').value;
     var from = document.getElementById('rfrom-id').value;
-    var fromunit = document.getElementById('from-unit').value;
     var to = document.getElementById('rto-id').value;
     var tounit = document.getElementById('to-unit').value;
     
-    if(name && id && from && to && fromunit && tounit && !isnameadded){
+    if(name && id && from && to && tounit){
         var addnamestamp = document.createElement('h4');
         var addnameinfo = document.createElement('p');
         addnamestamp.innerHTML= "1- Recipe name: ";
@@ -257,9 +243,39 @@ function preview(){
         var addfromtostamp = document.createElement('h4');
         var addfromtoinfo = document.createElement('p');
         addfromtostamp.innerHTML= "3- Recipe Duration: ";
-        addfromtoinfo.innerHTML = "From " + from + " " + fromunit + " to " + to + " " + tounit;
+        addfromtoinfo.innerHTML = "From " + from + " " + tounit + " to " + to + " " + tounit;
         var addfromto = document.querySelector('.fromto-info-preview');
         addfromto.appendChild(addfromtostamp);
         addfromto.appendChild(addfromtoinfo);
     }
 }
+
+//input validations
+
+document.getElementById('quantity-id').addEventListener('input', function(event) {
+    var quantity = parseFloat(event.target.value); 
+
+    if (isNaN(quantity) || quantity <= 0) {
+        event.target.value = '';
+        alert('Please enter a valid positive quantity.');
+    }
+});
+
+document.getElementById('rfrom-id').addEventListener('input', function(event) {
+    var quantity = parseFloat(event.target.value); 
+
+    if (isNaN(quantity) || quantity <= 0) {
+        event.target.value = '';
+        alert('Please enter a valid positive duration.');
+    }
+});
+
+document.getElementById('rto-id').addEventListener('input', function(event) {
+    var quantity = parseFloat(event.target.value); 
+
+
+    if (isNaN(quantity) || quantity <= 0) {
+        event.target.value = ''; 
+        alert('Please enter a valid positive duration.');
+    }
+});
