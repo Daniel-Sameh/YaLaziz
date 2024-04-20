@@ -5,11 +5,60 @@ const recipeId = document.getElementById('rid-id');
 const recipePhoto = document.getElementById('rimage-id');
 
 let submitButton = document.querySelector('.submit-btn');
+const recipeCategory = document.getElementsByName('meal');
+const recipeSeason = document.getElementsByName('occasion');
+
+let breakfastArr = new Array();
+let lunchArr = new Array();
+let dinnerArr = new Array();
+let dessertsArr = new Array();
+let drinksArr = new Array();
+let summerArr = new Array();
+let ramadanArr = new Array();
+let christmasArr = new Array();
+
 
 let recipeArr= new Array();
 if(localStorage.getItem('recipeArr')){
     recipeArr=JSON.parse(localStorage.getItem('recipeArr'));
 }
+if(localStorage.getItem('lunchArr')){
+    recipeArr=JSON.parse(localStorage.getItem('lunchArr'));
+}
+if(localStorage.getItem('dinnerArr')){
+    recipeArr=JSON.parse(localStorage.getItem('dinnerArr'));
+}
+if(localStorage.getItem('summerArr')){
+    recipeArr=JSON.parse(localStorage.getItem('summerArr'));
+}
+if(localStorage.getItem('ramadanArr')){
+    recipeArr=JSON.parse(localStorage.getItem('ramadanArr'));
+}
+if(localStorage.getItem('christmasArr')){
+    recipeArr=JSON.parse(localStorage.getItem('christmasArr'));
+}
+if(localStorage.getItem('breakfastArr')){
+    recipeArr=JSON.parse(localStorage.getItem('breakfastArr'));
+}
+if(localStorage.getItem('dessertsArr')){
+    recipeArr=JSON.parse(localStorage.getItem('dessertsArr'));
+}
+if(localStorage.getItem('drinksArr')){
+    recipeArr=JSON.parse(localStorage.getItem('drinksArr'));
+}
+
+let recipeCategory_value;
+        for (i = 0; i < recipeCategory.length; i++){
+            if (recipeCategory[i].checked) {
+                recipeCategory_value = recipeCategory[i].value;
+            }
+        }
+let recipeSeason_value;
+        for (i = 0; i < recipeSeason.length; i++){
+            if (recipeSeason[i].checked) {
+                recipeSeason_value = recipeSeason[i].value;
+            }
+        }
 
 
 function handlePhotoSaving(event) {
@@ -59,6 +108,44 @@ submitButton.addEventListener('click', function (e) {
     // localStorage.removeItem('ingredients');
     // localStorage.removeItem('instructions');
 });
+
+localStorage.setItem(recipeId_value, arrIdx);
+    switch (recipeCategory_value) {
+        case "lunch":
+            lunchArr.push(myRecipe);
+            localStorage.setItem('breakfastArr', JSON.stringify(lunchArr));
+            break;
+        case "dinner":
+            dinnerArr.push(myRecipe);
+            localStorage.setItem('breakfastArr', JSON.stringify(dinnerArr));
+            break;
+        case "breakfast":
+            breakfastArr.push(myRecipe);
+            localStorage.setItem('breakfastArr', JSON.stringify(breakfastArr));
+            break;
+        case "drink":
+            drinksArr.push(myRecipe);
+            localStorage.setItem('breakfastArr', JSON.stringify(drinksArr));
+            break;
+        case "dessert":
+            dessertsArr.push(myRecipe);
+            localStorage.setItem('breakfastArr', JSON.stringify(dessertsArr));
+            break;
+    }
+    switch (recipeSeason_value) {
+        case "summer":
+            summerArr.push(myRecipe);
+            localStorage.setItem('summerArr', JSON.stringify(lunchArr));
+            break;
+        case "christmas":
+            christmasArr.push(myRecipe);
+            localStorage.setItem('christmasArr', JSON.stringify(dinnerArr));
+            break;
+        case "ramadan":
+            ramadanArr.push(myRecipe);
+            localStorage.setItem('ramadanArr', JSON.stringify(breakfastArr));
+            break;
+    }
 
 document.getElementById('popBtn').addEventListener('click', function(e){
     e.preventDefault();
