@@ -40,18 +40,24 @@ submitButton.addEventListener('click', function (e) {
         }
     }
 
+    const fromValue = document.getElementById('rfrom-id').value;
+    const toValue = document.getElementById('rto-id').value;
+    const timeUnit = document.getElementById('to-unit').value;
     let recipeCategory_value;
     for (i = 0; i < recipeCategory.length; i++){
         if (recipeCategory[i].checked) {
             recipeCategory_value = recipeCategory[i].value;
+            break;
         }
     }
     let recipeSeason_value;
     for (i = 0; i < recipeSeason.length; i++){
         if (recipeSeason[i].checked) {
             recipeSeason_value = recipeSeason[i].value;
+            break;
         }
     }
+    const recipeDurationValue = fromValue + " to " + toValue + " " + timeUnit;
     const recipePhoto_value = localStorage.getItem('tempPhoto');
     localStorage.removeItem('tempPhoto');
     let myRecipe = {
@@ -60,6 +66,7 @@ submitButton.addEventListener('click', function (e) {
         recipePhoto: recipePhoto_value,
         recipeCategory: recipeCategory_value,
         recipeSeason: recipeSeason_value,
+        recipeDuration: recipeDurationValue,
         favoriteState: false,
         userMadeRecipe: true
         // ingredients: localStorage.getItem('ingredients'),

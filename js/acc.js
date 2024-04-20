@@ -31,7 +31,7 @@ for (var i = 0; i < allRecipe.length; ++i) {
             <img src=${allRecipe[i].recipePhoto} alt=${allRecipe[i].recipeName} class="coverImg">
             <div class="info">
                 <h3>${allRecipe[i].recipeName}</h3>
-                <h5>&#x23F0; 2 to 3 hrs</h5> 
+                <h5>&#x23F0; ${allRecipe[i].recipeDuration}</h5> 
                 <p>The ${allRecipe[i].recipeName} recipe</p>
                 <button class="btn" id="recipeLink">view Recipe</button>
             </div>`;
@@ -75,7 +75,7 @@ for (var i = 0; i < allRecipe.length; ++i) {
             <img src=${allRecipe[i].recipePhoto} alt="${allRecipe[i].recipeName}" class="coverImg">
             <div class="info">
                 <h3>${allRecipe[i].recipeName}</h3>
-                <h5>&#x23F0; 2 to 3 hrs</h5> 
+                <h5>&#x23F0; ${allRecipe[i].recipeDuration}</h5> 
                 <p>The ${allRecipe[i].recipeName} recipe by ${localStorage.getItem('username')}</p>
                 <button class="btn" id="recipeLink">view Recipe</button>
             </div>`;
