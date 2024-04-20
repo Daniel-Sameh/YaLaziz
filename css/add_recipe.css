@@ -315,7 +315,7 @@ h1, h2, h3{
     background-color: #231336;
     color: #fff;
     width: 400px;
-    height: 400px;
+    height: 300px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -333,6 +333,8 @@ h1, h2, h3{
     flex-wrap: wrap;
 }
 #popUp button{
+    position: relative;
+    top: 40px;
     padding: 10px;
     text-decoration: none;
     outline: none;
