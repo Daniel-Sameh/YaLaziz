@@ -33,7 +33,7 @@ for (var i = 0; i < allRecipe.length; ++i) {
                 <h3>${allRecipe[i].recipeName}</h3>
                 <h5>&#x23F0; ${allRecipe[i].recipeDuration}</h5> 
                 <p>The ${allRecipe[i].recipeName} recipe</p>
-                <button class="btn" id="recipeLink">view Recipe</button>
+                <button class="btn" id="recipeLinkMain">view Recipe</button>
             </div>`;
 
         card.innerHTML = cardDetails;
@@ -77,7 +77,7 @@ for (var i = 0; i < allRecipe.length; ++i) {
                 <h3>${allRecipe[i].recipeName}</h3>
                 <h5>&#x23F0; ${allRecipe[i].recipeDuration}</h5> 
                 <p>The ${allRecipe[i].recipeName} recipe by ${localStorage.getItem('username')}</p>
-                <button class="btn" id="recipeLink">view Recipe</button>
+                <button class="btn" id="recipeLinkMain">view Recipe</button>
             </div>`;
 
         card.innerHTML = cardDetails;
