@@ -21,10 +21,7 @@ for (var i = 0; i < favoriteRecipeArr.length; ++i) {
         card.id = favoriteRecipeArr[i].recipeId;
 
         const cardDetails = `
-            <div class="edit">
-                <img src="../Photos/editButton.png" alt="" class="editRecipe" title="Edit Recipe">
-                <img src="../Photos/deleteButton.png" alt="" class="deleteRecipe" title="Delete Recipe">
-            </div>
+            <div class="edit"></div>
             <img src="../Photos/heartRed.png" alt="" title="Remove From Your favorites" class="favorite_button">
             <img src=${favoriteRecipeArr[i].recipePhoto} alt="${favoriteRecipeArr[i].recipeName}" class="coverImg">
             <div class="info">

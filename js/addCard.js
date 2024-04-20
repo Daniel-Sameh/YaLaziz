@@ -1,6 +1,6 @@
 let cardArr = new Array();
-if (localStorage.getItem('recipeArr')) {
-    cardArr = JSON.parse(localStorage.getItem('recipeArr'));
+if (localStorage.getItem('userRecipeArr')) {
+    cardArr = JSON.parse(localStorage.getItem('userRecipeArr'));
 }
 
 const accountCard = document.getElementById('grid');
