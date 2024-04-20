@@ -27,4 +27,4 @@ document.addEventListener('submit', function (event) {
         document.getElementById('Pass').style.borderRadius = "40px";
     }
 
-})
+});
