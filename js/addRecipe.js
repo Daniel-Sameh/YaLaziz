@@ -28,7 +28,6 @@ coverImageInput.addEventListener("change", handlePhotoSaving);
 
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
-
   const reader = recipePhoto.files[0];
   console.log(reader);
 
@@ -36,7 +35,7 @@ submitButton.addEventListener("click", function (e) {
   const recipeId_value = recipeId.value;
 
   for (let i = 0; i < allRecipe.length; i++) {
-    if (allRecipe[i].recipeId == recipeId_value) {
+    if (allRecipe[i].recipeId == recipeId_value&&!id) {
       // alert("Recipe Id must be Unique!");
       var popUp = document.createElement("div");
       popUp.id = "popUp";
@@ -119,6 +118,8 @@ submitButton.addEventListener("click", function (e) {
     e.preventDefault();
     document.querySelector("main").removeChild(popUp);
   });
+
+  
   // localStorage.removeItem('ingredients');
   // localStorage.removeItem('instructions');
 });
@@ -364,3 +365,94 @@ document.getElementById("rto-id").addEventListener("input", function (event) {
     });
   }
 });
+//---------------------------------------------------------------------
+const urlParams = new URLSearchParams(window.location.search);
+// const allRecipe=localStorage.getItem('allRecipe');
+  const id = urlParams.get('recipeId');
+  if (id) {
+    // Fetch the recipe details based on recipeId and populate the form
+    let arrIdx;
+    for (let i = 0; i < allRecipe.length; i++) {
+      if (allRecipe[i].recipeId == id) {
+            arrIdx = i;
+            console.log("found "+i);
+            break;
+      }
+    }
+    if(arrIdx>=0){
+      let thisRecipe= allRecipe[arrIdx];
+      document.querySelector('h1').innerHTML = "Edit Recipe: " + thisRecipe.recipeName;
+      document.getElementById('rname-id').value=thisRecipe.recipeName;
+      document.getElementById('rid-id').value=id;
+      
+      let recDetails= thisRecipe.recipeDetail;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = recDetails;
+      
+      //Ingredients:
+      let ingredients= tempDiv.querySelector('#ingredients-list');
+      let listItems = ingredients.querySelectorAll('li');
+      listItems.forEach((li) => {
+        var removeButton = document.createElement("button");
+        
+        var trashIcon = document.createElement("i");
+        trashIcon.className = "fa-solid fa-trash";
+        removeButton.appendChild(trashIcon);
+        removeButton.className = "Remove-button";
+        removeButton.onclick = function () {
+              li.remove();
+        };
+        li.appendChild(removeButton);
+        
+        document.getElementById('ingredients-list').appendChild(li);
+      });
+
+      //Instructions:
+      let instruction=tempDiv.querySelector('#instructions-list');
+      let listItems1 = instruction.querySelectorAll('li');
+      listItems1.forEach((li) => {
+        var removeButton = document.createElement("button");
+        
+        var trashIcon = document.createElement("i");
+        trashIcon.className = "fa-solid fa-trash";
+        removeButton.appendChild(trashIcon);
+        removeButton.className = "Remove-button";
+        removeButton.onclick = function () {
+              li.remove();
+        };
+        li.appendChild(removeButton);
+        document.getElementById('instructions-list').appendChild(li);
+
+        //Photos:
+        let recipePhoto= thisRecipe.recipePhoto;
+        var imagePreview = document.querySelector(".image-preview");
+        var img = new Image();
+        img.src = recipePhoto;
+        img.alt = "Preview";
+        imagePreview.innerHTML = "";
+        imagePreview.appendChild(img);
+
+        let recipePhoto1= tempDiv.querySelector('.recipeImg img').src;
+        var imagePreview = document.querySelector(".photo-preview");
+        var img = new Image();
+        img.src = recipePhoto1;
+        img.alt = "Preview";
+        imagePreview.innerHTML = "";
+        imagePreview.appendChild(img);
+
+
+      });
+
+
+
+
+    }else{
+      console.log("cry!");
+    }
+    
+
+  }
+
+
+
+
