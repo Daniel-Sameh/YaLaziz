@@ -153,17 +153,60 @@ deleteButtons.forEach(function(button) {
      });
 });
 
-var isAdmin = getData("admin");
-if (isAdmin == "true" && isSignned) {
-  var cards = document.querySelectorAll(".recipe");
-  cards.forEach(function (card) {
-    // Get the adminContainer within each card
-    var adminContainer = card.querySelector(".edit");
-    adminContainer.style.display = "flex";
-  });
-  console.log("admin is true!");
-} else {
-  // let adminControl= document.querySelector('.adminContainer');
-  // adminControl.style.display='none';
-  console.log("admin is null!");
+//---------------------------------------------------------------------
+
+// Admin : 
+
+var isAdmin= getData('admin');
+if(isAdmin=='true'&&isSignned){
+    document.querySelector('.addRecipe').style.display = 'flex';
+    var cards = document.querySelectorAll('.recipe');
+    cards.forEach(function(card) {
+             // Get the adminContainer within each card
+             var adminContainer = card.querySelector('.edit');
+             adminContainer.style.display = 'flex';
+         });
+    console.log('admin is true!');
+}else{
+    // let adminControl= document.querySelector('.adminContainer');
+    // adminControl.style.display='none';
+    console.log('admin is null!');
 }
+
+//---------------------------------------------------------
+
+
+function getSearchValue() {
+  const searchInput = document.getElementById('searchForm');
+  if (searchInput) {
+      return searchInput.value;
+  } else {
+      console.error('Input element with ID "searchForm" not found.');
+      return null;
+  }
+}
+
+const searchButtons = document.querySelectorAll('#searchBtn');
+
+searchButtons.forEach(function(button) {
+  button.addEventListener('click', function(e){
+    
+    const searchValue = getSearchValue();
+    const Recipes = document.querySelectorAll('.recipe');
+    console.log(location.href);
+    for (let i = 0; i < Recipes.length; i++) {
+      const recipeName = Recipes[i].querySelector('h3').innerHTML;
+      console.log(recipeName);
+      if (recipeName.indexOf(searchValue)) {
+        Recipes[i].style.display = 'none';
+      }
+      else {
+        Recipes[i].style.display = 'block';
+      }
+    }
+    
+  })
+})
+
+
+
