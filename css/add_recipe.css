@@ -267,6 +267,7 @@ h1, h2, h3{
     text-align: center;
     margin: 1%;
     padding: 5%;
+
 }
 .preview ol{
     background-color: #bbbbbb;
@@ -303,6 +304,15 @@ h1, h2, h3{
     width: 100%;
     height: fit-content;
     border-radius: 20px;
+}
+.photo-preview{
+    height:250px
+}
+.photo-preview img{
+    height: 100%;
+}
+.image-preview{
+    display: none;
 }
 #popUp{
     position: fixed;
