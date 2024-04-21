@@ -175,15 +175,11 @@ if(isAdmin=='true'&&isSignned){
 
 //---------------------------------------------------------
 
+// Search Function
 
 function getSearchValue() {
   const searchInput = document.getElementById('searchForm');
-  if (searchInput) {
-      return searchInput.value;
-  } else {
-      console.error('Input element with ID "searchForm" not found.');
-      return null;
-  }
+  return searchInput.value;
 }
 
 const searchButtons = document.querySelectorAll('#searchBtn');
@@ -209,4 +205,25 @@ searchButtons.forEach(function(button) {
 })
 
 
+//------------------------------------------------------------------
 
+// Edit Recipe
+
+const editButtons = document.querySelectorAll('.editRecipe');
+
+editButtons.forEach(function(button) {
+  button.addEventListener('click', function(){
+    const addRecipeHref = document.getElementById('addRecipeHref').href;
+    location.href = addRecipeHref;
+    // const addRecipeDocument = window.open(addRecipeHref).document;
+    // var recipe = button.closest('.recipe');
+    // const recipeID = recipe.getAttribute('id');
+    // addRecipeDocument.getElementsByTagName('h1')[0].innerHTML = "tba lk";
+    // for (let i = 0; i < allRecipe.length; i++) {
+    //   if (allRecipe[i].recipeId == recipeID) {
+        
+
+    //   }
+    // }
+  })
+})

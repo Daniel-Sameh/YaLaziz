@@ -100,6 +100,8 @@ submitButton.addEventListener("click", function (e) {
     favoriteState: false,
     userMadeRecipe: true,
     recipeDetail: recipeDetail_value,
+    recipeIngredients: document.getElementById("ingredients-list").innerHTML,
+    recipeInstructions: document.getElementById("instructions-list").innerHTML
     // ingredients: localStorage.getItem('ingredients'),
     // instructions: localStorage.getItem('instructions')
   };
