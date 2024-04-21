@@ -35,7 +35,7 @@ a{
 }
 /*-------------------------*/
 .container{
-    max-width: 1120px;
+    /* max-width: 1120px; */
     margin-inline: 1.5rem;
     /* height: 5rem; */
 }
@@ -301,10 +301,12 @@ footer div{
     }
     .mainNav{
      height: 100%;
+     /* width: 90%; */
      display: flex;
      /* align-items: center; */
-     justify-content: center;
+     justify-content: space-evenly;
      column-gap: 1rem;
+     margin: 0 20px;
     }
     .navLink{
         height: 100%;
@@ -350,7 +352,13 @@ footer div{
         display: flex;
         justify-content: center;
     }
- 
+    .container{
+        padding-right: 10px;
+    }
+
+    .links{
+        width: 100%;
+    }
     
     /* main{
         display: grid;
@@ -404,7 +412,10 @@ footer div{
     width: 150px;
     font-size: 18px;
     transition: 0.3s;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
 }
 #popUp button:hover{
     background-color: #FDA403;
 }
+
