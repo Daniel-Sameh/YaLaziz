@@ -18,6 +18,11 @@
     /* background-color: #0f172a97; */
 }
 
+.people .individual{
+    width: 200px;
+    height: 250px;
+}
+
 #daniel, #youssef, #michael, #marcelino, #Abanob, #mariem{
     display: flex;
     flex-direction: row;
@@ -76,7 +81,7 @@
     margin:20px
 }
 
-.individual .profile{
+.infoPeople .individual .profile{
     border-radius: 3px;
     position: absolute;
     height: 100%;
@@ -87,12 +92,12 @@
     object-fit: cover;
 }
 
-.individual h5{
+.infoPeople .individual .infoBack{
     padding: 8px;
     text-align: center;
     position: absolute;
     bottom: 0;
-    background-color:#e8914a;
+    background-color:#0f172a;
     height: 70px;
     width: 100%;
     transition: 0.5s;
@@ -103,9 +108,9 @@
     flex-direction: row;
     align-items: center;
     position: absolute;
-    top: 88%;
+    right: 43px;
 }
-.socials div{
+ .socials div{
     margin:5px 20px 0px;
 }
 .linkedIn, .github{
@@ -117,30 +122,43 @@ i{
 
 .individual:hover > .profile{
     filter: blur(1px);
-    transform: scale(1.5) rotate(10deg);
+    transform: scale(1.1);
     height: 100%;
     width: 100%;
-    transition: 500ms;
+    transition: 500ms ease-in;
     cursor: pointer;
 }
 
-.individual:hover h5{
+.people .individual:hover .infoPeople{
+    background-color: #0f172a7e;
+    height: 100%;
+    /* z-index: 5; */
+    transition: 0.3s ease-in;
+}
+
+.infoBack:hover{
+    background-color: #0f172a89;
+    height: 100%;
+}
+
+/* .individual:hover h5{
     background: transparent;
     opacity: 1;
-    top: 35%;
+    top: 50%;
     height: 360px;
     text-align: 10%;
     transform: scale(1.1);
-    transition:500ms ease-in-out;
+    transition:500ms ease-in;
     cursor: pointer;
 }
 .individual:hover .socials{
     opacity: 1;
-    top: 50%;
+    top: 60%;
     text-align: 10%;
     transform: scale(1.1);
     cursor: pointer;
-}
+    transition:500ms ease-in;
+} */
 
 
 /*.github a, .linkedIn a{
