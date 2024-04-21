@@ -305,16 +305,17 @@ h1, h2, h3{
     height: fit-content;
     border-radius: 20px;
 }
-.photo-preview{
-    height:250px
-}
+/* .photo-preview{
+    height:250px;
+} */
 .photo-preview img{
     height: 100%;
 }
-.image-preview{
+/* .image-preview{
     display: none;
-}
-#popUp{
+} */
+
+/* #popUp{
     position: fixed;
     background-color: #231336;
     color: #fff;
@@ -323,8 +324,6 @@ h1, h2, h3{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* bottom: 50%; */
-    /* right: 50%; */
     border-radius: 10px;
     z-index: 2000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -349,7 +348,7 @@ h1, h2, h3{
 }
 #popUp button:hover{
     background-color: #FDA403;
-}
+} */
 
 .photos-preview{
     display: flex;
