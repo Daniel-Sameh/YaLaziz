@@ -9,15 +9,21 @@
 }
 main {
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
 }
-.page main .form {
-    justify-content: start;
+.page .photo{
+    width: 77%;
+    height: 100%;
+    
+}
+.page main .side{
     width: 100%;
     height: 100%;
-    margin: 0 25%;
+}
+.page main .form {
+    width: 100%;
+    height: 100%;
+    margin: 0 3%;
 }
 
 .editPhoto {
