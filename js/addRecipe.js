@@ -1,3 +1,4 @@
+allRecipe = JSON.parse(localStorage.getItem("allRecipe"));
 const formPage = document.getElementById("add-form");
 
 const recipeName = document.getElementById("rname-id");
@@ -37,15 +38,16 @@ submitButton.addEventListener("click", function (e) {
   for (let i = 0; i < allRecipe.length; i++) {
     if (allRecipe[i].recipeId == recipeId_value) {
       // alert("Recipe Id must be Unique!");
-      var popUp= document.createElement('div');
+      var popUp = document.createElement("div");
       popUp.id = "popUp";
-      popUp.innerHTML = 'Recipe Id must be Unique!<button id="popBtn">OK</button>';
-      document.querySelector('main').appendChild(popUp);
+      popUp.innerHTML =
+        'Recipe Id must be Unique!<button id="popBtn">OK</button>';
+      document.querySelector("main").appendChild(popUp);
       popUp.style.display = "flex";
-      document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-      })
+      document.getElementById("popBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("main").removeChild(popUp);
+      });
       return;
     }
   }
@@ -101,25 +103,25 @@ submitButton.addEventListener("click", function (e) {
     userMadeRecipe: true,
     recipeDetail: recipeDetail_value,
     recipeIngredients: document.getElementById("ingredients-list").innerHTML,
-    recipeInstructions: document.getElementById("instructions-list").innerHTML
+    recipeInstructions: document.getElementById("instructions-list").innerHTML,
     // ingredients: localStorage.getItem('ingredients'),
     // instructions: localStorage.getItem('instructions')
   };
   allRecipe.push(myRecipe);
   localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-  var popUp= document.createElement('div');
+  var popUp = document.createElement("div");
   popUp.id = "popUp";
-  popUp.innerHTML = 'Your Recipe is added successfully!<button id="popBtn">Done</button>';
-  document.querySelector('main').appendChild(popUp);
+  popUp.innerHTML =
+    'Your Recipe is added successfully!<button id="popBtn">Done</button>';
+  document.querySelector("main").appendChild(popUp);
   popUp.style.display = "flex";
-  document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-  })
+  document.getElementById("popBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector("main").removeChild(popUp);
+  });
   // localStorage.removeItem('ingredients');
   // localStorage.removeItem('instructions');
 });
-
 
 // let ingredientsArr= new Array();
 // if(localStorage.getItem('ingredients')){
@@ -157,15 +159,16 @@ function addIngredient() {
     //supposed to clear input field but not working
   } else {
     // alert("Please enter quantity and unit and name of the ingredient.");
-        var popUp= document.createElement('div');
-        popUp.id = "popUp";
-        popUp.innerHTML = 'Please enter quantity, unit and name of the ingredient<button id="popBtn">Done</button>';
-        document.querySelector('main').appendChild(popUp);
-        popUp.style.display = "flex";
-        document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-        })
+    var popUp = document.createElement("div");
+    popUp.id = "popUp";
+    popUp.innerHTML =
+      'Please enter quantity, unit and name of the ingredient<button id="popBtn">Done</button>';
+    document.querySelector("main").appendChild(popUp);
+    popUp.style.display = "flex";
+    document.getElementById("popBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("main").removeChild(popUp);
+    });
   }
 }
 
@@ -200,15 +203,16 @@ function addInstruction() {
     // document.getElementById("instruction-text").value = "";
   } else {
     // alert("Please enter instruction text.");
-        var popUp= document.createElement('div');
-        popUp.id = "popUp";
-        popUp.innerHTML = 'Please enter instruction text<button id="popBtn">Done</button>';
-        document.querySelector('main').appendChild(popUp);
-        popUp.style.display = "flex";
-        document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-        })
+    var popUp = document.createElement("div");
+    popUp.id = "popUp";
+    popUp.innerHTML =
+      'Please enter instruction text<button id="popBtn">Done</button>';
+    document.querySelector("main").appendChild(popUp);
+    popUp.style.display = "flex";
+    document.getElementById("popBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("main").removeChild(popUp);
+    });
   }
 }
 
@@ -310,15 +314,16 @@ document
     if (isNaN(quantity) || quantity <= 0) {
       event.target.value = "";
       // alert('Please enter a valid positive quantity.');
-        var popUp= document.createElement('div');
-        popUp.id = "popUp";
-        popUp.innerHTML = 'Please enter a valid positive quantity<button id="popBtn">Done</button>';
-        document.querySelector('main').appendChild(popUp);
-        popUp.style.display = "flex";
-        document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-        })
+      var popUp = document.createElement("div");
+      popUp.id = "popUp";
+      popUp.innerHTML =
+        'Please enter a valid positive quantity<button id="popBtn">Done</button>';
+      document.querySelector("main").appendChild(popUp);
+      popUp.style.display = "flex";
+      document.getElementById("popBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("main").removeChild(popUp);
+      });
     }
   });
 
@@ -328,15 +333,16 @@ document.getElementById("rfrom-id").addEventListener("input", function (event) {
   if (isNaN(quantity) || quantity <= 0) {
     event.target.value = "";
     // alert('Please enter a valid positive duration.');
-        var popUp= document.createElement('div');
-        popUp.id = "popUp";
-        popUp.innerHTML = 'Please enter a valid positive duration<button id="popBtn">Done</button>';
-        document.querySelector('main').appendChild(popUp);
-        popUp.style.display = "flex";
-        document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-        })
+    var popUp = document.createElement("div");
+    popUp.id = "popUp";
+    popUp.innerHTML =
+      'Please enter a valid positive duration<button id="popBtn">Done</button>';
+    document.querySelector("main").appendChild(popUp);
+    popUp.style.display = "flex";
+    document.getElementById("popBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("main").removeChild(popUp);
+    });
   }
 });
 
@@ -346,14 +352,15 @@ document.getElementById("rto-id").addEventListener("input", function (event) {
   if (isNaN(quantity) || quantity <= 0) {
     event.target.value = "";
     // alert('Please enter a valid positive duration.');
-        var popUp= document.createElement('div');
-        popUp.id = "popUp";
-        popUp.innerHTML = 'Please enter a valid positive duration<button id="popBtn">Done</button>';
-        document.querySelector('main').appendChild(popUp);
-        popUp.style.display = "flex";
-        document.getElementById('popBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('main').removeChild(popUp);
-        })
+    var popUp = document.createElement("div");
+    popUp.id = "popUp";
+    popUp.innerHTML =
+      'Please enter a valid positive duration<button id="popBtn">Done</button>';
+    document.querySelector("main").appendChild(popUp);
+    popUp.style.display = "flex";
+    document.getElementById("popBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("main").removeChild(popUp);
+    });
   }
 });

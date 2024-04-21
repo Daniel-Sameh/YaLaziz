@@ -435,6 +435,7 @@ if (localStorage.getItem("allRecipe")) {
     // instructions: localStorage.getItem('instructions')
   };
   allRecipe.push(myRecipe);
+  localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
 }
 
 //-------------------------------------------------------------------------
