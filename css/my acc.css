@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Chivo:ital,wght@0,100..900;1,100..900&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -82,4 +81,3 @@
 .page main .favorite{
     margin-left: 1.25rem;
 }
-

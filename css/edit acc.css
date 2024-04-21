@@ -11,16 +11,17 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: all 0.5s;
 }
-.page .photo{
+.page main .photo{
     width: 40%;
     height: 100%;
     
 }
+
 .page main .side{
     width: 100%;
     height: 100%;
+    
 }
 .page main .form {
     width: 57%;
@@ -28,6 +29,7 @@ main {
     margin: 0 43%;
     position:absolute;
 }
+
 
 .editPhoto {
     margin: 1.125rem 1.125rem 3.125rem;
@@ -54,7 +56,6 @@ main {
 #myfile{
     display: none;
 }
-
 
 .ph1 {
     width: 100%;
