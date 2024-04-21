@@ -23,8 +23,23 @@ function handlePhotoSaving(event) {
   reader.readAsDataURL(file);
 }
 
+function handlePhotoSavingMain(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    const base64String = event.target.result;
+    localStorage.setItem("tempMainPhoto", base64String);
+  };
+
+  reader.readAsDataURL(file);
+}
+
 const coverImageInput = document.getElementById("rimage-id");
 coverImageInput.addEventListener("change", handlePhotoSaving);
+
+const mainImageInput = document.getElementById("rphoto-id");
+mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
@@ -70,12 +85,14 @@ submitButton.addEventListener("click", function (e) {
   }
   const recipeDurationValue = fromValue + " to " + toValue + " " + timeUnit;
   const recipePhoto_value = localStorage.getItem("tempPhoto");
+  const recipeMainPhoto_value = localStorage.getItem("tempMainPhoto");
   localStorage.removeItem("tempPhoto");
+  localStorage.removeItem("tempMainPhoto");
   const recipeDetail_value = `
   <div class="recipeDetail">
       <div class="detailContainer">
           <div class="recipeImg">
-              <img src="${recipePhoto_value}" alt="sambosa picture">
+              <img src="${recipeMainPhoto_value}" alt="sambosa picture">
               <h1 id="recipe_title">${recipeName_value}</h1>
               <h4 id="recipe_time">${recipeDurationValue}</h4>
           </div>
@@ -95,6 +112,7 @@ submitButton.addEventListener("click", function (e) {
     recipeName: recipeName_value,
     recipeId: recipeId_value,
     recipePhoto: recipePhoto_value,
+    recipeMainPhoto: recipeMainPhoto_value,
     recipeCategory: recipeCategory_value,
     recipeSeason: recipeSeason_value,
     recipeDuration: recipeDurationValue,

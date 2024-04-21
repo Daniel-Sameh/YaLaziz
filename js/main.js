@@ -55,28 +55,6 @@ if (isSignned) {
 }
 //----------------------------------------------------------------
 
-// Admin
-var isAdmin = getData("admin");
-if (isAdmin == "true" && isSignned) {
-  document.querySelector(".addRecipe").style.display = "flex";
-  var cards = document.querySelectorAll(".recipe");
-  cards.forEach(function (card) {
-    // Get the adminContainer within each card
-    var adminContainer = card.querySelector(".edit");
-    adminContainer.style.display = "flex";
-  });
-  console.log("admin is true!");
-} else {
-  // let adminControl= document.querySelector('.adminContainer');
-  // adminControl.style.display='none';
-  console.log("admin is null!");
-}
-
-//-----------------------------------------------------------------------
-
-//For Recipes:
-
-//--------------------------------------------------------------------
 
 document.querySelector(".logout").addEventListener("click", function (event) {
   // var logOut=window.confirm("Are you sure to log out from YaLaziz?");
@@ -95,7 +73,7 @@ document.querySelector(".logout").addEventListener("click", function (event) {
     document.querySelector(".sign_up").style.alignItems = "center";
     document.querySelector(".login").style.display = "flex";
     document.querySelector(".sign_up").style.display = "flex";
-    resetData();
+    saveData('sign', "");
     const Href = document.getElementById("indexHref").getAttribute("href");
 
     location.href = Href;

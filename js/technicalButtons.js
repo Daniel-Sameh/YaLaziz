@@ -186,12 +186,11 @@ const searchButtons = document.querySelectorAll("#searchBtn");
 
 searchButtons.forEach(function (button) {
   button.addEventListener("click", function (e) {
-    const searchValue = getSearchValue();
+    const searchValue = getSearchValue().toLowerCase();
     const Recipes = document.querySelectorAll(".recipe");
     console.log(location.href);
     for (let i = 0; i < Recipes.length; i++) {
-      const recipeName = Recipes[i].querySelector("h3").innerHTML;
-      console.log(recipeName);
+      const recipeName = Recipes[i].querySelector("h3").innerHTML.toLowerCase();
       if (recipeName.indexOf(searchValue)) {
         Recipes[i].style.display = "none";
       } else {

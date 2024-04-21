@@ -3,6 +3,9 @@ var username = localStorage.getItem("username");
 if (username) {
   document.querySelector(".user").innerHTML = username;
 }
+if (!localStorage.getItem('accPhoto')) {
+  localStorage.setItem('accPhoto', "../Photos/acc pic.png");
+}
 
 var existingImg = document.getElementById("ph");
 existingImg.src = localStorage.getItem("accPhoto");
