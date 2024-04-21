@@ -83,7 +83,7 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         if(mail!= localStorage.getItem('email')){
             saveData('email',mail);
         }
-        if(pass!=localStorage.getItem('password')){
+        if(pass!=localStorage.getItem('password') && pass.length>0){
             saveData('password',pass);
         }
         const AccImage = localStorage.getItem('tempAccPhoto');
