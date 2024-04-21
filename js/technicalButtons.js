@@ -139,9 +139,9 @@ deleteButtons.forEach(function (button) {
             break;
           }
         }
-        let arr = JSON.parse(localStorage.getItem("allRecipe"));
-        arr.splice(arrIdx, 1);
-        localStorage.setItem("allRecipe", JSON.stringify(arr));
+        // let arr = JSON.parse(localStorage.getItem("allRecipe"));
+        allRecipe.splice(arrIdx, 1);
+        localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
       }
       document.querySelector("main").removeChild(popUp);
     });
@@ -203,22 +203,20 @@ searchButtons.forEach(function (button) {
 
 //------------------------------------------------------------------
 
+//------------------------------------------------------------------
+
 // Edit Recipe
 
-const editButtons = document.querySelectorAll(".editRecipe");
+const editButtons = document.querySelectorAll('.editRecipe');
 
-editButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    const addRecipeHref = document.getElementById("addRecipeHref").href;
-    location.href = addRecipeHref;
-    // const addRecipeDocument = window.open(addRecipeHref).document;
-    // var recipe = button.closest('.recipe');
-    // const recipeID = recipe.getAttribute('id');
-    // addRecipeDocument.getElementsByTagName('h1')[0].innerHTML = "tba lk";
-    // for (let i = 0; i < allRecipe.length; i++) {
-    //   if (allRecipe[i].recipeId == recipeID) {
-
-    //   }
-    // }
-  });
+editButtons.forEach(function(button) {
+  button.addEventListener('click', function(){
+    var recipe = this.closest('.recipe');
+    const recipeID = recipe.getAttribute('id');
+    
+    const addRecipeHref = document.getElementById('addRecipeHref').href;
+    // Pass the recipeID as a query parameter to the URL
+    window.location.href = `${addRecipeHref}?recipeId=${recipeID}`;
+    
+  })
 });
