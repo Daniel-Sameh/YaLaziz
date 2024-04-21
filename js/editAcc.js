@@ -39,13 +39,13 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         checkOldPass.style.display = "block";
         return false;
     }
-    if(pass.length <= 7){
+    if(pass.length <= 7&&pass.length>0){
         checkOldPass.style.display ="none";
         checkPass.innerHTML="*Password must be at least 8 characters long."
         checkPass.style.display = "block";
         return false;
     }
-    else if (containsNumber(pass) == false) {
+    else if (containsNumber(pass) == false&&pass.length>0) {
         checkOldPass.style.display ="none";
         checkPass.style.display = "none";
 
