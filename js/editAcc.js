@@ -6,19 +6,24 @@ nameIn.value=storedName;
 var emilIn=document.getElementById("inEmil");
 emilIn.value=storedMail;
 
+const accImage = localStorage.getItem('accPhoto');
+document.getElementById('ph1').src = accImage;
+
 const fileInput=document.getElementById('myfile');
-var file;
-image=document.querySelector('.ph1');
-fileInput.addEventListener('change', function(event) {
-    file = event.target.files[0]; // Get the selected file
-    if (file) {
-        image.src = URL.createObjectURL(file); // Set the image source to a URL created from the file
-        saveData('img',file);
-        
-    } else {
-        image.src = '#'; // Reset the image source if no file is selected
-    }
-});
+function handlePhotoSaving(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+  
+    reader.onload = function (event) {
+      const base64String = event.target.result;
+      localStorage.setItem("tempAccPhoto", base64String);
+    };
+  
+    reader.readAsDataURL(file);
+}
+
+fileInput.addEventListener("change", handlePhotoSaving);
+
 document.getElementById("editAcc").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
     var name = document.getElementById("inName").value;
@@ -72,9 +77,12 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         if(pass!=localStorage.getItem('password')){
             saveData('password',pass);
         }
-
+        const AccImage = localStorage.getItem('tempAccPhoto');
+        if (AccImage) {
+            localStorage.setItem('accPhoto', AccImage);
+        }
         alert("Your changes have been successfully saved!");
-        location.href = "index.html";
+        location.href = "my account.html";
 
     }
 

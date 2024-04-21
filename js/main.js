@@ -30,6 +30,7 @@ function resetData(){
         localStorage.removeItem('username');
         localStorage.removeItem('sign');
         localStorage.removeItem('password');
+        localStorage.setItem('accPhoto', "../Photos/acc pic.png");
         console.log("Data reset successful.");
         window.location.reload();
       } catch (error) {
@@ -100,6 +101,9 @@ if(isAdmin=='true'&&isSignned){
             document.querySelector('.login').style.display = 'flex';
             document.querySelector('.sign_up').style.display = 'flex';
             resetData();
+            const Href = document.getElementById('indexHref').getAttribute('href');
+
+            location.href = Href;
         })
         document.getElementById('cancel').addEventListener('click', function(e){
             e.preventDefault();
@@ -115,6 +119,7 @@ if(isAdmin=='true'&&isSignned){
     //     document.querySelector('.sign_up').style.display = 'flex';
     //     resetData();
     // }
+    
     
 });
 //----------------------------------------------------------------------

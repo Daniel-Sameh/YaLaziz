@@ -1,16 +1,11 @@
 var username = localStorage.getItem('username');
-var image = localStorage.getItem('img');
 if (username) {
     document.querySelector('.user').innerHTML = username;
 }
-if (image) {
-    var existingImg = document.getElementById('ph');
-    existingImg.src = image;
-}
 
-document.querySelector('.logout').addEventListener('click', function () {
-    location.href = "index.html";
-});
+var existingImg = document.getElementById('ph');
+existingImg.src = localStorage.getItem("accPhoto");
+
 
 //------------------------------------------------------------------------
 
