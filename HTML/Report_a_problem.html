@@ -8,6 +8,7 @@
     <link rel="icon" href="../Photos/yaLaziz.png">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/Report.css">
 </head>
 
 <body>
@@ -63,25 +64,24 @@
         </nav>
         <aside></aside>
         <main>
-            <h1>Report a problem</h1>
-            <div class="inputs">
-                <label for="name">Name:</label>
-                <input id="name" type="text" placeholder="Name" required>
+            <div class="report-container">
+                <div class="report-box">
+                    <h1>Report a problem</h1>
+                    <div class="personal-info">
+                        <div class="inputs" >
+                            <h2>personal info: </h2>
+                            <input id="name" type="text" placeholder="Name" required>
+                            <input id="email" type="email" placeholder="Email@mail.com" required>
+                            <input id="sub" type="text" required placeholder="Subject">
+                        </div>
+                    </div>
+                    <div class="problem-info">
+                        <h2>Type your problem:</h2>
+                            <textarea name="complaint" id="complaint" required cols="50" rows="15"></textarea>
+                    </div>
+                    <input type="submit">
+                </div>
             </div>
-            <div class="inputs">
-                <label for="email:">email:</label>
-                <input id="email" type="email" placeholder="Email@mail.com" required>
-            </div>
-            <div class="inputs">
-                <label for="sub">Subject:</label>
-                <input id="sub" type="text" required>
-            </div>
-            <div class="inputs">
-                <label>Type your problem:</label>
-                <br>
-                <textarea name="complaint" id="complaint" required cols="50" rows="15"></textarea>
-            </div>
-            <input type="submit">
         </main>
         <footer>
 
