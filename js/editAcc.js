@@ -53,6 +53,14 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         checkPass.style.display = "block";
         return false;
     }
+    else if(pass==localStorage.getItem('password')){
+        checkOldPass.style.display ="none";
+        checkPass.style.display = "none";
+
+        checkPass.innerHTML = "*New password must be different from the old password.";
+        checkPass.style.display = "block";
+        return false;
+    }
     else if(confirmPass!=pass){
         checkOldPass.style.display ="none";
         checkPass.style.display = "none";
@@ -71,7 +79,7 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         if(name!= localStorage.getItem('username')){
            saveData('username',name);
         }
-        if(mail!= localStorage.getItem('username')){
+        if(mail!= localStorage.getItem('email')){
             saveData('email',mail);
         }
         if(pass!=localStorage.getItem('password')){
