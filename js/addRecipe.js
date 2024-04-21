@@ -9,6 +9,13 @@ let submitButton = document.querySelector(".submit-btn");
 const recipeCategory = document.getElementsByName("meal");
 const recipeSeason = document.getElementsByName("occasion");
 
+document.addEventListener('DOMContentLoaded', function() {
+  localStorage.removeItem('tempPhoto');
+  localStorage.removeItem('tempPhoto1');  
+});
+
+
+
 let recipeDetail = document.getElementById("recipeDetail");
 
 function handlePhotoSaving(event) {
@@ -17,7 +24,9 @@ function handlePhotoSaving(event) {
 
   reader.onload = function (event) {
     const base64String = event.target.result;
+    
     localStorage.setItem("tempPhoto", base64String);
+    
   };
 
   reader.readAsDataURL(file);
@@ -40,6 +49,7 @@ coverImageInput.addEventListener("change", handlePhotoSaving);
 
 const mainImageInput = document.getElementById("rphoto-id");
 mainImageInput.addEventListener("change", handlePhotoSavingMain);
+
 
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
@@ -92,7 +102,7 @@ submitButton.addEventListener("click", function (e) {
   <div class="recipeDetail">
       <div class="detailContainer">
           <div class="recipeImg">
-              <img src="${recipeMainPhoto_value}" alt="sambosa picture">
+              <img src="${recipeMainPhoto_value}" alt="${recipeName_value}">
               <h1 id="recipe_title">${recipeName_value}</h1>
               <h4 id="recipe_time">${recipeDurationValue}</h4>
           </div>
@@ -124,18 +134,37 @@ submitButton.addEventListener("click", function (e) {
     // ingredients: localStorage.getItem('ingredients'),
     // instructions: localStorage.getItem('instructions')
   };
-  allRecipe.push(myRecipe);
-  localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-  var popUp = document.createElement("div");
-  popUp.id = "popUp";
-  popUp.innerHTML =
+
+  if(id){
+    let arrIdx;
+    for (let i = 0; i < allRecipe.length; i++) {
+      if (allRecipe[i].recipeId == id) {
+            arrIdx = i;
+            console.log("found "+i);
+            break;
+      }
+    }
+    if(arrIdx>=0){
+      allRecipe[arrIdx]=myRecipe;
+    }
+  }else{
+    allRecipe.push(myRecipe);
+    localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+    var popUp = document.createElement("div");
+    popUp.id = "popUp";
+   popUp.innerHTML =
     'Your Recipe is added successfully!<button id="popBtn">Done</button>';
-  document.querySelector("main").appendChild(popUp);
-  popUp.style.display = "flex";
-  document.getElementById("popBtn").addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector("main").removeChild(popUp);
-  });
+    document.querySelector("main").appendChild(popUp);
+    popUp.style.display = "flex";
+    document.getElementById("popBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("main").removeChild(popUp);
+    });
+  }
+
+
+
+  
 
   
   // localStorage.removeItem('ingredients');
@@ -293,8 +322,10 @@ function preview() {
   var from = document.getElementById("rfrom-id").value;
   var to = document.getElementById("rto-id").value;
   var tounit = document.getElementById("to-unit").value;
+  var photo= localStorage.getItem("tempPhoto");
+  var photo1= localStorage.getItem("tempMainPhoto");
 
-  if (name && id && from && to && tounit) {
+  if (name && id && from && to && tounit&&photo&&photo1) {
     var addnamestamp = document.createElement("h4");
     var addnameinfo = document.createElement("p");
     addnamestamp.innerHTML = "1- Recipe name: ";
@@ -320,6 +351,17 @@ function preview() {
     var addfromto = document.querySelector(".fromto-info-preview");
     addfromto.appendChild(addfromtostamp);
     addfromto.appendChild(addfromtoinfo);
+  }else{
+      var popUp = document.createElement("div");
+      popUp.id = "popUp";
+      popUp.innerHTML =
+        'Make sure you entered everything!<button id="popBtn">OK</button>';
+      document.querySelector("main").appendChild(popUp);
+      popUp.style.display = "flex";
+      document.getElementById("popBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("main").removeChild(popUp);
+      });
   }
 }
 
@@ -450,7 +492,7 @@ const urlParams = new URLSearchParams(window.location.search);
         imagePreview.innerHTML = "";
         imagePreview.appendChild(img);
 
-        let recipePhoto1= tempDiv.querySelector('.recipeImg img').src;
+        let recipePhoto1= thisRecipe.recipeMainPhoto;
         var imagePreview = document.querySelector(".photo-preview");
         var img = new Image();
         img.src = recipePhoto1;
