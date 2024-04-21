@@ -110,11 +110,15 @@ submitButton.addEventListener("click", function (e) {
       <div class="recipeBody">
           <h2 id="ingredients">&#10149; Ingredients:</h2>
           <div id="ingredientsText">
+              <ol id="ingredients-list">
               ${document.getElementById("ingredients-list").innerHTML}
+              </ol>
           </div>
           <h2 id="instructions">&#10149; Instructions:</h2>
           <div id="instructionsText">
+              <ol id="instructions-list">
               ${document.getElementById("instructions-list").innerHTML}
+              </ol>
           </div>
       </div>
   </div>`;
@@ -448,12 +452,13 @@ const urlParams = new URLSearchParams(window.location.search);
       let recDetails= thisRecipe.recipeDetail;
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = recDetails;
-      
+      console.log(tempDiv);
       //Ingredients:
       let ingredients= tempDiv.querySelector('#ingredients-list');
       let listItems = ingredients.querySelectorAll('li');
       listItems.forEach((li) => {
-        var removeButton = document.createElement("button");
+        if(!thisRecipe.userMadeRecipe){
+          var removeButton = document.createElement("button");
         
         var trashIcon = document.createElement("i");
         trashIcon.className = "fa-solid fa-trash";
@@ -463,6 +468,8 @@ const urlParams = new URLSearchParams(window.location.search);
               li.remove();
         };
         li.appendChild(removeButton);
+        }
+        
         
         document.getElementById('ingredients-list').appendChild(li);
       });
@@ -471,7 +478,8 @@ const urlParams = new URLSearchParams(window.location.search);
       let instruction=tempDiv.querySelector('#instructions-list');
       let listItems1 = instruction.querySelectorAll('li');
       listItems1.forEach((li) => {
-        var removeButton = document.createElement("button");
+        if(!thisRecipe.userMadeRecipe){
+          var removeButton = document.createElement("button");
         
         var trashIcon = document.createElement("i");
         trashIcon.className = "fa-solid fa-trash";
@@ -481,6 +489,8 @@ const urlParams = new URLSearchParams(window.location.search);
               li.remove();
         };
         li.appendChild(removeButton);
+        }
+        
         document.getElementById('instructions-list').appendChild(li);
 
         //Photos:
