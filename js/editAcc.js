@@ -16,6 +16,7 @@ function handlePhotoSaving(event) {
   
     reader.onload = function (event) {
       const base64String = event.target.result;
+      document.getElementById('ph1').src = base64String;
       localStorage.setItem("tempAccPhoto", base64String);
     };
   
