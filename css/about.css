@@ -55,10 +55,10 @@
     border-radius: 4px;
     column-gap: 5rem;
     row-gap: 3rem;
-    background-color: rgba(0, 0, 0, 0.501);
+    /* background-color: rgba(0, 0, 0, 0.501); */
     color: #f0f7f8;
     height: 400px;
-    box-shadow: 5px 5px 20px black;
+    /* box-shadow: 5px 5px 20px black; */
     position: relative;
     top:20px;
     bottom: 20px;
