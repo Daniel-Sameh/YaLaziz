@@ -49,6 +49,7 @@ main {
     font-family: "Montserrat", sans-serif;
     margin: 0.5rem 0;
     cursor: pointer;
+    transition: 0.3s;
 }
 #lab:hover{
    background-color: #FDA403;
@@ -63,6 +64,7 @@ main {
     border-radius: 10px;
     border:3px #E8751A;
     border-style:solid;
+    transition:0.3s
 
 }
 .ph1:hover{
@@ -87,6 +89,7 @@ input[type=file]{
     margin: 0.5rem 0;
     border-radius: 4px;
     border: 2px solid black;
+    transition: 0.3s;
 }
 
 .editMail input {
@@ -96,6 +99,7 @@ input[type=file]{
     margin: 0.5rem 0;
     border-radius: 4px;
     border: 2px solid black;
+    transition: 0.3s;
 }
 
 .editPass input,.oldPass input,.confirmEditedPass input {
@@ -105,6 +109,7 @@ input[type=file]{
     margin: 0.5rem 0;
     border-radius: 4px;
     border: 2px solid black;
+    transition:0.3s
 }
 .editName input:focus{
     border:5px solid  #E8751A;
@@ -137,6 +142,7 @@ input[type=file]{
     margin: 0.5rem 0;
     cursor: pointer;
     border-radius: 4px;
+    transition:0.3s
 }
 .submitChanges input:hover{
     background-color: #FDA403;

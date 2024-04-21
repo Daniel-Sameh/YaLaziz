@@ -84,8 +84,18 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         else {
             localStorage.setItem('accPhoto', "../Photos/acc pic.png");
         }
-        alert("Your changes have been successfully saved!");
-        location.href = "my account.html";
+        // alert("Your changes have been successfully saved!");
+        var popUp= document.createElement('div');
+        popUp.id = "popUp";
+        popUp.innerHTML = ' Your changes have been successfully saved!<button id="popBtn">Done</button>';
+        document.querySelector('main').appendChild(popUp);
+        popUp.style.display = "flex";
+        document.getElementById('popBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('main').removeChild(popUp);
+            location.href = "my account.html";
+        })
+        
 
     }
 
