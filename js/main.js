@@ -360,7 +360,7 @@ else {
         recipePhoto:"../Photos/beef_wellington.webp",
         recipeCategory: "lunch",
         recipeSeason: "christmas",
-        recipeDuration: "2 to 3 hrss",
+        recipeDuration: "2 to 3 hrs",
         favoriteState: false,
         userMadeRecipe: false
         // ingredients: localStorage.getItem('ingredients'),

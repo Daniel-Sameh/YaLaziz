@@ -81,6 +81,9 @@ document.getElementById("editAcc").addEventListener("submit", function(event) {
         if (AccImage) {
             localStorage.setItem('accPhoto', AccImage);
         }
+        else {
+            localStorage.setItem('accPhoto', "../Photos/acc pic.png");
+        }
         alert("Your changes have been successfully saved!");
         location.href = "my account.html";
 
