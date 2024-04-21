@@ -163,22 +163,31 @@ else {
         <div class="recipeDetail">
             <div class="detailContainer">
                 <div class="recipeImg">
-                    <img src="../Photos/" alt="">
-                    <h1 id="recipe_title"></h1>
-                    <h4 id="recipe_time"></h4>
+                    <img src="../Photos/sambosak.jpg" alt="the delcious sambosa!">
+                    <h1 id="recipe_title">Sambosa</h1>
+                    <h4 id="recipe_time">30 to 60 mins</h4>
                 </div>
             </div>
             <div class="recipeBody">
                 <h2 id="ingredients">&#10149; Ingredients:</h2>
                 <div id="ingredientsText">
                     <ol id="ingredients-list">
-                        <li></li>
+                        <li>2 kg flour</li>
+                        <li>1 chili</li>
+                        <li>1.5 kg meat</li>
+                        <li>2 Tbsp spices</li>
+                        <li>0.5 ltrs oil</li>
+                        <li>1 kgs potatoes</li>
                     </ol>
                 </div>
                 <h2 id="instructions">&#10149; Instructions:</h2>
                 <div id="instructionsText">
                     <ol id="instructions-list">
-                        <li></li>
+                        <li>The filling for Samosas is typically vegetarian, made with roughly mashed potato that’s cooked up with spices, fresh green chilli and peas. Altthough you’ll see plenty of versions with meat (usually ground).</li>
+                        <li>Rough-mashed potato – Boil potatoes until tender, then use a fork to roughly mash. It’s nice to have bits of chunks in the potato for interest, rather than a soft, creamy and uniform mash.</li>
+                        <li>Cook spices and aromatics – A healthy dose of spices are fried up with fresh ginger and chilli which is then tossed through along the peas.</li>
+                        <li>Add potato – Add the mashed potato and gently but thoroughly mix through, so the flavouring fully permeates the potato.</li>
+                        <li>Fresh coriander, then cool – Lastly, mix through fresh coriander, then let the filling cool completely before using.</li>
                     </ol>
                 </div>
             </div>
@@ -206,9 +215,46 @@ else {
         recipeSeason: "general",
         recipeDuration: "2 to 3 hrs",
         favoriteState: false,
-        userMadeRecipe: false
-        // ingredients: localStorage.getItem('ingredients'),
-        // instructions: localStorage.getItem('instructions')
+        userMadeRecipe: false,
+        recipeDetail: `
+        <div class="recipeDetail">
+            <div class="detailContainer">
+                <div class="recipeImg">
+                    <img src="../Photos/war2enab2.webp" alt="the delcious sutffed Grape Leaves!">
+                    <h1 id="recipe_title">Stuffed grape leaves(Warak 3enab)</h1>
+                    <h4 id="recipe_time">2 to 3 hrs</h4>
+                </div>
+            </div>
+            <div class="recipeBody">
+                <h2 id="ingredients">&#10149; Ingredients:</h2>
+                <div id="ingredientsText">
+                    <ol id="ingredients-list">
+                        <li>3 kg Grape Leaves</li>
+                        <li>1 ltrs Olive Oil</li>
+                        <li>2 kg meat</li>
+                        <li>4 Tbsp Fresh herbs</li>
+                        <li>0.5 ltrs oil</li>
+                        <li>0.5 kgs Tomato Sauce</li>
+                    </ol>
+                </div>
+                <h2 id="instructions">&#10149; Instructions:</h2>
+                <div id="instructionsText">
+                    <ol id="instructions-list">
+                        <li>Rinse your grape leaves quickly with cold water. Bring a pot of water to a boil then blanch a handful of leaves at a time in the boiling hot water.</li>
+                        <li>Take them out and let them cool in a colander until able to handle.Cut off the stems and setting them aside, do not throw away.</li>
+                        <li>In large pot over medium heat, saute onions until translucent add tomato sauce, paste and stir to combine.</li>
+                        <li>Add herbs, spices and rice.</li>
+                        <li>Mix well and cook for just two minutes. Turn heat off and set aside.</li>
+                        <li>Now lay one grape leaf smooth side down on a flat surface or a cutting board. Take about 1.5 teaspoon of the rice mixture and place at the broad end of the leaf.
+                        Fold both sides over the rice and roll tucking it nicely as shown above.</li>
+                        <li>Repeat until you finish the whole amount.</li>
+                        <li>Lay the stems of the fresh herbs, onions rings or tomato and the stem you cut from the grape leaves at the bottom of your pot.
+                        Arrange the stuffed grape leaves tightly in layer on the pot. Mix your cooking liquid as directed and pour over the grape leaves.</li>
+                        <li>Cover with a small plate and bring to a boil over medium-high flame. Reduce heat to minimum and simmer until thoroughly cooked.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>`
     }
     allRecipe.push(myRecipe);
     myRecipe = {
@@ -413,3 +459,27 @@ for (let i = 0; i < favoriteRecipeArr.length; i++) {
         }
     }
 }
+
+//-------------------------------------------------------------------------
+
+const edit= document.querySelector(".editRecipe");
+
+edit.forEach(function(btn){
+    btn.addEventListener('click',function(e){
+        e.preventDefault();
+        var card = button.closest('.recipe');
+            if (card) {
+                let cardId= card.getAttribute('id');
+                let arrIdx;
+                for (let i = 0; i < allRecipe.length; i++) {
+                   if (allRecipe[i].recipeId == cardId) {
+                       arrIdx = i;
+                       break;
+                   }
+                }
+                localStorage.setItem('editRecipe',true);
+                
+            }
+    })
+})
+
