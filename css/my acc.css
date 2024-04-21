@@ -37,14 +37,15 @@
 }
 
 .page main .user {
-    margin-left: 0.5rem;
+    margin-left: 1rem;
+    margin-right: 3.5rem;
     color: #0f172a
+   
 }
-
 .page main .userPhoto {
     margin: 1.25rem 1.25rem 0.3125rem;
-    height: 10%;
-    width: 10%;
+    height: 15%;
+    width: 15%;
 
 }
 
