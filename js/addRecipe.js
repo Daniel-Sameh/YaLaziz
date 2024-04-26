@@ -52,6 +52,19 @@ mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
 
 submitButton.addEventListener("click", function (e) {
+  if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0) {
+    var popUp = document.createElement("div");
+      popUp.id = "popUp";
+      popUp.innerHTML =
+        'Please fill all fields!<button id="popBtn">OK</button>';
+      document.querySelector("main").appendChild(popUp);
+      popUp.style.display = "flex";
+      document.getElementById("popBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("main").removeChild(popUp);
+      });
+    return; 
+  }
   e.preventDefault();
   const reader = recipePhoto.files[0];
   console.log(reader);
