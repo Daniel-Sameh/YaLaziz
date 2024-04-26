@@ -52,7 +52,12 @@ mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
 
 submitButton.addEventListener("click", function (e) {
-  if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0) {
+  if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0 || document.querySelector(".name-info-preview").children.length == 0 
+  || document.querySelector(".id-info-preview").children.length == 0  
+  || document.querySelector(".fromto-info-preview").children.length == 0
+  || document.querySelector(".image-preview").children.length == 0
+  || document.querySelector(".photo-preview").children.length == 0) {
+    e.preventDefault();
     var popUp = document.createElement("div");
       popUp.id = "popUp";
       popUp.innerHTML =
@@ -342,7 +347,7 @@ function preview() {
   var photo= localStorage.getItem("tempPhoto");
   var photo1= localStorage.getItem("tempMainPhoto");
 
-  if (name && id && from && to && tounit&&photo&&photo1) {
+  // if (name && id && from && to && tounit&&photo&&photo1) {
     var addnamestamp = document.createElement("h4");
     var addnameinfo = document.createElement("p");
     addnamestamp.innerHTML = "1- Recipe name: ";
@@ -360,6 +365,19 @@ function preview() {
     addid.appendChild(addidstamp);
     addid.appendChild(addidinfo);
     //------------------------------------------------------------------------------
+    
+    if(from == to || from > to){
+      var popUp = document.createElement("div");
+      popUp.id = "popUp";
+      popUp.innerHTML =
+        'Make sure from can not be greater than or equal to!<button id="popBtn">OK</button>';
+      document.querySelector("main").appendChild(popUp);
+      popUp.style.display = "flex";
+      document.getElementById("popBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("main").removeChild(popUp);
+      });
+    }else{
     var addfromtostamp = document.createElement("h4");
     var addfromtoinfo = document.createElement("p");
     addfromtostamp.innerHTML = "3- Recipe Duration: ";
@@ -368,18 +386,37 @@ function preview() {
     var addfromto = document.querySelector(".fromto-info-preview");
     addfromto.appendChild(addfromtostamp);
     addfromto.appendChild(addfromtoinfo);
-  }else{
+    }
+    if (document.querySelector(".name-info-preview").children.length == 0 
+            || document.querySelector(".id-info-preview").children.length == 0  
+            || document.querySelector(".fromto-info-preview").children.length == 0
+            || document.querySelector(".image-preview").children.length == 0
+            || document.querySelector(".photo-preview").children.length == 0) {
+      e.preventDefault();
       var popUp = document.createElement("div");
-      popUp.id = "popUp";
-      popUp.innerHTML =
-        'Make sure you entered everything!<button id="popBtn">OK</button>';
-      document.querySelector("main").appendChild(popUp);
-      popUp.style.display = "flex";
-      document.getElementById("popBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector("main").removeChild(popUp);
-      });
-  }
+        popUp.id = "popUp";
+        popUp.innerHTML =
+          'Please fill all fields!<button id="popBtn">OK</button>';
+        document.querySelector("main").appendChild(popUp);
+        popUp.style.display = "flex";
+        document.getElementById("popBtn").addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector("main").removeChild(popUp);
+        });
+      return; 
+    }
+  //   }else{
+  //     var popUp = document.createElement("div");
+  //     popUp.id = "popUp";
+  //     popUp.innerHTML =
+  //       'Make sure you entered everything!<button id="popBtn">OK</button>';
+  //     document.querySelector("main").appendChild(popUp);
+  //     popUp.style.display = "flex";
+  //     document.getElementById("popBtn").addEventListener("click", function (e) {
+  //       e.preventDefault();
+  //       document.querySelector("main").removeChild(popUp);
+  //     });
+  // }
 }
 
 //input validations
