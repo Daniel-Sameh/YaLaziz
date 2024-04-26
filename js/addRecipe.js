@@ -466,8 +466,17 @@ const urlParams = new URLSearchParams(window.location.search);
         removeButton.className = "Remove-button";
         removeButton.onclick = function () {
               li.remove();
+              console.log("test li remove");
         };
         li.appendChild(removeButton);
+        }else{
+          var removeButton = document.querySelectorAll(".Remove-button");
+          removeButton.forEach((button) => {
+              button.onclick = function () {
+              var listItem = button.parentElement;
+              listItem.remove();
+            };
+          });
         }
         
         
@@ -489,6 +498,14 @@ const urlParams = new URLSearchParams(window.location.search);
               li.remove();
         };
         li.appendChild(removeButton);
+        }else{
+          var rmvButton = document.querySelectorAll(".Remove-button");
+          rmvButton.forEach((button) => {
+              button.onclick = function () {
+              var listItem = button.parentElement;
+              listItem.remove();
+            };
+          });
         }
         
         document.getElementById('instructions-list').appendChild(li);
