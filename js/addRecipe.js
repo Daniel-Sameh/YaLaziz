@@ -379,7 +379,7 @@ function preview() {
   addid.appendChild(addidinfo);
   //------------------------------------------------------------------------------
 
-  if (from == to || from > to) {
+  if (Number(from) == Number(to) || Number(from) > Number(to)) {
     var popUp = document.createElement("div");
     popUp.id = "popUp";
     popUp.innerHTML =
