@@ -13,7 +13,7 @@ favoriteButtons.forEach((button) => {
       var popUp = document.createElement("div");
       popUp.id = "popUp";
       popUp.innerHTML =
-        'Login to add this recipe to your favorites😉<button id="popBtn">OK</button>';
+        'Login to add this recipe to your favorites<button id="popBtn">OK</button>';
       document.querySelector("main").appendChild(popUp);
       popUp.style.display = "flex";
       document.getElementById("popBtn").addEventListener("click", function (e) {
