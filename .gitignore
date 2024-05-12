@@ -1,4 +1,5 @@
 .vscode
 yaLaziz/yaLaziz/__pycache__
 yaLaziz/yaLazizApp/__pycache__
+yaLaziz/yaLazizApp/migrations/__pycache__
 venv
