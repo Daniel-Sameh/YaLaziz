@@ -8,8 +8,12 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
     path('signupUser/', views.signupUser, name='signupUser'),
-    path('breakfast/', views.breakfast, name='breakfast'),
     path('ramadan/', views.ramadan, name='ramadan'),
-    
-    
+    path('christmas/', views.christmas, name='christmas'),
+    path('summer/', views.summer, name='summer'),
+    path('breakfast/', views.breakfast, name='breakfast'),
+    path('lunch/', views.lunch, name='lunch'),
+    path('dinner/', views.dinner, name='dinner'),
+    path('drinks/', views.drinks, name='drinks'),
+    path('desserts/', views.desserts, name='desserts'),
 ]

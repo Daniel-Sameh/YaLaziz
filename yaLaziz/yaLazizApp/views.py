@@ -58,3 +58,51 @@ def ramadan(request):
         'recipes': [25,36,11,0,1]
     }
     return HttpResponse(template.render(context, request))
+
+def christmas(request):
+    template= loader.get_template('catagories.html')
+    context= {
+        'category':"christmas",
+        'recipes': [25,36,11,0,1]
+    }
+    return HttpResponse(template.render(context, request))
+
+def summer(request):
+    template= loader.get_template('catagories.html')
+    context= {
+        'category':"summer",
+        'recipes': [25,36,11,0,1]
+    }
+    return HttpResponse(template.render(context, request))
+
+def lunch(request):
+    template= loader.get_template('catagories.html')
+    context= {
+        'category':"lunch",
+        'recipes': [25,36,11,0,1]
+    }
+    return HttpResponse(template.render(context, request))
+
+def dinner(request):
+    template= loader.get_template('catagories.html')
+    context= {
+        'category':"dinner",
+        'recipes': [25,36,11,0,1]
+    }
+    return HttpResponse(template.render(context, request))
+
+def desserts(request):
+    template= loader.get_template('catagories.html')
+    context= {
+        'category':"desserts",
+        'recipes': [25,36,11,0,1]
+    }
+    return HttpResponse(template.render(context, request))
+
+def drinks(request):
+    template= loader.get_template('catagories.html')
+    context= {
+        'category':"drinks",
+        'recipes': [25,36,11,0,1]
+    }
+    return HttpResponse(template.render(context, request))
