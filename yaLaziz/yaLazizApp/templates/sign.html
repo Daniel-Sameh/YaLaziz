@@ -6,11 +6,11 @@
 {%endblock%}
     {%block main%}
             <div class="block">
-                <form action="signupUser/" method="post" id="signupForm">
+                <form action="/signupUser/" method="post" id="signupForm">
+                    {% csrf_token %}
                     <h1>Sign Up</h1>
-                    {% comment %} {% csrf_token %} {% endcomment %}
                     <div id="Username" class="input-box">
-                        <input type="text" placeholder="Username" id="username" required>
+                        <input type="text" placeholder="Username" id="username" required name='username'>
                     </div>
                     &nbsp;
                     <div id="Email" class="input-box">
@@ -18,11 +18,11 @@
                     </div>
                     &nbsp;
                     <div id="passdiv" class="input-box">
-                        <input id="password" type="password" placeholder="Password" required>
+                        <input id="password" type="password" placeholder="Password" required name='password'>
                     </div>
                     &nbsp;
                     <div id="confirmdiv" class="input-box">
-                        <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
+                        <input id="confirmPassword" type="password" placeholder="Confirm Password" required name='confirmPassword'>
                     </div>
 
                     <input class="admin" type="radio" id="Admin" name="type" value="Admin" required>
@@ -31,13 +31,13 @@
                     <input class="user" type="radio" id="User" name="type" value="User" required>
                     <label class="usertxt" for="User">User</label>
                     <p id="check"></p>
-                    <input id="btn" class="btn" type="submit" value="Sign Up">
+                    <button id="btn" class="btn" type="submit" value="Sign Up">Sign Up</button>
 
                 </form>
             </div>
 
     {%endblock%}   
 {%block scripts%}
-    <script src="{%static "js/main.js"%}"></script>
-    <script src="{%static "js/sign.js"%}"></script>
+    {% comment %} <script src="{%static "js/main.js"%}"></script> {% endcomment %}
+    {% comment %} <script src="{%static "js/sign.js"%}"></script> {% endcomment %}
 {%endblock%}

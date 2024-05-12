@@ -7,5 +7,19 @@ class User(models.Model):
     isAdmin = models.BooleanField(default=False)
     # def __str__(self) -> str:
     #     return f"{self.username}"
-    
+
+class Recipe(models.Model):
+    name= models.CharField(max_length=255)
+    coverPhoto= models.ImageField(upload_to='static/Photos/') 
+    mainPhoto= models.ImageField(upload_to='static/Photos/')
+    duration = models.CharField(max_length=255)
+    category = models.CharField(max_length=100)
+    season= models.CharField(max_length=100)
+    userId= models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Favorite(models.Model):
+    userId= models.ForeignKey(User, on_delete=models.CASCADE)
+    recipeId= models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+
 
