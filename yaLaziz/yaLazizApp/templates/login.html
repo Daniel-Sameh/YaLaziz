@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{%extends "index.html"%}
+{%load static%}
+{%block additionalLinks%}
+    <link rel="stylesheet" href="{%static "css/login.css"%}">
+{%endblock%}
+{%block main%}
+            <div class="block">
+                <h1>Login</h1>
+                <form action="loginUser/" method="post">
+                    {% csrf_token %}
+                    <div id="Username" class="input-box">
+                        <input type="text" placeholder="Username" id="UserName" required>
+                    </div>
+                    &nbsp;
+                    <div id="pass" class="input-box">
+                        <input type="password" placeholder="Password" id="Pass" required>
+                    </div>
+                    <p id="check"></p>
+                    &nbsp;
+                    <div class="submit">
+                        <button id="btn" class="btn" type="submit">Login</button>
+                    </div>
+                    <p class="dont">Don't have an account? <a href="/signup">Sign Up</a></p>
+                </form>
+            </div>
+
+
+{%endblock%}
+{% block scripts%}       
+    <script src="{%static "js/main.js"%}"></script>
+    <script src="{%static "js/login.js"%}"></script>
+{%endblock%}

@@ -1,0 +1,82 @@
+.report-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    border: 2px solid transparent;
+    background-color: white;
+    border-radius: 50px;
+    margin: 10%;
+    padding: 15px;
+    box-shadow: 10px 5px 5px grey ;
+}
+.report-box h1{
+    margin: 2%;
+}
+.report-box .personal-info{
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(220, 13%, 91%);
+    width:80%;
+    margin: 2%;
+    padding: 1%;
+    border: 2px solid transparent;
+    border-radius: 15px;
+}
+h2{
+    margin: 10px
+}
+.personal-info .inputs{
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    padding: 2%;
+    align-items: center;
+}
+.inputs input{
+    display: flex;
+    width: 75%;
+    padding:10px 12px;
+    margin: 5px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.problem-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsl(220, 13%, 91%);
+    width:80%;
+    margin: 2%;
+    padding: 3%;
+    border: 2px solid transparent;
+    border-radius: 15px;
+}
+
+textarea{
+   box-sizing: border-box;
+   width: 75%;
+   height: 150px;
+   margin: 5px;
+   padding: 15px;
+   resize: none;
+   border: 2px solid white;
+   border-radius: 12px ;
+}
+
+input[type='submit']{
+    width: 50%;
+    padding: 15px;
+    color: gray;
+    border: 2px solid white;
+    border-radius: 12px;
+}

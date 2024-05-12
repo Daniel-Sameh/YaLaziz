@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "index.html"%}
+{% load static%}
+{%block additionalLinks%}
+    <link rel="stylesheet" href="{%static "css/sign.css"%}">
+{%endblock%}
+    {%block main%}
+            <div class="block">
+                <form action="signupUser/" method="post" id="signupForm">
+                    <h1>Sign Up</h1>
+                    {% comment %} {% csrf_token %} {% endcomment %}
+                    <div id="Username" class="input-box">
+                        <input type="text" placeholder="Username" id="username" required>
+                    </div>
+                    &nbsp;
+                    <div id="Email" class="input-box">
+                        <input type="Email" name="Email" id="email" required placeholder="Email">
+                    </div>
+                    &nbsp;
+                    <div id="passdiv" class="input-box">
+                        <input id="password" type="password" placeholder="Password" required>
+                    </div>
+                    &nbsp;
+                    <div id="confirmdiv" class="input-box">
+                        <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
+                    </div>
+
+                    <input class="admin" type="radio" id="Admin" name="type" value="Admin" required>
+                    <label class="admintxt" for="Admin">Admin</label>
+
+                    <input class="user" type="radio" id="User" name="type" value="User" required>
+                    <label class="usertxt" for="User">User</label>
+                    <p id="check"></p>
+                    <input id="btn" class="btn" type="submit" value="Sign Up">
+
+                </form>
+            </div>
+
+    {%endblock%}   
+{%block scripts%}
+    <script src="{%static "js/main.js"%}"></script>
+    <script src="{%static "js/sign.js"%}"></script>
+{%endblock%}

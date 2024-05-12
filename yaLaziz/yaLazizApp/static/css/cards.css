@@ -1,0 +1,196 @@
+.page main div.title h1{
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    color: aliceblue;
+}
+
+div.grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 1.25rem;
+    row-gap: 1.25rem;
+    width: 100%;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+div.grid .recipe{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 360px;
+    width: 287px;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 5px 5px 20px black;
+    box-sizing: border-box;
+    transition: 0.3s ease-in;
+    cursor: default;
+    
+}
+
+div.grid .recipe > img.coverImg{
+    border-radius: 3px;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    width: 100%;
+    transition: 0.8s ease;
+    object-fit: cover;
+}
+
+div.grid .recipe .info {
+    position: absolute;
+    bottom: 0;
+    background-color:#e8914a;
+    height: 90px;
+    width: 100%;
+    transition: 0.5s;
+}
+
+ div.grid .recipe .info h3{
+    position: absolute;
+    width: 100%;
+    font-size: 23px;
+    text-align: center;
+    top: 8px;
+    color: white;
+    transition: 0.3s ease-in;
+}
+
+div.grid .recipe .info h5 {
+    position: absolute;
+    width: 100%;
+    font-size: 17px;
+    text-align: center;
+    top: 35px;  
+    color: white;
+    transition: 0.3s;
+}
+
+ div.grid .recipe .info h5 span {
+    font-size: 15px;
+}
+
+ div.grid .recipe .info p{
+    position: absolute;
+    opacity: 0;
+    color: white;
+    bottom: -100px;
+    text-align: left;
+    padding: 10px;
+    transition: 0.3s ease-in;
+}
+
+ div.grid .recipe .info .btn{
+    opacity: 0;
+    bottom: -20px;
+    width: 60%;
+    height: 30px;
+    left: 60px;
+    position: absolute;
+    text-decoration: none;
+    border: 0px solid;
+    color: #000000;
+    background-color: #ffffffa1;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    pad: 0.5rem 1rem;
+    transition: 0.3s ease-in;
+}
+
+div.grid .recipe:hover > img.coverImg{
+    filter: blur(1px);
+    transform: scale(1.5) rotate(10deg);
+    height: 100%;
+    width: 100%;
+}
+
+ div.grid .recipe:hover .info h3 {
+    opacity: 1;
+    top: 35%;
+    text-align: 10%;
+    transform: scale(1.1);
+}
+
+ div.grid .recipe:hover .info h5 {
+    opacity: 0;
+}
+
+div.grid .recipe:hover .info p{
+    opacity: 1;
+    top: 50%;
+}
+
+div.grid .recipe:hover .info{
+    transition: 0.3s ease-in;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+div.grid .recipe:hover .info .btn{
+    opacity: 1;
+    bottom: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .page main div.grid{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        row-gap: 1.25rem;
+        align-items: center;
+    }
+}
+
+
+.favorite_button {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    padding: 7px;
+    margin: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+
+
+div.grid .recipe .info .btn:hover {
+    background-color: #ffffffe5;
+}
+
+div.grid .recipe .edit {
+    display: none;
+    width: 30px;
+    height: 90px;
+    position: absolute;
+    z-index: 15;
+    top: 5px;
+    left: 15px;
+    
+}
+
+
+div.grid .recipe .edit img.deleteRecipe, div.grid .recipe .edit img.editRecipe {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}

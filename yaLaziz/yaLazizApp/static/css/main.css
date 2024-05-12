@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Caveat:wght@400..700&family=Chivo:ital,wght@0,100..900;1,100..900&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+:root{
+    --backgroundColor: hsl(217, 43%, 92%);
+    --mainColor: #E8751A;
+    --secColor: #FDA403;
+    --textColor: var(--grey-900);
+    --max-width: 1120px;
+    --fixed-width: 600px;
+    --grey-900: #0f172a;
+    --navColor:#231336; 
+    /*--------------*/
+    --clr-primary: #d50000;
+    --clr-primary-hover: #29e6a7;
+    --clr-primary-dark: #039d69;
+    --clr-gray100: #f0f7f8;
+    --clr-gray200: #cfd8dc;
+    --clr-gray300: #a7b7be;
+    --clr-gray400: #6b7e86;
+    --clr-gray500: #425a65;
+}
+.yaLaziz{
+    grid-area: laziz;
+    height: 60vh;
+    width: 90%;
+    margin: 4rem;
+    border-radius: 6px;
+    position: relative;
+    top: 0.2rem;
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+.welcome{
+    position: absolute;
+    background: url(../Photos/pexels-katrin-bolovtsova-4050078.jpg) center/cover no-repeat;
+    background-color: rgb(0,0,0,0.4) ;
+    /* background-position: 0px -60px; */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.4s;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yaLaziz:hover .welcome{
+    background-color: rgb(0,0,0,0.4);
+    transform: rotate(5deg) scale(1.2) translateY(-2px);
+    background: url(../Photos/pexels-yaroslav-shuraev-8851929.jpg) center/cover no-repeat;
+}
+.yaLaziz:hover{
+    background: url(../Photos/pexels-katrin-bolovtsova-4050078.jpg) center/cover no-repeat;
+    opacity: 0.8;
+}
+.yaLaziz:hover .welcomeTxt h1{
+    transform: scale(1.2);
+}
+.yaLaziz:hover .welcomeTxt h4{
+    transform: scale(1.1);
+}
+.welcomeTxt{
+    text-align: center;
+    transition: 0.4s;
+}
+.welcomeTxt h1{
+    color: #fe5d00;
+    font-family: "Alkatra", system-ui;
+    font-size: 55px;
+    transition: 0.3s;
+}
+.welcomeTxt h4{
+    color: white;
+    font-family: "Alkatra", system-ui;
+    font-size: 20px;
+    transition: 0.4s;
+}
+button,a{
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.adminContainer{
+    display: none;
+}
+.adminAccess {
+    position: absolute; /* Position the adminAccess div absolutely */
+    top: 0; /* Align to the top of the card */
+    z-index: 1; /* Ensure it's positioned in front of other elements */
+    display: flex;
+    align-items: center;
+}
+
+.adminAccess button{
+    padding: 1.5rem;
+}
+
+/*-----------------------------------*/
+.firstTitle{
+    position: relative;
+    /* margin-bottom: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    margin: 30px;
+}
+.firstTitle h1{
+    margin-bottom: 20px;
+}
+.underline{
+    width: 150px;
+    height: 6px;
+    background-color: var(--mainColor);
+    color: var(--mainColor);
+    position: absolute;
+    /* top: 70px; */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.firstTitle:hover .underline{
+    width: 250px;
+}
+/*-----------------------------------*/
+
+.splitContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    max-height: 1000px;
+    height: 500px;
+    width: 100%;
+    margin-top: 50px;
+    background-image: url(https://static.pexels.com/photos/76093/pexels-photo-76093.jpeg);
+	/* background-position: top; */
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y:60px;
+    border-radius: 0 15px 15px 0;
+    transition: 0.4s;
+    
+  }
+  
+ .Scontainer {
+    position: relative;
+    width: 100%;
+    transition: 0.4s;
+  }
+  
+#hSplit{
+    position: absolute;
+    text-align: left;
+    top: 35%;
+    left: 10%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.329);
+    border-radius: 5px;
+    padding: 5px;
+    font-family: "Alkatra", system-ui;
+}
+#txt {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 80%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    
+  }
+#dan{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 22%;
+    padding: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    font-family: "Alkatra", system-ui;
+    
+}
+.splitContainer:hover .Scontainer{
+    transform: scale(1.1) translateX(-10px);
+}
+.splitContainer:hover{
+    border-radius: 0 200px 200px 0;
+    width: 90%;
+    background-position-y: 80px;
+}
+
+.new {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* background-color: #f8f9fa; */
+    /* background-color: #C68484; */
+    background: linear-gradient(to right, #214660, #831536,#011535);
+    /* padding: 2px; */
+    border-radius: 10px 10px 120px 120px;
+    border-radius: 250px 250px 5px 5px;
+    border-radius: 25px;
+    box-shadow: 5px 3px 50px rgba(0, 0, 0, 0.688);
+    margin-right: 10px;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    transition: 0.4s;
+  }
+
+  
+  .title h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+  }
+.newRecipe{
+    /* background: linear-gradient(to bottom, #5F0F40, #FB8B24); */
+    /* background: url("../Photos/pexels-photograph-6741013.jpg"); */
+    background-size: cover;
+	background-repeat: no-repeat;
+    background-position: center;
+    min-height: max-content;
+    /* box-shadow: 5px 25px 20px black; */
+    padding: 55px;
+    width: 85%;
+    margin: auto;
+    border-radius: 150px 150px 5px 5px;
+    transition: 0.5s;
+    border: 4px var(--navColor) solid;
+}
+
+.temp{
+    position: absolute;
+    width: 20%;
+    height: 40%;
+    background-color: #D24545;
+    top: -40px;
+    border-radius: 300px 300px 0 0;
+}
+
+
+.discover{
+    margin-top: 100px;
+    transition: 0.4s;
+}
+.discover:hover .newRecipe{
+    transition: 0.4s;
+    background-color:#011535;
+}
+.discover:hover .new{
+    transition: 0.4s;
+    border-radius: 250px 250px 5px 5px;
+}
+.new .title h1{
+    color: var(--backgroundColor);
+}
+
+
+
+
+
+
+.splitContainer1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    max-height: 1500px;
+    height: 800px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 90px;
+    background-image: url("../Photos/pexels-ella-olsson-1640774.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+    background-position: center;
+    /* background-position-y:60px; */
+    border-radius: 0 15px 15px 0;
+    border-top: 2px inset var(--clr-gray500);
+    border-bottom: 2px inset var(--clr-gray500);
+    transition: 0.4s;
+    
+}
+.Scontainer1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transition: 0.4s;
+  }
+
+  #hSplit1{
+    position: absolute;
+    text-align: left;
+    /* top: 10%; */
+    /* left: 10%; */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.329);
+    border-radius: 5px;
+    padding: 5px;
+    transform: translateY(-150px);
+    margin: auto;
+    font-family: "Alkatra", system-ui;
+}
+#txt1 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 50%;
+    padding: 20px;
+    background-color: rgba(2, 8, 88, 0.4);
+    border-radius: 5px;
+    font-family: "Alkatra", system-ui;
+    font-size: larger;
+  }
+#dan1{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 22%;
+    padding: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+
+

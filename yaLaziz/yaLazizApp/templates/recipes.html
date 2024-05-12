@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "index.html" %}  
+{% load static %}
+    {% block main %}      
+            <div class="title">
+                <h1>All Laziz Recipes</h1>
+            </div>
+            <div class="grid" id="recipesGrid">
+
+            </div>
+    {% endblock %}
+    {%block scripts %}
+        <script src="{% static "js/main.js" %}"></script>
+        <script src="{% static "js/recipes.js" %}"></script>
+        <script src="{%static "js/technicalButtons.js"%}"></script>
+    {%endblock%}
