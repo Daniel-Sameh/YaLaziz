@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 {% extends "index.html" %}  
 {% load static %}
+{%block additionalLinks%}
+    <title>All Recipes</title>
+    <link rel="stylesheet" href="{% static "css/cards.css"%}">
+{%endblock%}
     {% block main %}      
             <div class="title">
                 <h1>All Laziz Recipes</h1>
