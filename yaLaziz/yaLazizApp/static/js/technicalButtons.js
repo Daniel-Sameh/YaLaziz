@@ -84,7 +84,7 @@ viewButton.forEach((button) => {
       if (allRecipe[i].recipeId == clickedCard) {
         const clickedRecipeDetail = allRecipe[i].recipeDetail;
         localStorage.setItem("tmpRecipeDetail", clickedRecipeDetail);
-        location.href = "../recipe_detail.html";
+        location.href = "/recipe_detail/";
         break;
       }
     }
@@ -100,7 +100,7 @@ recipeLinkBtnMain.forEach((button) => {
       if (allRecipe[i].recipeId == clickedCard) {
         const clickedRecipeDetail = allRecipe[i].recipeDetail;
         localStorage.setItem("tmpRecipeDetail", clickedRecipeDetail);
-        location.href = "recipe_detail.html";
+        location.href = "/recipe_detail/";
         break;
       }
     }

@@ -10,7 +10,11 @@ def index(request):
 
 def recipes(request):
     template = loader.get_template('recipes.html')
-    return HttpResponse(template.render())
+    context= {
+        'title' : "All Laziz",
+        'Recipes': Recipe.objects.all()
+    }
+    return HttpResponse(template.render(context, request))
 
 def about(request):
     template= loader.get_template('about.html')
@@ -44,65 +48,72 @@ def signupUser(request):
     # return HttpResponse(template.render())
 
 def breakfast(request):
-    template= loader.get_template('catagories.html')
+    template= loader.get_template('recipes.html')
     context= {
-        'category':"breakfast",
-        'recipes': [25,36,11,0,1]
-    }
-    return HttpResponse(template.render(context, request))
-
-def ramadan(request):
-    template= loader.get_template('catagories.html')
-    context= {
-        'category':"ramadan",
-        'recipes': [25,36,11,0,1]
-    }
-    return HttpResponse(template.render(context, request))
-
-def christmas(request):
-    template= loader.get_template('catagories.html')
-    context= {
-        'category':"christmas",
-        'recipes': [25,36,11,0,1]
-    }
-    return HttpResponse(template.render(context, request))
-
-def summer(request):
-    template= loader.get_template('catagories.html')
-    context= {
-        'category':"summer",
-        'recipes': [25,36,11,0,1]
+        'title':"breakfast",
+        'Recipes': Recipe.objects.filter(category="breakfast")
     }
     return HttpResponse(template.render(context, request))
 
 def lunch(request):
-    template= loader.get_template('catagories.html')
+    template= loader.get_template('recipes.html')
     context= {
-        'category':"lunch",
-        'recipes': [25,36,11,0,1]
+        'title':"lunch",
+        'Recipes': Recipe.objects.filter(category="lunch")
     }
     return HttpResponse(template.render(context, request))
 
 def dinner(request):
-    template= loader.get_template('catagories.html')
+    template= loader.get_template('recipes.html')
     context= {
-        'category':"dinner",
-        'recipes': [25,36,11,0,1]
+        'title':"dinner",
+        'Recipes': Recipe.objects.filter(category="dinner")
     }
     return HttpResponse(template.render(context, request))
 
 def desserts(request):
-    template= loader.get_template('catagories.html')
+    template= loader.get_template('recipes.html')
     context= {
-        'category':"desserts",
-        'recipes': [25,36,11,0,1]
+        'title':"desserts",
+        'Recipes': Recipe.objects.filter(category="desserts")
     }
     return HttpResponse(template.render(context, request))
 
 def drinks(request):
-    template= loader.get_template('catagories.html')
+    template= loader.get_template('recipes.html')
     context= {
-        'category':"drinks",
-        'recipes': [25,36,11,0,1]
+        'title':"drinks",
+        'Recipes': Recipe.objects.filter(category="drinks")
+    }
+    return HttpResponse(template.render(context, request))
+
+def ramadan(request):
+    template= loader.get_template('recipes.html')
+    context= {
+        'title':"ramadan",
+        'Recipes': Recipe.objects.filter(season="ramadan")
+    }
+    return HttpResponse(template.render(context, request))
+
+def christmas(request):
+    template= loader.get_template('recipes.html')
+    context= {
+        'title':"christmas",
+        'Recipes': Recipe.objects.filter(season="christmas")
+    }
+    return HttpResponse(template.render(context, request))
+
+def summer(request):
+    template= loader.get_template('recipes.html')
+    context= {
+        'title':"summer",
+        'Recipes': Recipe.objects.filter(season="summer")
+    }
+    return HttpResponse(template.render(context, request))
+
+def recipeDetail(request, id):
+    template= loader.get_template('recipe_detail.html')
+    context= {
+        'Recipe': Recipe.objects.get(id=id)
     }
     return HttpResponse(template.render(context, request))

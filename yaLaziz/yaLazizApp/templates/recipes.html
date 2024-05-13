@@ -1,20 +1,34 @@
 <!DOCTYPE html>
-{% extends "index.html" %}  
+{% extends "index.html" %}
 {% load static %}
 {%block additionalLinks%}
-    <title>All Recipes</title>
-    <link rel="stylesheet" href="{% static "css/cards.css"%}">
+<title>{{title|capfirst}} Recipes</title>
+<link rel="stylesheet" href="{% static 'css/cards.css'%}">
 {%endblock%}
-    {% block main %}      
-            <div class="title">
-                <h1>All Laziz Recipes</h1>
-            </div>
-            <div class="grid" id="recipesGrid">
-                
-            </div>
-    {% endblock %}
-    {%block scripts %}
-        <script src="{% static "js/main.js" %}"></script>
-        <script src="{% static "js/recipes.js" %}"></script>
-        <script src="{%static "js/technicalButtons.js"%}"></script>
-    {%endblock%}
+{% block main %}
+<div class="title">
+    <h1>{{title|capfirst}} Recipes</h1>
+</div>
+<div class="grid" id="recipesGrid">
+    {%for recipe in Recipes %}
+    <div class="recipe">
+        <div class="edit">
+            <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
+            <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
+        </div>
+        <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="${favoriteTitle}" class="favorite_button">
+        <img src=../{{recipe.coverPhoto}} alt="{{recipe.name}}" class="coverImg">
+        <div class="info">
+            <h3>{{recipe.name}}</h3>
+            <h5>&#x23F0; {{recipe.duration}}</h5>
+            <p>The {{recipe.name}} recipe</p>
+            <a href="/recipe_detail/{{recipe.id}}"><button class="btn" id="recipeLinkMain">view Recipe</button></a>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+{% endblock %}
+{%block scripts %}
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{%static 'js/technicalButtons.js'%}"></script>
+{%endblock%}
