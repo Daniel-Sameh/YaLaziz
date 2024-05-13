@@ -7,7 +7,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
-    path('signupUser/', views.signupUser, name='signupUser'),
+    path('signup/signupUser/', views.signupUser, name='signupUser'),
     path('ramadan/', views.ramadan, name='ramadan'),
     path('christmas/', views.christmas, name='christmas'),
     path('summer/', views.summer, name='summer'),
@@ -16,5 +16,7 @@ urlpatterns = [
     path('dinner/', views.dinner, name='dinner'),
     path('drinks/', views.drinks, name='drinks'),
     path('desserts/', views.desserts, name='desserts'),
-    path('recipe_detail/<int:id>', views.recipeDetail, name="recipeDetail")
+    path('recipe_detail/<int:id>', views.recipeDetail, name="recipeDetail"),
+    path('add_recipe/', views.addRecipePage, name="addRecipePage"),
+    path('add_recipe/addRecipe/', views.addRecipe, name="addRecipe")
 ]

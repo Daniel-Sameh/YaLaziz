@@ -51,160 +51,160 @@ const mainImageInput = document.getElementById("rphoto-id");
 mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
 
-submitButton.addEventListener("click", function (e) {
-  if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0 || document.querySelector(".name-info-preview").children.length == 0
-    || document.querySelector(".id-info-preview").children.length == 0
-    || document.querySelector(".fromto-info-preview").children.length == 0
-    || document.querySelector(".image-preview").children.length == 0
-    || document.querySelector(".photo-preview").children.length == 0) {
-    e.preventDefault();
-    var popUp = document.createElement("div");
-    popUp.id = "popUp";
-    popUp.innerHTML =
-      'Please fill all fields and click preview!<button id="popBtn">OK</button>';
-    document.querySelector("main").appendChild(popUp);
-    popUp.style.display = "flex";
-    document.getElementById("popBtn").addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector("main").removeChild(popUp);
-    });
-    return;
-  }
-  e.preventDefault();
-  const reader = recipePhoto.files[0];
-  console.log(reader);
+// submitButton.addEventListener("click", function (e) {
+//   if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0 || document.querySelector(".name-info-preview").children.length == 0
+//     || document.querySelector(".id-info-preview").children.length == 0
+//     || document.querySelector(".fromto-info-preview").children.length == 0
+//     || document.querySelector(".image-preview").children.length == 0
+//     || document.querySelector(".photo-preview").children.length == 0) {
+//     e.preventDefault();
+//     var popUp = document.createElement("div");
+//     popUp.id = "popUp";
+//     popUp.innerHTML =
+//       'Please fill all fields and click preview!<button id="popBtn">OK</button>';
+//     document.querySelector("main").appendChild(popUp);
+//     popUp.style.display = "flex";
+//     document.getElementById("popBtn").addEventListener("click", function (e) {
+//       e.preventDefault();
+//       document.querySelector("main").removeChild(popUp);
+//     });
+//     return;
+//   }
+//   e.preventDefault();
+//   const reader = recipePhoto.files[0];
+//   console.log(reader);
 
-  const recipeName_value = recipeName.value;
-  const recipeId_value = recipeId.value;
+//   const recipeName_value = recipeName.value;
+//   const recipeId_value = recipeId.value;
 
-  for (let i = 0; i < allRecipe.length; i++) {
-    if (allRecipe[i].recipeId == recipeId_value && !id) {
-      // alert("Recipe Id must be Unique!");
-      var popUp = document.createElement("div");
-      popUp.id = "popUp";
-      popUp.innerHTML =
-        'Recipe Id must be Unique!<button id="popBtn">OK</button>';
-      document.querySelector("main").appendChild(popUp);
-      popUp.style.display = "flex";
-      document.getElementById("popBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector("main").removeChild(popUp);
-      });
-      return;
-    }
-  }
+//   for (let i = 0; i < allRecipe.length; i++) {
+//     if (allRecipe[i].recipeId == recipeId_value && !id) {
+//       // alert("Recipe Id must be Unique!");
+//       var popUp = document.createElement("div");
+//       popUp.id = "popUp";
+//       popUp.innerHTML =
+//         'Recipe Id must be Unique!<button id="popBtn">OK</button>';
+//       document.querySelector("main").appendChild(popUp);
+//       popUp.style.display = "flex";
+//       document.getElementById("popBtn").addEventListener("click", function (e) {
+//         e.preventDefault();
+//         document.querySelector("main").removeChild(popUp);
+//       });
+//       return;
+//     }
+//   }
 
-  const fromValue = document.getElementById("rfrom-id").value;
-  const toValue = document.getElementById("rto-id").value;
-  const timeUnit = document.getElementById("to-unit").value;
-  let recipeCategory_value;
-  for (i = 0; i < recipeCategory.length; i++) {
-    if (recipeCategory[i].checked) {
-      recipeCategory_value = recipeCategory[i].value;
-      break;
-    }
-  }
-  let recipeSeason_value;
-  for (i = 0; i < recipeSeason.length; i++) {
-    if (recipeSeason[i].checked) {
-      recipeSeason_value = recipeSeason[i].value;
-      break;
-    }
-  }
-  const recipeDurationValue = fromValue + " to " + toValue + " " + timeUnit;
-  const recipePhoto_value = localStorage.getItem("tempPhoto");
-  const recipeMainPhoto_value = localStorage.getItem("tempMainPhoto");
-  localStorage.removeItem("tempPhoto");
-  localStorage.removeItem("tempMainPhoto");
-  const recipeDetail_value = `
-  <div class="recipeDetail">
-      <div class="detailContainer">
-          <div class="recipeImg">
-              <img src="${recipeMainPhoto_value}" alt="${recipeName_value}">
-              <h1 id="recipe_title">${recipeName_value}</h1>
-              <h4 id="recipe_time">${recipeDurationValue}</h4>
-          </div>
-      </div>
-      <div class="recipeBody">
-          <h2 id="ingredients">&#10149; Ingredients:</h2>
-          <div id="ingredientsText">
-              <ol id="ingredients-list">
-              ${document.getElementById("ingredients-list").innerHTML}
-              </ol>
-          </div>
-          <h2 id="instructions">&#10149; Instructions:</h2>
-          <div id="instructionsText">
-              <ol id="instructions-list">
-              ${document.getElementById("instructions-list").innerHTML}
-              </ol>
-          </div>
-      </div>
-  </div>`;
-  let myRecipe = {
-    recipeName: recipeName_value,
-    recipeId: recipeId_value,
-    recipePhoto: recipePhoto_value,
-    recipeMainPhoto: recipeMainPhoto_value,
-    recipeCategory: recipeCategory_value,
-    recipeSeason: recipeSeason_value,
-    recipeDuration: recipeDurationValue,
-    favoriteState: false,
-    userMadeRecipe: true,
-    recipeDetail: recipeDetail_value,
-    recipeIngredients: document.getElementById("ingredients-list").innerHTML,
-    recipeInstructions: document.getElementById("instructions-list").innerHTML,
-    // ingredients: localStorage.getItem('ingredients'),
-    // instructions: localStorage.getItem('instructions')
-  };
+//   const fromValue = document.getElementById("rfrom-id").value;
+//   const toValue = document.getElementById("rto-id").value;
+//   const timeUnit = document.getElementById("to-unit").value;
+//   let recipeCategory_value;
+//   for (i = 0; i < recipeCategory.length; i++) {
+//     if (recipeCategory[i].checked) {
+//       recipeCategory_value = recipeCategory[i].value;
+//       break;
+//     }
+//   }
+//   let recipeSeason_value;
+//   for (i = 0; i < recipeSeason.length; i++) {
+//     if (recipeSeason[i].checked) {
+//       recipeSeason_value = recipeSeason[i].value;
+//       break;
+//     }
+//   }
+//   const recipeDurationValue = fromValue + " to " + toValue + " " + timeUnit;
+//   const recipePhoto_value = localStorage.getItem("tempPhoto");
+//   const recipeMainPhoto_value = localStorage.getItem("tempMainPhoto");
+//   localStorage.removeItem("tempPhoto");
+//   localStorage.removeItem("tempMainPhoto");
+//   const recipeDetail_value = `
+//   <div class="recipeDetail">
+//       <div class="detailContainer">
+//           <div class="recipeImg">
+//               <img src="${recipeMainPhoto_value}" alt="${recipeName_value}">
+//               <h1 id="recipe_title">${recipeName_value}</h1>
+//               <h4 id="recipe_time">${recipeDurationValue}</h4>
+//           </div>
+//       </div>
+//       <div class="recipeBody">
+//           <h2 id="ingredients">&#10149; Ingredients:</h2>
+//           <div id="ingredientsText">
+//               <ol id="ingredients-list">
+//               ${document.getElementById("ingredients-list").innerHTML}
+//               </ol>
+//           </div>
+//           <h2 id="instructions">&#10149; Instructions:</h2>
+//           <div id="instructionsText">
+//               <ol id="instructions-list">
+//               ${document.getElementById("instructions-list").innerHTML}
+//               </ol>
+//           </div>
+//       </div>
+//   </div>`;
+//   let myRecipe = {
+//     recipeName: recipeName_value,
+//     recipeId: recipeId_value,
+//     recipePhoto: recipePhoto_value,
+//     recipeMainPhoto: recipeMainPhoto_value,
+//     recipeCategory: recipeCategory_value,
+//     recipeSeason: recipeSeason_value,
+//     recipeDuration: recipeDurationValue,
+//     favoriteState: false,
+//     userMadeRecipe: true,
+//     recipeDetail: recipeDetail_value,
+//     recipeIngredients: document.getElementById("ingredients-list").innerHTML,
+//     recipeInstructions: document.getElementById("instructions-list").innerHTML,
+//     // ingredients: localStorage.getItem('ingredients'),
+//     // instructions: localStorage.getItem('instructions')
+//   };
 
-  if (id) {
-    let arrIdx;
-    for (let i = 0; i < allRecipe.length; i++) {
-      if (allRecipe[i].recipeId == id) {
-        arrIdx = i;
-        console.log("found " + i);
-        break;
-      }
-    }
-    if (arrIdx >= 0) {
-      allRecipe[arrIdx] = myRecipe;
-      localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-      var popUp = document.createElement("div");
-      popUp.id = "popUp";
-      popUp.innerHTML =
-        'Your Recipe is edited successfully!<button id="popBtn">Done</button>';
-      document.querySelector("main").appendChild(popUp);
-      popUp.style.display = "flex";
-      document.getElementById("popBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector("main").removeChild(popUp);
-        location.href = "recipes.html";
-      });
-    }
-  } else {
-    allRecipe.push(myRecipe);
-    localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-    var popUp = document.createElement("div");
-    popUp.id = "popUp";
-    popUp.innerHTML =
-      'Your Recipe is added successfully!<button id="popBtn">Done</button>';
-    document.querySelector("main").appendChild(popUp);
-    popUp.style.display = "flex";
-    document.getElementById("popBtn").addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector("main").removeChild(popUp);
-      location.href = "recipes.html";
-    });
-  }
-
-
+//   if (id) {
+//     let arrIdx;
+//     for (let i = 0; i < allRecipe.length; i++) {
+//       if (allRecipe[i].recipeId == id) {
+//         arrIdx = i;
+//         console.log("found " + i);
+//         break;
+//       }
+//     }
+//     if (arrIdx >= 0) {
+//       allRecipe[arrIdx] = myRecipe;
+//       localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+//       var popUp = document.createElement("div");
+//       popUp.id = "popUp";
+//       popUp.innerHTML =
+//         'Your Recipe is edited successfully!<button id="popBtn">Done</button>';
+//       document.querySelector("main").appendChild(popUp);
+//       popUp.style.display = "flex";
+//       document.getElementById("popBtn").addEventListener("click", function (e) {
+//         e.preventDefault();
+//         document.querySelector("main").removeChild(popUp);
+//         // location.href = "recipes.html";
+//       });
+//     }
+//   } else {
+//     allRecipe.push(myRecipe);
+//     localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+//     var popUp = document.createElement("div");
+//     popUp.id = "popUp";
+//     popUp.innerHTML =
+//       'Your Recipe is added successfully!<button id="popBtn">Done</button>';
+//     document.querySelector("main").appendChild(popUp);
+//     popUp.style.display = "flex";
+//     document.getElementById("popBtn").addEventListener("click", function (e) {
+//       e.preventDefault();
+//       document.querySelector("main").removeChild(popUp);
+//       // location.href = "recipes.html";
+//     });
+//   }
 
 
 
 
-  // localStorage.removeItem('ingredients');
-  // localStorage.removeItem('instructions');
-});
+
+
+//   // localStorage.removeItem('ingredients');
+//   // localStorage.removeItem('instructions');
+// });
 
 // let ingredientsArr= new Array();
 // if(localStorage.getItem('ingredients')){

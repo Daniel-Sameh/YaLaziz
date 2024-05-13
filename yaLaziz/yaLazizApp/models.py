@@ -21,5 +21,8 @@ class Favorite(models.Model):
     userId= models.ForeignKey(User, on_delete=models.CASCADE)
     recipeId= models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
-
-
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+    quantity = models.IntegerField()
+    unit = models.CharField(max_length=20)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')

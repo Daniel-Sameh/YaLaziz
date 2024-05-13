@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import User, Recipe, Favorite
+from .models import User, Recipe, Favorite, Ingredient
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_protect
 
 def index(request):
     template= loader.get_template('index.html')
@@ -20,27 +21,33 @@ def about(request):
     template= loader.get_template('about.html')
     return HttpResponse(template.render())
 
+@csrf_protect
 def login(request):
     template= loader.get_template('login.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render({}, request))
 
+@csrf_protect
 def signup(request):
     template= loader.get_template('sign.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render({}, request))
 
+@csrf_protect
 def signupUser(request):
     username= request.POST['username']
     email= request.POST['Email']
     password= request.POST['password']
     confirmPassword= request.POST['confirmPassword']
-    # isAdmin= request.POST['type']
+    userType= request.POST.get('type')
+    IsAdmin = False
+    if userType == 'Admin':
+        IsAdmin = True
     if password== confirmPassword:
-        newUser= User(username=username, email=email,password=password )
+        newUser= User(username=username, email=email,password=password, isAdmin = IsAdmin)
         newUser.save()
         return HttpResponseRedirect(reverse('login'))
     
     template= loader.get_template('index.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render({}, request))
 
 
     # print(request)
@@ -114,6 +121,33 @@ def summer(request):
 def recipeDetail(request, id):
     template= loader.get_template('recipe_detail.html')
     context= {
-        'Recipe': Recipe.objects.get(id=id)
+        'Recipe': Recipe.objects.get(id=id),
+        # 'ingredients' : Recipe.ingredients.all().order_by('id'),
     }
     return HttpResponse(template.render(context, request))
+
+def addRecipePage(request):
+    template = loader.get_template('add_recipe.html')
+    return HttpResponse(template.render({}, request))
+
+@csrf_protect
+def addRecipe(request):
+    recipeName = request.POST['recipe name']
+    recipeCoverPhoto = "static/Photos/" + request.POST['recipe cover image']
+    recipeMainPhoto = "static/Photos/" + request.POST['recipe main image']
+    recipeDurationFrom = request.POST['duration from']
+    recipeDurationTo = request.POST['duration to']
+    recipeTimeUnit = request.POST.get('time-unit')
+    recipeDuration = recipeDurationFrom + " to " + recipeDurationTo + " " + recipeTimeUnit
+    recipeCategory = request.POST.get('meal')
+    recipeSeason = request.POST.get('occasion')
+    recipe = Recipe(name = recipeName, 
+                    coverPhoto = recipeCoverPhoto,
+                    mainPhoto = recipeMainPhoto,
+                    duration = recipeDuration,
+                    category = recipeCategory,
+                    season = recipeSeason,
+                    userId = User.objects.get(id=1))
+    recipe.save()
+    return HttpResponseRedirect(reverse('recipes'))
+    

@@ -17,7 +17,14 @@
     <div class="recipeBody">
         <h2 id="ingredients">&#10149; Ingredients:</h2>
         <div id="ingredientsText">
-
+            <ol id="ingredients-list">
+            <!-- {%for ingredient in ingredients %}
+            <li>
+                {{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}} 
+                <button class="Remove-button"><i class="fa-solid fa-trash"></i></button>
+            </li>
+            {% endfor%} -->
+            </ol>
         </div>
         <h2 id="instructions">&#10149; Instructions:</h2>
         <div id="instructionsText">
