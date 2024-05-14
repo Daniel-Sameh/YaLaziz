@@ -6,6 +6,8 @@ class User(models.Model):
     password = models.CharField(max_length=100)
     isAdmin = models.BooleanField(default=False)
     userphoto=models.ImageField(upload_to='static/Photos/')
+
+
     # def __str__(self) -> str:
     #     return f"{self.username}"
 

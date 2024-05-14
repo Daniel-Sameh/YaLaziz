@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.template import loader
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import User, Recipe, Favorite, Ingredient
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
+
 
 def index(request):
     template= loader.get_template('index.html')
@@ -46,13 +47,24 @@ def signupUser(request):
         newUser.save()
         return HttpResponseRedirect(reverse('login'))
     
-    template= loader.get_template('index.html')
-    return HttpResponse(template.render({}, request))
+    # template= loader.get_template('index.html')
+    # return HttpResponse(template.render({}, request))
 
+@csrf_protect
+def loginUser(request):
+    username= request.POST.get('username')
+    password= request.POST.get('password')
+    usernameResult= User.objects.filter(username=username)
+    passResult= User.objects.filter(username=username,password=password)
+    if not usernameResult.exists():
+            return JsonResponse({'message':'wrongUsername'})
+    elif passResult.exists():
+            return JsonResponse({'message':'success'})
+    else:
+        return JsonResponse({'message':'wrongPassword'})
+    
+    
 
-    # print(request)
-    # template= loader.get_template('login.html')
-    # return HttpResponse(template.render())
 
 def breakfast(request):
     template= loader.get_template('recipes.html')
@@ -164,8 +176,3 @@ def editAcc(request):
 def editedAcc(request):
     pass
 
-
-
-    # print(request)
-    # template= loader.get_template('login.html')
-    # return HttpResponse(template.render())
