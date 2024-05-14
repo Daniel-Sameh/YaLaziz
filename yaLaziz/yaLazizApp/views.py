@@ -150,4 +150,22 @@ def addRecipe(request):
                     userId = User.objects.get(id=1))
     recipe.save()
     return HttpResponseRedirect(reverse('recipes'))
-    
+
+def myAcc(request):
+   template= loader.get_template('my account.html')
+   return HttpResponse(template.render({}, request))
+
+@csrf_protect
+def editAcc(request):
+  template= loader.get_template('edit acc.html')
+  return HttpResponse(template.render({}, request))  
+
+@csrf_protect
+def editedAcc(request):
+    pass
+
+
+
+    # print(request)
+    # template= loader.get_template('login.html')
+    # return HttpResponse(template.render())
