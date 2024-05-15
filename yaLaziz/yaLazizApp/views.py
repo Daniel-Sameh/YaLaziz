@@ -8,6 +8,17 @@ from django.views.decorators.csrf import csrf_protect
 
 def index(request):
     template= loader.get_template('index.html')
+    # if request.method=='POST':
+    #     context= {
+    #         'Account':request.POST.get('account'),
+    #         'id':request.POST.get('id')
+    #     }
+    #     return 
+    # else:
+    #     context= {
+    #         'Account':'Account',
+    #         'id':'loginFirst'
+    #     }
     return HttpResponse(template.render())
 
 def recipes(request):
@@ -55,11 +66,11 @@ def loginUser(request):
     username= request.POST.get('username')
     password= request.POST.get('password')
     usernameResult= User.objects.filter(username=username)
-    passResult= User.objects.filter(username=username,password=password)
+    passResult= User.objects.filter(username=username,password=password) #the problem is here!
     if not usernameResult.exists():
-            return JsonResponse({'message':'wrongUsername'})
+        return JsonResponse({'message':'wrongUsername'})
     elif passResult.exists():
-            return JsonResponse({'message':'success'})
+        return JsonResponse({'message':'success','username':username,'id':passResult.id})
     else:
         return JsonResponse({'message':'wrongPassword'})
     
