@@ -39,38 +39,41 @@ const showMenu = (toggleId, navId) => {
   
   //Account Details:
   var username = getData("username");
-  var isSignned = getData("sign");
-  if (username && isSignned) {
-    document.querySelector(".account").firstChild.innerHTML = username;
-    document.querySelector(".account").firstChild.style =
-      "text-decoration:underline;";
-  }
+  //var isSignned = getData("sign");
+  // if (username && isSignned) {
+  //   document.querySelector(".account").firstChild.innerHTML = username;
+  //   document.querySelector(".account").firstChild.style =
+  //     "text-decoration:underline;";
+  // }
   
-  if (isSignned) {
+  if (isSigned) {
     document.querySelector(".logout").style.display = "flex";
   
     document.querySelector(".logout").style.alignItems = "center";
     document.querySelector(".login").style.display = "none";
     document.querySelector(".sign_up").style.display = "none";
+    document.querySelector(".account").firstChild.style =
+      "text-decoration:underline;";
   }
   //----------------------------------------------------------------
   
   // Admin
   // var isAdmin = getData("admin");
-  // if (isAdmin == "true" && isSignned) {
-  //   document.querySelector(".addRecipe").style.display = "flex";
-  //   var cards = document.querySelectorAll(".recipe");
-  //   cards.forEach(function (card) {
-  //     // Get the adminContainer within each card
-  //     var adminContainer = card.querySelector(".edit");
-  //     adminContainer.style.display = "flex";
-  //   });
-  //   console.log("admin is true!");
-  // } else {
-  //   // let adminControl= document.querySelector('.adminContainer');
-  //   // adminControl.style.display='none';
-  //   console.log("admin is null!");
-  // }
+  console.log("Mayteen el Admin= ", isAdmin);
+   if (isAdmin && isSigned) {
+     document.querySelector(".addRecipe").style.display = "flex";
+     var cards = document.querySelectorAll(".recipe");
+     cards.forEach(function (card) {
+       // Get the adminContainer within each card
+       var adminContainer = card.querySelector(".edit");
+       adminContainer.style.display = "flex";
+     });
+     console.log("admin is true!");
+   } else {
+     // let adminControl= document.querySelector('.adminContainer');
+     // adminControl.style.display='none';
+     console.log("admin is null!");
+   }
   
   //-----------------------------------------------------------------------
   
@@ -97,9 +100,29 @@ const showMenu = (toggleId, navId) => {
       document.querySelector(".sign_up").style.display = "flex";
       // resetData();
       saveData('sign', "");
-      const Href = document.getElementById("indexHref").getAttribute("href");
-  
-      location.href = Href;
+      //const Href = document.getElementById("indexHref").getAttribute("href");
+      //location.href = Href;
+
+      var xhr = new XMLHttpRequest();
+      // xhr.open('POST', '/logout');
+      // xhr.setRequestHeader('Content-Type', 'application/json');
+      // xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken')); // Ensure to include CSRF token
+
+      xhr.onload = function() {
+           if (xhr.status === 200) {
+               // Redirect to index page or perform any other action upon successful logout
+               window.location.href = '/'; // Redirect to index page
+           } else {
+               console.error('Error logging out:', xhr.statusText);
+           }
+       };
+
+      // xhr.onerror = function() {
+      //     console.error('Error logging out:', xhr.statusText);
+      // };
+      xhr.open("GET","/logout/",true);
+      xhr.send();
+
     });
     document.getElementById("cancel").addEventListener("click", function (e) {
       e.preventDefault();
@@ -120,7 +143,7 @@ const showMenu = (toggleId, navId) => {
   
   document.querySelector(".account").addEventListener("click", function (event) {
     event.preventDefault();
-    if (!isSignned) {
+    if (!isSigned) {
       var popUp = document.createElement("div");
       popUp.id = "popUp";
       popUp.innerHTML =

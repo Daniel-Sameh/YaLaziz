@@ -9,16 +9,16 @@ document.addEventListener('submit', function (event) {
     var formData = new FormData(form);
 
     // Get the CSRF token from the CSRF input field in the form
-    var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+    //var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/login/loginUser/', true);
-    xhr.setRequestHeader('X-CSRFToken', csrfToken);  // Set the CSRF token header
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
+    var xml = new XMLHttpRequest();
+    xml.open("POST", "loginUser/", true);
+    xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xml.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));  // Set the CSRF token header
+    xml.onreadystatechange = function() {
+        if (xml.readyState == 4) {
+            if (xml.status == 200) {
+                var response = JSON.parse(xml.responseText);
                 if (response.message === 'success') {
                     saveData('sign', true);
                     document.querySelector('.logout').style.display = 'flex';
@@ -28,12 +28,12 @@ document.addEventListener('submit', function (event) {
                     document.querySelector('.account').firstChild.innerHTML = `<a href="/myaccount/${response.id}" class="navLink">${response.username}</a>`;
                     document.querySelector('.account').firstChild.style = 'text-decoration:underline;';
                     location.href = "/";
-                } else if (response.message === 'wrongUsername') {
+                } else if (response.message == 'wrongUsername') {
                     checkp.innerHTML = "*Wrong Username, Try Again";
                     checkp.style.display = "block";
                     document.getElementById('UserName').style.border = "2px solid red";
                     document.getElementById('UserName').style.borderRadius = "40px";
-                } else if (response.message === 'wrongPassword') {
+                } else if (response.message == 'wrongPassword') {
                     checkp.innerHTML = "*Wrong Password, Try Again";
                     checkp.style.display = "block";
                     document.getElementById('Pass').style.border = "2px solid red";
@@ -46,5 +46,24 @@ document.addEventListener('submit', function (event) {
         }
     };
     var encodedData = 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password);
-    xhr.send(encodedData);
+    console.log('Sending POST request with data:', encodedData);
+    xml.send(encodedData);
+    return false;
 });
+
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}

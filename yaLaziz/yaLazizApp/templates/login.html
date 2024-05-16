@@ -8,7 +8,7 @@
 {%block main%}
 <div class="block">
     <h1>Login</h1>
-    <form action="/login/loginUser/" method="post" id="login-form">
+    <form method="post" id="login-form">
         {% csrf_token %}
         <div id="Username" class="input-box">
             <input type="text" placeholder="Username" id="UserName" required name='username'>

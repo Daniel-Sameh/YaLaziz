@@ -1,12 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class User(models.Model):
-    username= models.CharField(max_length=255)
-    email = models.EmailField(max_length=255)
-    password = models.CharField(max_length=100)
+class User(AbstractUser):
+    # username= models.CharField(max_length=255)
+    # email = models.EmailField(max_length=255)
+    # password = models.CharField(max_length=100)
     isAdmin = models.BooleanField(default=False)
-    userphoto=models.ImageField(upload_to='static/Photos/')
-
+    userphoto=models.ImageField(upload_to='static/Photos/', default='static/Photos/acc pic.png')
+    last_login = models.DateTimeField(null=True, blank=True)
 
     # def __str__(self) -> str:
     #     return f"{self.username}"
@@ -29,3 +30,7 @@ class Ingredient(models.Model):
     quantity = models.IntegerField()
     unit = models.CharField(max_length=20)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
+
+class Instruction(models.Model):
+    details= models.CharField(max_length=255)
+    recipe= models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='instructions')

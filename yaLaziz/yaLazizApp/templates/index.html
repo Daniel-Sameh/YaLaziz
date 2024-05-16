@@ -68,10 +68,16 @@
                             <input type="text" placeholder="search" id="searchForm">
                             <button type="submit" id="searchBtn">&#128269;</button>
                         </li>
-                        <li class="account"><a href="/myaccount/{{id}}" class="navLink">{{Account}}</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="account"><a href="/myaccount/{{user.id}}" class="navLink">{{user.username}}</a></li>
+                        {% else %}
+                        <li class="account"><a class="navLink">Account</a></li>
+                        {% endif %}
+                        
                         <li class="login"><button><a href="/login" class="navLink">Login</a></button></li>
                         <li class="sign_up"><button><a href="/signup" class="navLink">Sign Up</a></button></li>
-                        <li class="logout"><button><a href="/logout" class="navLink">Log Out</a></button></li>
+                        <li class="logout"><button><a  class="navLink">Log Out</a></button></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -156,6 +162,13 @@
         </footer>
     </div>
 
+    <script>
+        var isAdmin = {{ isAdmin|yesno:"true,false" }};
+        var isSigned = {{ isSigned|yesno:"true,false" }};
+
+        console.log('isAdmin:', isAdmin);
+        console.log('isSigned:', isSigned);
+    </script>
     {%block scripts %}
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>

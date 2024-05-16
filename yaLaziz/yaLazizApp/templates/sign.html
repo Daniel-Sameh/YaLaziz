@@ -7,7 +7,7 @@
 {%endblock%}
     {%block main%}
             <div class="block">
-                <form action="signupUser/" method="post" id="signupForm">
+                <form method="post" id="signupForm">
                     {% csrf_token %}
                     <h1>Sign Up</h1>
                     <div id="Username" class="input-box">
@@ -39,6 +39,6 @@
 
     {%endblock%}   
 {%block scripts%}
-    {% comment %} <script src="{%static 'js/main.js'%}"></script> {% endcomment %}
-    {% comment %} <script src="{%static 'js/sign.js'%}"></script> {% endcomment %}
+    <script src="{%static 'js/main.js'%}"></script>
+    <script src="{%static 'js/sign.js'%}"></script>
 {%endblock%}

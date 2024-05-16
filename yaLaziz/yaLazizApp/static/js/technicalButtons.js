@@ -8,7 +8,7 @@ favoriteButtons.forEach((button) => {
   button.addEventListener("click", function () {
     console.log("clicked");
 
-    if (!isSignned) {
+    if (!isSigned) {
       // alert("You Have to Login First!");
       var popUp = document.createElement("div");
       popUp.id = "popUp";
@@ -158,7 +158,7 @@ deleteButtons.forEach(function (button) {
 // Admin :
 
 var isAdmin = getData("admin");
-if (isAdmin == "true" && isSignned) {
+if (isAdmin == "true" && isSigned) {
   document.querySelector(".addRecipe").style.display = "flex";
   var cards = document.querySelectorAll(".recipe");
   cards.forEach(function (card) {
