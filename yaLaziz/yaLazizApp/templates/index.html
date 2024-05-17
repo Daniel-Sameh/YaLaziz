@@ -168,6 +168,8 @@
 
         console.log('isAdmin:', isAdmin);
         console.log('isSigned:', isSigned);
+        const userId = "{{ request.user.id }}";
+        console.log('Authenticated User ID:', userId);
     </script>
     {%block scripts %}
     <script src="{% static 'js/main.js' %}"></script>

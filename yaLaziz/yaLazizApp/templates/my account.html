@@ -10,11 +10,11 @@
         <main>
             <div class="header">
                 <div class="userPhoto">
-                    <img id="ph" class="photo" src="{% static 'Photos/acc pic.png' %}" alt="Account Photo">
+                    <img id="ph" class="photo" src="{% static user.userPhoto %}" alt="Account Photo">
                 </div>
                 <div class="container">
                     <div class="userName">
-                        <h3 class="user">User name</h3>
+                        <h3 class="user">{{user.username|capfirst}}</h3>
                     </div>
                     <a href="{% url 'editAcc' %}">
                         <button class="editButton">edit account</button>
@@ -26,7 +26,7 @@
                     <div class="add">
                         <h1 class="added">Your recipes</h1>
                         <div class="grid" id="userGrid">
-
+                            
                         </div>
                     </div>
 

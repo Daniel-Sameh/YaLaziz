@@ -23,4 +23,7 @@ urlpatterns = [
     path('add_recipe/addRecipe/', views.addRecipe, name="addRecipe"),
     path('account/',views.myAcc,name="myAcc"),
     path('edit_account/',views.editAcc,name="editAcc"),
+    path('api/favorites/add/',views.addToFav,name='addToFav'),
+    path('api/favorites/delete/',views.delFromFav,name='delFromFav'),
+    path('api/recipes/', views.get_all_recipes, name='get-all-recipes'),
 ]
