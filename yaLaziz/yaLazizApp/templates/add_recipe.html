@@ -3,6 +3,7 @@
 {% load static %}
 {% block additionalLinks%}
 <link rel="stylesheet" href="{% static 'css/add_recipe.css'%}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Add Recipe</title>
 {%endblock%}
 {% block main%}
@@ -10,7 +11,10 @@
     <div class="all-container">
         <div class="left">
             <h1>ADD A NEW RECIPE</h1>
-            <form class="add-form" action="addRecipe/" method="post">
+            <!-- action="addRecipe/"
+            onsubmit="return Ajax_Ing_Ins();"" -->
+            <!-- action="addRecipe/" method="post" onsubmit="return Ajax_Ing_Ins();" -->
+            <form class="add-form" id="ADDFORM" method="post" >
                 {%csrf_token%}
                 <div class="recipe-info">
                     <h2>Recipe Info</h2>
@@ -128,8 +132,8 @@
                     </div>
                 </div>
                 <!-- <button  class="submit-btn">Submit</button> -->
-                <button type="submit" class="submit-btn">Submit</button>
-                <!--when adding type-submit css goes crazy-->
+                <button type="submit" id="xyz" class="submit-btn">Submit</button>
+                <!--if smth is wrong make it type submit-->
             </form>
         </div>
         <div class="right">

@@ -163,18 +163,16 @@ deleteButtons.forEach(function (button) {
   button.addEventListener("click", function (event) {
     event.preventDefault();
 
-    // Ask for confirmation before deleting
-    // var result = confirm("Are you sure you want to delete this recipe?");
     var popUp = document.createElement("div");
     popUp.id = "popUp";
     popUp.innerHTML =
       'Are you sure you want to delete this recipe?<button id="popBtn">delete</button> <button id="cancel">cancel</button>';
     document.querySelector("main").appendChild(popUp);
     popUp.style.display = "flex";
+    let RECID;
 
     document.getElementById("popBtn").addEventListener("click", function (e) {
       e.preventDefault();
-      // Find the parent card element and remove it
       var card = button.closest(".recipe");
       if (card) {
         card.remove();
@@ -186,7 +184,32 @@ deleteButtons.forEach(function (button) {
             break;
           }
         }
-        // let arr = JSON.parse(localStorage.getItem("allRecipe"));
+        RECID = card.getAttribute("id");
+
+        let xmlReq1 = new XMLHttpRequest();
+        xmlReq1.open("POST", "deleteRecipe/", true);
+        xmlReq1.setRequestHeader("Content-Type", "application/json");
+        xmlReq1.onreadystatechange = function () {
+          if (xmlReq1.readyState == 4) {
+            if (xmlReq1.status == 200) {
+              var response = JSON.parse(xmlReq1.responseText);
+              alert(response.message); 
+            } else {
+              alert("Error: " + xmlReq1.statusText); 
+            }
+          }
+        };
+        var data = JSON.stringify({
+          RECID: RECID
+        });
+        console.log("Sending data:", data);  // Debugging statement
+        try {
+          xmlReq1.send(data);
+        } catch (error) {
+          console.error("Error sending request:", error);
+          alert("Error sending request");
+        }
+
         allRecipe.splice(arrIdx, 1);
         localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
       }
@@ -199,6 +222,7 @@ deleteButtons.forEach(function (button) {
     });
   });
 });
+
 
 //---------------------------------------------------------------------
 

@@ -8,6 +8,10 @@ const recipePhoto = document.getElementById("rimage-id");
 let submitButton = document.querySelector(".submit-btn");
 const recipeCategory = document.getElementsByName("meal");
 const recipeSeason = document.getElementsByName("occasion");
+let ingredients = [];
+let previngredients = [];
+let instructions =[];
+let previnstructions = [];
 
 // document.addEventListener('DOMContentLoaded', function() {
 //   localStorage.removeItem('tempPhoto');
@@ -51,185 +55,48 @@ const mainImageInput = document.getElementById("rphoto-id");
 mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
 
-// submitButton.addEventListener("click", function (e) {
-//   if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0 || document.querySelector(".name-info-preview").children.length == 0
-//     || document.querySelector(".id-info-preview").children.length == 0
-//     || document.querySelector(".fromto-info-preview").children.length == 0
-//     || document.querySelector(".image-preview").children.length == 0
-//     || document.querySelector(".photo-preview").children.length == 0) {
-//     e.preventDefault();
-//     var popUp = document.createElement("div");
-//     popUp.id = "popUp";
-//     popUp.innerHTML =
-//       'Please fill all fields and click preview!<button id="popBtn">OK</button>';
-//     document.querySelector("main").appendChild(popUp);
-//     popUp.style.display = "flex";
-//     document.getElementById("popBtn").addEventListener("click", function (e) {
-//       e.preventDefault();
-//       document.querySelector("main").removeChild(popUp);
-//     });
-//     return;
-//   }
-//   e.preventDefault();
-//   const reader = recipePhoto.files[0];
-//   console.log(reader);
 
-//   const recipeName_value = recipeName.value;
-//   const recipeId_value = recipeId.value;
-
-//   for (let i = 0; i < allRecipe.length; i++) {
-//     if (allRecipe[i].recipeId == recipeId_value && !id) {
-//       // alert("Recipe Id must be Unique!");
-//       var popUp = document.createElement("div");
-//       popUp.id = "popUp";
-//       popUp.innerHTML =
-//         'Recipe Id must be Unique!<button id="popBtn">OK</button>';
-//       document.querySelector("main").appendChild(popUp);
-//       popUp.style.display = "flex";
-//       document.getElementById("popBtn").addEventListener("click", function (e) {
-//         e.preventDefault();
-//         document.querySelector("main").removeChild(popUp);
-//       });
-//       return;
-//     }
-//   }
-
-//   const fromValue = document.getElementById("rfrom-id").value;
-//   const toValue = document.getElementById("rto-id").value;
-//   const timeUnit = document.getElementById("to-unit").value;
-//   let recipeCategory_value;
-//   for (i = 0; i < recipeCategory.length; i++) {
-//     if (recipeCategory[i].checked) {
-//       recipeCategory_value = recipeCategory[i].value;
-//       break;
-//     }
-//   }
-//   let recipeSeason_value;
-//   for (i = 0; i < recipeSeason.length; i++) {
-//     if (recipeSeason[i].checked) {
-//       recipeSeason_value = recipeSeason[i].value;
-//       break;
-//     }
-//   }
-//   const recipeDurationValue = fromValue + " to " + toValue + " " + timeUnit;
-//   const recipePhoto_value = localStorage.getItem("tempPhoto");
-//   const recipeMainPhoto_value = localStorage.getItem("tempMainPhoto");
-//   localStorage.removeItem("tempPhoto");
-//   localStorage.removeItem("tempMainPhoto");
-//   const recipeDetail_value = `
-//   <div class="recipeDetail">
-//       <div class="detailContainer">
-//           <div class="recipeImg">
-//               <img src="${recipeMainPhoto_value}" alt="${recipeName_value}">
-//               <h1 id="recipe_title">${recipeName_value}</h1>
-//               <h4 id="recipe_time">${recipeDurationValue}</h4>
-//           </div>
-//       </div>
-//       <div class="recipeBody">
-//           <h2 id="ingredients">&#10149; Ingredients:</h2>
-//           <div id="ingredientsText">
-//               <ol id="ingredients-list">
-//               ${document.getElementById("ingredients-list").innerHTML}
-//               </ol>
-//           </div>
-//           <h2 id="instructions">&#10149; Instructions:</h2>
-//           <div id="instructionsText">
-//               <ol id="instructions-list">
-//               ${document.getElementById("instructions-list").innerHTML}
-//               </ol>
-//           </div>
-//       </div>
-//   </div>`;
-//   let myRecipe = {
-//     recipeName: recipeName_value,
-//     recipeId: recipeId_value,
-//     recipePhoto: recipePhoto_value,
-//     recipeMainPhoto: recipeMainPhoto_value,
-//     recipeCategory: recipeCategory_value,
-//     recipeSeason: recipeSeason_value,
-//     recipeDuration: recipeDurationValue,
-//     favoriteState: false,
-//     userMadeRecipe: true,
-//     recipeDetail: recipeDetail_value,
-//     recipeIngredients: document.getElementById("ingredients-list").innerHTML,
-//     recipeInstructions: document.getElementById("instructions-list").innerHTML,
-//     // ingredients: localStorage.getItem('ingredients'),
-//     // instructions: localStorage.getItem('instructions')
-//   };
-
-//   if (id) {
-//     let arrIdx;
-//     for (let i = 0; i < allRecipe.length; i++) {
-//       if (allRecipe[i].recipeId == id) {
-//         arrIdx = i;
-//         console.log("found " + i);
-//         break;
-//       }
-//     }
-//     if (arrIdx >= 0) {
-//       allRecipe[arrIdx] = myRecipe;
-//       localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-//       var popUp = document.createElement("div");
-//       popUp.id = "popUp";
-//       popUp.innerHTML =
-//         'Your Recipe is edited successfully!<button id="popBtn">Done</button>';
-//       document.querySelector("main").appendChild(popUp);
-//       popUp.style.display = "flex";
-//       document.getElementById("popBtn").addEventListener("click", function (e) {
-//         e.preventDefault();
-//         document.querySelector("main").removeChild(popUp);
-//         // location.href = "recipes.html";
-//       });
-//     }
-//   } else {
-//     allRecipe.push(myRecipe);
-//     localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-//     var popUp = document.createElement("div");
-//     popUp.id = "popUp";
-//     popUp.innerHTML =
-//       'Your Recipe is added successfully!<button id="popBtn">Done</button>';
-//     document.querySelector("main").appendChild(popUp);
-//     popUp.style.display = "flex";
-//     document.getElementById("popBtn").addEventListener("click", function (e) {
-//       e.preventDefault();
-//       document.querySelector("main").removeChild(popUp);
-//       // location.href = "recipes.html";
-//     });
-//   }
-
-
-
-
-
-
-//   // localStorage.removeItem('ingredients');
-//   // localStorage.removeItem('instructions');
-// });
-
-// let ingredientsArr= new Array();
-// if(localStorage.getItem('ingredients')){
-//     ingredientsArr= localStorage.getItem('ingredients');
-// }
 function addIngredient() {
   var unit = document.getElementById("unit-id").value;
   var quantity = document.getElementById("quantity-id").value;
   var name = document.getElementById("ingredient-id").value;
 
   if (quantity && name && unit) {
+    ingredients.push([quantity, unit, name]);
     var listItem = document.createElement("li");
     listItem.textContent = quantity + " " + unit + " " + name;
+    previngredients.push(listItem);
 
+  //   var ajaxrequest = new XMLHttpRequest();
+  //   ajaxrequest.open("POST", "addIngredient/", true);
+  //   ajaxrequest.setRequestHeader("Content-Type", "application/json");
+  //   ajaxrequest.onreadystatechange = function(){
+  //     if(ajaxrequest.readyState == 4 && ajaxrequest.status == 200){
+  //       alert("DONE!");
+  //     } else{
+  //       alert("ERROR!");
+  //     }
+  //   }
+  //   var data = JSON.stringify({
+  //     'name': name,
+  //     'quantity': quantity,
+  //     'unit': unit
+  // });
+  // ajaxrequest.send(data);
     //Add Ingredients to localStorage
     // ingredientsArr.push(listItem.textContent);
     // localStorage.setItem('ingredients', JSON.stringify(ingredientsArr));
 
     var removeButton = document.createElement("button");
     var trashIcon = document.createElement("i");
-    trashIcon.className = "fa-solid fa-trash";
+    trashIcon.className = "fa fa-trash";
     removeButton.appendChild(trashIcon);
     removeButton.className = "Remove-button";
     removeButton.onclick = function () {
       listItem.remove();
+      let index = previngredients.indexOf(removeButton.closest("li"));
+      previngredients.splice(index,1);
+      ingredients.splice(index,1);
       // ingredientsArr.pop();
       // localStorage.setItem('ingredients', JSON.stringify(ingredientsArr));
     };
@@ -261,21 +128,26 @@ function addIngredient() {
 // }
 function addInstruction() {
   var instructionText = document.getElementById("instructions-id").value;
-
+  instructions.push(instructionText);
   if (instructionText) {
     var listItem = document.createElement("li");
     listItem.textContent = instructionText;
+    previnstructions.push(listItem);
 
     // instructionsArr.push(instructionText);
     // localStorage.setItem('instructions',JSON.stringify(instructionsArr));
 
     var removeButton = document.createElement("button");
     var trashIcon = document.createElement("i");
-    trashIcon.className = "fa-solid fa-trash";
+    trashIcon.className = "fa fa-trash";
     removeButton.appendChild(trashIcon);
     removeButton.className = "Remove-button";
     removeButton.onclick = function () {
       listItem.remove();
+      // instructions.pop();
+      let index = previnstructions.indexOf(removeButton.closest("li"));
+      previnstructions.splice(index,1);
+      instructions.splice(index,1);
       // instructionsArr.pop();
       // localStorage.setItem('instructions',JSON.stringify(instructionsArr));
     };
@@ -298,6 +170,174 @@ function addInstruction() {
     });
   }
 }
+
+ 
+  
+  // send_info(info);
+
+  
+
+  let info = [];
+document.getElementById("ADDFORM").addEventListener('submit', function(event){
+  event.preventDefault();
+  var RECIPENAME = document.getElementById("rname-id").value;
+  info.push(RECIPENAME);
+  var COVERIMAGE = document.getElementById("rimage-id").value;
+  info.push(COVERIMAGE);
+  var MAINIMAGE = document.getElementById("rphoto-id").value;
+  info.push(MAINIMAGE);
+  var FROM = document.getElementById("rfrom-id").value;
+  var TO = document.getElementById("rto-id").value;
+  var TIMEUNIT = document.getElementById("to-unit").value;
+  var DURATION = "from " + FROM + " to " + TO + " " + TIMEUNIT;
+  info.push(DURATION);
+  var CATEGORY = document.querySelector('input[name="meal"]:checked').id;
+  info.push(CATEGORY);
+  var OCCASION = document.querySelector('input[name="occasion"]:checked').id;
+  info.push(OCCASION);
+
+    console.log("send_info is called");
+    let xmlReq = new XMLHttpRequest();
+    xmlReq.open("POST", "addRecipe/", true);
+    xmlReq.setRequestHeader("Content-Type", "application/json");
+    xmlReq.onreadystatechange = function () {
+        if (xmlReq.readyState == 4) {
+            if (xmlReq.status == 200) {
+                var response = JSON.parse(xmlReq.responseText);
+                alert(response.message); 
+            } else {
+                alert("Error: " + xmlReq.statusText); 
+            }
+        }
+    };
+    var data = JSON.stringify({
+       info : info
+    });
+    console.log("Sending data:", data);
+    xmlReq.send(data);
+
+    Ajax_Ing_Ins();
+
+    var popUp = document.createElement("div");
+    popUp.id = "popUp";
+    popUp.innerHTML =
+      'Your Recipe is edited successfully!<button id="popBtn">Done</button>';
+    document.querySelector("main").appendChild(popUp);
+    popUp.style.display = "flex";
+    document.getElementById("popBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("main").removeChild(popUp);
+      location.href = "/recipes";
+    });
+
+});
+
+
+
+// function submitForm() {
+//   alert("form is submitted");
+//   Ajax_Ing_Ins();
+// }
+function Ajax_Ing_Ins(){
+  // alert("Ajax function is called");
+  send_ingredients();
+  send_instructions();
+}
+function send_ingredients() {
+  console.log("send_ingredients is called");
+  let xmlReq = new XMLHttpRequest();
+  xmlReq.open("POST", "addIngredient/", true);
+  xmlReq.setRequestHeader("Content-Type", "application/json");
+  // xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  // xml.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+  xmlReq.onreadystatechange = function () {
+      if (xmlReq.readyState == 4) {
+          if (xmlReq.status == 200) {
+              var response = JSON.parse(xmlReq.responseText);
+              // alert(response.message); 
+          } else {
+              // alert("Error: " + xmlReq.statusText); 
+          }
+      }
+  };
+  var data = JSON.stringify({
+      ingredients: ingredients
+  });
+  console.log("Sending data:", data);
+  xmlReq.send(data);
+}
+
+function send_instructions() {
+  console.log("send_instructions is called");
+  let xmlReq1 = new XMLHttpRequest();
+  xmlReq1.open("POST", "addInstructions/", true);
+  xmlReq1.setRequestHeader("Content-Type", "application/json");
+  xmlReq1.onreadystatechange = function () {
+      if (xmlReq1.readyState == 4) {
+          if (xmlReq1.status == 200) {
+              var response = JSON.parse(xmlReq1.responseText);
+              // alert(response.message); 
+          } else {
+              // alert("Error: " + xmlReq1.statusText); 
+          }
+      }
+  };
+  var data = JSON.stringify({
+      instructions: instructions
+  });
+  console.log("Sending data:", data);
+  try {
+      xmlReq1.send(data);
+  } catch (error) {
+      console.error("Error sending request:", error);
+      // alert("Error sending request");
+  }
+}
+
+// function getCookie(name) {
+//   var cookieValue = null;
+//   if (document.cookie && document.cookie !== '') {
+//       var cookies = document.cookie.split(';');
+//       for (var i = 0; i < cookies.length; i++) {
+//           var cookie = cookies[i].trim();
+//           // Does this cookie string begin with the name we want?
+//           if (cookie.substring(0, name.length + 1) === (name + '=')) {
+//               cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//               break;
+//           }
+//       }
+//   }
+//   return cookieValue;
+// }
+
+// function send_instructions() {
+//   console.log("send_instructions is called");
+//   const data = {
+//       instructions: instructions
+//   };
+
+//   fetch("addInstructions/", {
+//       method: "POST",
+//       headers: {
+//           "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(data)
+//   })
+//   .then(response => {
+//       if (response.ok) {
+//           return response.json();
+//       } else {
+//           throw new Error(`Error: ${response.statusText}`);
+//       }
+//   })
+//   .then(data => {
+//       alert(data.message);
+//   })
+//   .catch(error => {
+//       alert(error.message);
+//   });
+// }
+
 
 function uploadphoto() {
   var name = document.getElementById("rname-id");
@@ -646,6 +686,143 @@ if (id) {
   } 
 }
 
+// submitButton.addEventListener("click", function (e) {
+//   if (document.getElementById("ingredients-list").children.length == 0 || document.getElementById("instructions-list").children.length == 0 || document.querySelector(".name-info-preview").children.length == 0
+//     || document.querySelector(".id-info-preview").children.length == 0
+//     || document.querySelector(".fromto-info-preview").children.length == 0
+//     || document.querySelector(".image-preview").children.length == 0
+//     || document.querySelector(".photo-preview").children.length == 0) {
+//     e.preventDefault();
+//     var popUp = document.createElement("div");
+//     popUp.id = "popUp";
+//     popUp.innerHTML =
+//       'Please fill all fields and click preview!<button id="popBtn">OK</button>';
+//     document.querySelector("main").appendChild(popUp);
+//     popUp.style.display = "flex";
+//     document.getElementById("popBtn").addEventListener("click", function (e) {
+//       e.preventDefault();
+//       document.querySelector("main").removeChild(popUp);
+//     });
+//     return;
+//   }
+//   e.preventDefault();
+//   const reader = recipePhoto.files[0];
+//   console.log(reader);
 
+//   const recipeName_value = recipeName.value;
+//   const recipeId_value = recipeId.value;
+
+//   for (let i = 0; i < allRecipe.length; i++) {
+//     if (allRecipe[i].recipeId == recipeId_value && !id) {
+//       // alert("Recipe Id must be Unique!");
+//       var popUp = document.createElement("div");
+//       popUp.id = "popUp";
+//       popUp.innerHTML =
+//         'Recipe Id must be Unique!<button id="popBtn">OK</button>';
+//       document.querySelector("main").appendChild(popUp);
+//       popUp.style.display = "flex";
+//       document.getElementById("popBtn").addEventListener("click", function (e) {
+//         e.preventDefault();
+//         document.querySelector("main").removeChild(popUp);
+//       });
+//       return;
+//     }
+//   }
+
+//   const fromValue = document.getElementById("rfrom-id").value;
+//   const toValue = document.getElementById("rto-id").value;
+//   const timeUnit = document.getElementById("to-unit").value;
+//   let recipeCategory_value;
+//   for (i = 0; i < recipeCategory.length; i++) {
+//     if (recipeCategory[i].checked) {
+//       recipeCategory_value = recipeCategory[i].value;
+//       break;
+//     }
+//   }
+//   let recipeSeason_value;
+//   for (i = 0; i < recipeSeason.length; i++) {
+//     if (recipeSeason[i].checked) {
+//       recipeSeason_value = recipeSeason[i].value;
+//       break;
+//     }
+//   }
+//   const recipeDurationValue = fromValue + " to " + toValue + " " + timeUnit;
+//   const recipePhoto_value = localStorage.getItem("tempPhoto");
+//   const recipeMainPhoto_value = localStorage.getItem("tempMainPhoto");
+//   localStorage.removeItem("tempPhoto");
+//   localStorage.removeItem("tempMainPhoto");
+//   const recipeDetail_value = `
+//   <div class="recipeDetail">
+//       <div class="detailContainer">
+//           <div class="recipeImg">
+//               <img src="${recipeMainPhoto_value}" alt="${recipeName_value}">
+//               <h1 id="recipe_title">${recipeName_value}</h1>
+//               <h4 id="recipe_time">${recipeDurationValue}</h4>
+//           </div>
+//       </div>
+//       <div class="recipeBody">
+//           <h2 id="ingredients">&#10149; Ingredients:</h2>
+//           <div id="ingredientsText">
+//               <ol id="ingredients-list">
+//               ${document.getElementById("ingredients-list").innerHTML}
+//               </ol>
+//           </div>
+//           <h2 id="instructions">&#10149; Instructions:</h2>
+//           <div id="instructionsText">
+//               <ol id="instructions-list">
+//               ${document.getElementById("instructions-list").innerHTML}
+//               </ol>
+//           </div>
+//       </div>
+//   </div>`;
+//   let myRecipe = {
+//     recipeName: recipeName_value,
+//     recipeId: recipeId_value,
+//     recipePhoto: recipePhoto_value,
+//     recipeMainPhoto: recipeMainPhoto_value,
+//     recipeCategory: recipeCategory_value,
+//     recipeSeason: recipeSeason_value,
+//     recipeDuration: recipeDurationValue,
+//     favoriteState: false,
+//     userMadeRecipe: true,
+//     recipeDetail: recipeDetail_value,
+//     recipeIngredients: document.getElementById("ingredients-list").innerHTML,
+//     recipeInstructions: document.getElementById("instructions-list").innerHTML,
+//     // ingredients: localStorage.getItem('ingredients'),
+//     // instructions: localStorage.getItem('instructions')
+//   };
+
+//   if (id) {
+//     let arrIdx;
+//     for (let i = 0; i < allRecipe.length; i++) {
+//       if (allRecipe[i].recipeId == id) {
+//         arrIdx = i;
+//         console.log("found " + i);
+//         break;
+//       }
+//     }
+//     if (arrIdx >= 0) {
+//       allRecipe[arrIdx] = myRecipe;
+//       localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+
+    // }
+//   } else {
+//     allRecipe.push(myRecipe);
+//     localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+
+
+
+
+
+
+
+//   // localStorage.removeItem('ingredients');
+//   // localStorage.removeItem('instructions');
+// });
+
+// let ingredientsArr= new Array();
+// if(localStorage.getItem('ingredients')){
+//     ingredientsArr= localStorage.getItem('ingredients');
+// }
 
 
