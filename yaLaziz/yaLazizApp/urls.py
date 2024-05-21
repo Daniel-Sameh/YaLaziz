@@ -30,7 +30,7 @@ urlpatterns = [
     path('api/favorites/add/',views.addToFav,name='addToFav'),
     path('api/favorites/delete/',views.delFromFav,name='delFromFav'),
     path('api/recipes/', views.get_all_recipes, name='get-all-recipes'),
-
+    path('edit_recipe/<int:Id>', views.editRecipe, name='editRecipe'),
     path('search/',views.search,name='search'),
 ]
 if settings.DEBUG:

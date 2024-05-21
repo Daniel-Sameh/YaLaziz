@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% extends 'index.html' %} {% load static %} {% block additionalLinks %}
+  <link rel="stylesheet" href="{% static 'css/add_recipe.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Edit Recipe</title>
+{% endblock %} {% block main %}
+  <div class="add-container">
+    <div class="all-container">
+      <div class="left">
+        <h1>Edit your RECIPE</h1>
+        <form class="add-form" id="ADDFORM" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="recipe-info">
+            <h2>Recipe Info</h2>
+            <input type="text" name="recipe_name" class="recipe-info-input-field" id="rname-id" placeholder="Recipe Name" />
+            <div class="recipe-info-btn">
+              <h3>Choose a cover:</h3>
+              <input type="file" name="recipe_cover_image" id="rimage-id" class="recipe-info-btn" onchange="uploadphoto()" />
+              <h3>Choose a photo:</h3>
+              <input type="file" name="recipe_main_image" id="rphoto-id" class="recipe-info-btn" onchange="uploadphototwo()" />
+            </div>
+            <div class="recipe-time">
+              <h3>Duration:</h3>
+              <div class="from">
+                <input type="number" step="0.25" placeholder="from" class="recipe-info-input-field" id="rfrom-id" name="duration_from" />
+              </div>
+              <div class="to">
+                <input type="number" step="0.25" placeholder="to" class="recipe-info-input-field" id="rto-id" name="duration_to" />
+                <select name="time_unit" class="time-unit-field" id="to-unit">
+                  <option value="" disabled selected>select time unit</option>
+                  <option value="secs">Seconds</option>
+                  <option value="mins">Minutes</option>
+                  <option value="hrs">Hours</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="preview-button" id="preview-button" onclick="previewEdit()">Preview Recipe info</button>
+          </div>
+          <div class="ingredients-input-area">
+            <h3>Add ingredients</h3>
+            <div id="ingredients-container">
+              {% for ing in Ingredient %}
+                <div class="add-ing-grouping" style="display:none">
+                  <input type="number" step="0.5" name="ingredient_quantity[]" class="ingredient-input-field quntityIngredient" id="quantity-id" placeholder="Quantity" value="{{ ing.quantity }}" />
+                  <select name="ingredient_unit[]" id="unit-id" class="ingredient-input-field selectUnit">
+                    <option value="{{ ing.unit }}" selected></option>
+                  </select>
+                  <input type="text" name="ingredient_name[]" id="ingredient-id" class="ingredient-input-field nameIngredient" placeholder="Ingredient" value="{{ ing.name }}" />
+                </div>
+              {% endfor %}
+              <div class="add-ing-grouping">
+                <input type="number" step="0.5" name="ingredient_quantity[]" class="ingredient-input-field quntityIngredient" id="quantity-id" placeholder="Quantity" />
+                <select name="ingredient_unit[]" id="unit-id" class="ingredient-input-field selectUnit">
+                  <option value="" disabled selected>Select unit</option>
+                  <option value="gm">Grams</option>
+                  <option value="kgm">Kilograms</option>
+                  <option value="lit">Liters</option>
+                  <option value="Mlit">Milliliters</option>
+                  <option value="Tsp">Teaspoon</option>
+                  <option value="Tbsp">Tablespoon</option>
+                  <option value="cup">Cup</option>
+                  <option value="none">No unit</option>
+                </select>
+                <input type="text" name="ingredient_name[]" id="ingredient-id" class="ingredient-input-field nameIngredient" placeholder="Ingredient" />
+              </div>
+            </div>
+            <div class="add-ing-btn">
+              <button type="button" class="ingredient-btn" onclick="addIngredient()">Add ingredient</button>
+            </div>
+          </div>
+          <div class="instruction-input-area">
+            <h3>Add Instructions</h3>
+            <div id="instructions-container">
+              {% for ins in Instruction %}
+                <div class="instructions-div">
+                  <textarea style="display:none" name="instruction_details[]" id="instructions-id" placeholder="Instruction Details">{{ ins.details }}</textarea>
+                </div>
+              {% endfor %}
+              <div class="instructions-div">
+                <textarea name="instruction_details[]" id="instructions-id" placeholder="Instruction Details"></textarea>
+              </div>
+            </div>
+            <div class="add-ins-btn">
+              <button type="button" class="instruction-btn" onclick="addInstruction()">Add instruction</button>
+            </div>
+          </div>
+          <div class="meal-type">
+            <h3>Category:</h3>
+            <div class="meal-radio">
+              <div class="radio-label">
+                <input type="radio" name="meal" id="breakfast" value="breakfast" />
+                <label for="breakfast">Breakfast</label>
+              </div>
+              <div class="radio-label">
+                <input type="radio" name="meal" id="lunch" value="lunch" />
+                <label for="lunch">Lunch</label>
+              </div>
+              <div class="radio-label">
+                <input type="radio" name="meal" id="dinner" value="dinner" />
+                <label for="dinner">Dinner</label>
+              </div>
+              <div class="radio-label">
+                <input type="radio" name="meal" id="supper" value="supper" />
+                <label for="supper">Supper</label>
+              </div>
+              <div class="radio-label">
+                <input type="radio" name="meal" id="desserts" value="desserts" />
+                <label for="desserts">Desserts</label>
+              </div>
+              <div class="radio-label">
+                <input type="radio" name="meal" id="drinks" value="drinks" />
+                <label for="drinks">Drinks</label>
+              </div>
+            </div>
+          </div>
+          <div class="occasions">
+            <h3>Occasion:</h3>
+            <div class="occasion-check">
+              <div class="check-label">
+                <input type="radio" id="ramadan" name="occasion" value="ramadan" />
+                <label for="ramadan">Ramadan</label>
+              </div>
+              <div class="check-label">
+                <input type="radio" id="christmas" name="occasion" value="christmas" />
+                <label for="christmas">Christmas</label>
+              </div>
+              <div class="check-label">
+                <input type="radio" id="summer" name="occasion" value="summer" />
+                <label for="summer">Summer</label>
+              </div>
+              <div class="check-label">
+                <input type="radio" id="general" name="occasion" value="general" checked />
+                <label for="general">General</label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="xyz" class="submit-btn">Update</button>
+        </form>
+      </div>
+      <div class="right">
+        <h2>Preview Recipe</h2>
+        <div class="preview">
+          <h3 id="prevRecipeName">Recipe info:</h3>
+          <div class="info-preview">
+            <div class="name-info-preview">
+              <h4>1- Recipe name:</h4><p>{{ Recipe.name }}</p>
+            </div>
+            <div class="id-info-preview">
+              <h4>2- Recipe Id:</h4>{{ Recipe.id }}
+            </div>
+            <div class="fromto-info-preview">
+              <h4>3- Recipe Duration:</h4><p>{{ Recipe.duration }}</p>
+            </div>
+          </div>
+          <h3>Recipe photos:</h3>
+          <div class="photos-preview">
+            <div class="image-preview">
+              <img src="{{ Recipe.coverPhoto.url }}" />
+            </div>
+            <div class="photo-preview">
+              <img src="{{ Recipe.mainPhoto.url }}" />
+            </div>
+          </div>
+        </div>
+        <div class="preview" id="ingredients-preview">
+          <h3>Ingredients:</h3>
+          <ol id="ingredients-list">
+            {% for ing in Ingredient %}
+              <li>
+                {{ ing.quantity }} {{ ing.unit }} {{ ing.name }}
+                <button class="Remove-button"><i class="fa fa-trash"></i></button>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+        <div class="preview" id="instructions-preview">
+          <h3>Instructions:</h3>
+          <ol id="instructions-list">
+            {% for ins in Instruction %}
+              <li>
+                {{ ins.details }}
+                <button class="Remove-button"><i class="fa fa-trash"></i></button>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %} {% block scripts %}
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/technicalButtons.js' %}"></script>
+  <script src="{% static 'js/addRecipe.js' %}"></script>
+{% endblock %}

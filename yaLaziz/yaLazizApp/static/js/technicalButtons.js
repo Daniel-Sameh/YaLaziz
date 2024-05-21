@@ -299,16 +299,34 @@ const searchButtons = document.querySelectorAll("#searchBtn");
 
 // Edit Recipe
 
-const editButtons = document.querySelectorAll('.editRecipe');
+const editButtons = document.querySelectorAll(".editRecipe");
 
-editButtons.forEach(function(button) {
-  button.addEventListener('click', function(){
-    var recipe = this.closest('.recipe');
-    const recipeID = recipe.getAttribute('id');
-    
-    const addRecipeHref = document.getElementById('addRecipeHref').href;
+editButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    var recipe = button.closest(".recipe");
+    const recipeID = recipe.getAttribute("id");
+
+    //const addRecipeHref = document.getElementById("addRecipeHref").href;
     // Pass the recipeID as a query parameter to the URL
-    window.location.href = `${addRecipeHref}?recipeId=${recipeID}`;
-    
+    location.href = `/edit_recipe/${recipeID}`;
+  });
+});
+
+
+//remove ingredient or instructions
+var removeButtons = document.querySelectorAll('.Remove-button')
+removeButtons.forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    var listItem = button.closest("li");
+    var list = listItem.parentElement;
+    var index = Array.from(list.children).indexOf(listItem);
+    listItem.remove();
+    if (list.id == "ingredients-list") {
+      document.querySelectorAll(".add-ing-grouping")[index].remove();
+    }
+    else {
+      document.querySelectorAll(".instructions-div")[index].remove();
+      
+    }
   })
 });

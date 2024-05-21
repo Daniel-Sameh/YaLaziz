@@ -10,15 +10,13 @@ const recipeCategory = document.getElementsByName("meal");
 const recipeSeason = document.getElementsByName("occasion");
 let ingredients = [];
 let previngredients = [];
-let instructions =[];
+let instructions = [];
 let previnstructions = [];
 
 // document.addEventListener('DOMContentLoaded', function() {
 //   localStorage.removeItem('tempPhoto');
-//   localStorage.removeItem('tempPhoto1');  
+//   localStorage.removeItem('tempPhoto1');
 // });
-
-
 
 let recipeDetail = document.getElementById("recipeDetail");
 
@@ -30,7 +28,6 @@ function handlePhotoSaving(event) {
     const base64String = event.target.result;
 
     localStorage.setItem("tempPhoto", base64String);
-
   };
 
   reader.readAsDataURL(file);
@@ -54,20 +51,20 @@ coverImageInput.addEventListener("change", handlePhotoSaving);
 const mainImageInput = document.getElementById("rphoto-id");
 mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
-
-
 function addIngredient() {
-  const container = document.getElementById('ingredients-container');
-    const lastIngredient = container.querySelector('.add-ing-grouping:last-child');
+  const container = document.getElementById("ingredients-container");
+  const lastIngredient = container.querySelector(
+    ".add-ing-grouping:last-child"
+  );
 
-    // Hide the last ingredient div if it exists
-    if (lastIngredient) {
-        lastIngredient.style.display = 'none';
-    }
+  // Hide the last ingredient div if it exists
+  if (lastIngredient) {
+    lastIngredient.style.display = "none";
+  }
 
-    const newIngredient = document.createElement('div');
-    newIngredient.classList.add('add-ing-grouping');
-    newIngredient.innerHTML = `
+  const newIngredient = document.createElement("div");
+  newIngredient.classList.add("add-ing-grouping");
+  newIngredient.innerHTML = `
         <input type="number" step="0.5" name="ingredient_quantity[]" class="ingredient-input-field quntityIngredient" placeholder="Quantity">
         <select name="ingredient_unit[]" class="ingredient-input-field selectUnit">
             <option value="" disabled selected>Select unit</option>
@@ -82,16 +79,15 @@ function addIngredient() {
         </select>
         <input type="text" name="ingredient_name[]" class="ingredient-input-field nameIngredient" placeholder="Ingredient">
     `;
-    container.appendChild(newIngredient);
-
+  container.appendChild(newIngredient);
 
   // var unitLen = document.getElementsByClassName("selectUnit").length;
   // var quantityLen = document.getElementsByClassName("quntityIngredient").length;
   // var nameLen = document.getElementsByClassName("nameIngredient").length;
 
-  var unit = lastIngredient.querySelector('.selectUnit').value;
-  var quantity = lastIngredient.querySelector('.quntityIngredient').value;
-  var name = lastIngredient.querySelector('.nameIngredient').value;
+  var unit = lastIngredient.querySelector(".selectUnit").value;
+  var quantity = lastIngredient.querySelector(".quntityIngredient").value;
+  var name = lastIngredient.querySelector(".nameIngredient").value;
 
   if (quantity && name && unit) {
     ingredients.push([quantity, unit, name]);
@@ -141,34 +137,36 @@ function addIngredient() {
 // if(localStorage.getItem('instructions')){
 //     instructionsArr= localStorage.getItem('instructions');
 // }
+
+
 function addInstruction() {
- // Create a new textarea for instructions
- const container = document.getElementById('instructions-container');
-    
- // Get all existing instruction textareas
- const instructionElements = container.getElementsByTagName('textarea');
- const lastInstruction = instructionElements[instructionElements.length - 1];
- 
- // Hide the last instruction textarea if it exists
- if (lastInstruction) {
-     lastInstruction.style.display = 'none';
- }
+  // Create a new textarea for instructions
+  const container = document.getElementById("instructions-container");
 
- // Retrieve the text value from the last instruction textarea
- var instructionText = lastInstruction ? lastInstruction.value : '';
+  // Get all existing instruction textareas
+  const instructionElements = container.getElementsByTagName("textarea");
+  const lastInstruction = instructionElements[instructionElements.length - 1];
 
- // Create a new textarea element
- const newInstructionDiv = document.createElement('div');
- newInstructionDiv.classList.add('instructions-div');
+  // Hide the last instruction textarea if it exists
+  if (lastInstruction) {
+    lastInstruction.style.display = "none";
+  }
 
- const newInstruction = document.createElement('textarea');
- newInstruction.name = 'instruction_details[]';
- newInstruction.placeholder = 'Instruction Details';
+  // Retrieve the text value from the last instruction textarea
+  var instructionText = lastInstruction ? lastInstruction.value : "";
 
- newInstructionDiv.appendChild(newInstruction);
- container.appendChild(newInstructionDiv);
+  // Create a new textarea element
+  const newInstructionDiv = document.createElement("div");
+  newInstructionDiv.classList.add("instructions-div");
 
- // Optional: Do something with the retrieved instruction text
+  const newInstruction = document.createElement("textarea");
+  newInstruction.name = "instruction_details[]";
+  newInstruction.placeholder = "Instruction Details";
+
+  newInstructionDiv.appendChild(newInstruction);
+  container.appendChild(newInstructionDiv);
+
+  // Optional: Do something with the retrieved instruction text
   if (instructionText) {
     var listItem = document.createElement("li");
     listItem.textContent = instructionText;
@@ -195,6 +193,7 @@ function addInstruction() {
       // localStorage.setItem('instructions',JSON.stringify(instructionsArr));
     };
 
+
     listItem.appendChild(removeButton);
     document.getElementById("instructions-list").appendChild(listItem);
 
@@ -214,11 +213,7 @@ function addInstruction() {
   }
 }
 
- 
-  
-  // send_info(info);
-
-  
+// send_info(info);
 
 //   let info = [];
 // document.getElementById("ADDFORM").addEventListener('submit', function(event){
@@ -247,9 +242,9 @@ function addInstruction() {
 //         if (xmlReq.readyState == 4) {
 //             if (xmlReq.status == 200) {
 //                 var response = JSON.parse(xmlReq.responseText);
-//                 alert(response.message); 
+//                 alert(response.message);
 //             } else {
-//                 alert("Error: " + xmlReq.statusText); 
+//                 alert("Error: " + xmlReq.statusText);
 //             }
 //         }
 //     };
@@ -275,13 +270,11 @@ function addInstruction() {
 
 // });
 
-
-
 // function submitForm() {
 //   alert("form is submitted");
 //   Ajax_Ing_Ins();
 // }
-function Ajax_Ing_Ins(){
+function Ajax_Ing_Ins() {
   // alert("Ajax function is called");
   send_ingredients();
   send_instructions();
@@ -294,17 +287,17 @@ function send_ingredients() {
   // xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   // xml.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
   xmlReq.onreadystatechange = function () {
-      if (xmlReq.readyState == 4) {
-          if (xmlReq.status == 200) {
-              var response = JSON.parse(xmlReq.responseText);
-              // alert(response.message); 
-          } else {
-              // alert("Error: " + xmlReq.statusText); 
-          }
+    if (xmlReq.readyState == 4) {
+      if (xmlReq.status == 200) {
+        var response = JSON.parse(xmlReq.responseText);
+        // alert(response.message);
+      } else {
+        // alert("Error: " + xmlReq.statusText);
       }
+    }
   };
   var data = JSON.stringify({
-      ingredients: ingredients
+    ingredients: ingredients,
   });
   console.log("Sending data:", data);
   xmlReq.send(data);
@@ -316,24 +309,24 @@ function send_instructions() {
   xmlReq1.open("POST", "addInstructions/", true);
   xmlReq1.setRequestHeader("Content-Type", "application/json");
   xmlReq1.onreadystatechange = function () {
-      if (xmlReq1.readyState == 4) {
-          if (xmlReq1.status == 200) {
-              var response = JSON.parse(xmlReq1.responseText);
-              // alert(response.message); 
-          } else {
-              // alert("Error: " + xmlReq1.statusText); 
-          }
+    if (xmlReq1.readyState == 4) {
+      if (xmlReq1.status == 200) {
+        var response = JSON.parse(xmlReq1.responseText);
+        // alert(response.message);
+      } else {
+        // alert("Error: " + xmlReq1.statusText);
       }
+    }
   };
   var data = JSON.stringify({
-      instructions: instructions
+    instructions: instructions,
   });
   console.log("Sending data:", data);
   try {
-      xmlReq1.send(data);
+    xmlReq1.send(data);
   } catch (error) {
-      console.error("Error sending request:", error);
-      // alert("Error sending request");
+    console.error("Error sending request:", error);
+    // alert("Error sending request");
   }
 }
 
@@ -380,7 +373,6 @@ function send_instructions() {
 //       alert(error.message);
 //   });
 // }
-
 
 function uploadphoto() {
   var name = document.getElementById("rname-id");
@@ -429,6 +421,51 @@ function uploadphototwo() {
   }
 }
 
+function previewEdit() {
+  //incase the user wants to change the input
+  // document.querySelector(".name-info-preview").innerHTML = "";
+  // document.querySelector(".id-info-preview").innerHTML = "";
+  // document.querySelector(".fromto-info-preview").innerHTML = "";
+
+  var name = document.getElementById("rname-id").value;
+  var from = document.getElementById("rfrom-id").value;
+  var to = document.getElementById("rto-id").value;
+  var tounit = document.getElementById("to-unit").value;
+  var photo = localStorage.getItem("tempPhoto");
+  var photo1 = localStorage.getItem("tempMainPhoto");
+
+  // if (name && id && from && to && tounit&&photo&&photo1) {
+  
+  if (name) {
+    var div = document.getElementsByClassName("name-info-preview")[0];
+    var p = div.getElementsByTagName('p')[0];
+    p.innerHTML = name;
+  }
+  if (from && to && tounit) {
+    var div = document.getElementsByClassName("fromto-info-preview")[0];
+    var p = div.getElementsByTagName('p')[0];
+    var duration = from + " to " + to + " " + tounit;
+    p.innerHTML = duration;
+  }
+  //-----------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------
+
+
+    if ((from == to || from > to) && from != "" && to != "") {
+      var popUp = document.createElement("div");
+      popUp.id = "popUp";
+      popUp.innerHTML =
+        'Make sure from can not be greater than or equal to!<button id="popBtn">OK</button>';
+      document.querySelector("main").appendChild(popUp);
+      popUp.style.display = "flex";
+      document.getElementById("popBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("main").removeChild(popUp);
+      });
+    } 
+}
+
 function preview() {
   //incase the user wants to change the input
   document.querySelector(".name-info-preview").innerHTML = "";
@@ -469,7 +506,7 @@ function preview() {
   } else {
     var addfromtostamp = document.createElement("h4");
     var addfromtoinfo = document.createElement("p");
-    addfromtostamp.innerHTML = "3- Recipe Duration: ";
+    addfromtostamp.innerHTML = "2- Recipe Duration: ";
     addfromtoinfo.innerHTML =
       "From " + from + " " + tounit + " to " + to + " " + tounit;
     var addfromto = document.querySelector(".fromto-info-preview");
@@ -505,6 +542,7 @@ function preview() {
   //     });
   // }
 }
+
 
 //input validations
 
@@ -569,7 +607,7 @@ document.getElementById("rto-id").addEventListener("input", function (event) {
 //---------------------------------------------------------------------
 const urlParams = new URLSearchParams(window.location.search);
 // const allRecipe=localStorage.getItem('allRecipe');
-const id = urlParams.get('recipeId');
+const id = urlParams.get("recipeId");
 if (id) {
   // Fetch the recipe details based on recipeId and populate the form
   let arrIdx;
@@ -582,17 +620,18 @@ if (id) {
   }
   if (arrIdx >= 0) {
     let thisRecipe = allRecipe[arrIdx];
-    document.querySelector('h1').innerHTML = "Edit Recipe: " + thisRecipe.recipeName;
-    document.getElementById('rname-id').value = thisRecipe.recipeName;
-    document.getElementById('rid-id').value = id;
+    document.querySelector("h1").innerHTML =
+      "Edit Recipe: " + thisRecipe.recipeName;
+    document.getElementById("rname-id").value = thisRecipe.recipeName;
+    document.getElementById("rid-id").value = id;
 
     let recDetails = thisRecipe.recipeDetail;
-    const tempDiv = document.createElement('div');
+    const tempDiv = document.createElement("div");
     tempDiv.innerHTML = recDetails;
     console.log(tempDiv);
     //Ingredients:
-    let ingredients = tempDiv.querySelector('#ingredients-list');
-    let listItems = ingredients.querySelectorAll('li');
+    let ingredients = tempDiv.querySelector("#ingredients-list");
+    let listItems = ingredients.querySelectorAll("li");
     listItems.forEach((li) => {
       if (!thisRecipe.userMadeRecipe) {
         var removeButton = document.createElement("button");
@@ -616,13 +655,12 @@ if (id) {
         });
       }
 
-
-      document.getElementById('ingredients-list').appendChild(li);
+      document.getElementById("ingredients-list").appendChild(li);
     });
 
     //Instructions:
-    let instruction = tempDiv.querySelector('#instructions-list');
-    let listItems1 = instruction.querySelectorAll('li');
+    let instruction = tempDiv.querySelector("#instructions-list");
+    let listItems1 = instruction.querySelectorAll("li");
     listItems1.forEach((li) => {
       if (!thisRecipe.userMadeRecipe) {
         var removeButton = document.createElement("button");
@@ -645,7 +683,7 @@ if (id) {
         });
       }
 
-      document.getElementById('instructions-list').appendChild(li);
+      document.getElementById("instructions-list").appendChild(li);
 
       //Photos:
       let recipePhoto = thisRecipe.recipePhoto;
@@ -692,10 +730,9 @@ if (id) {
       var temp = "";
       var durationArr = [];
       for (let i = 0; i < duration.length; i++) {
-        if (duration[i] != ' ') {
+        if (duration[i] != " ") {
           temp += duration[i];
-        }
-        else {
+        } else {
           durationArr.push(temp);
           temp = "";
           console.log("HI");
@@ -714,10 +751,8 @@ if (id) {
           option.selected = true;
         }
       });
-
     });
-
-  } 
+  }
 }
 
 // submitButton.addEventListener("click", function (e) {
@@ -839,16 +874,10 @@ if (id) {
 //       allRecipe[arrIdx] = myRecipe;
 //       localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
 
-    // }
+// }
 //   } else {
 //     allRecipe.push(myRecipe);
 //     localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
-
-
-
-
-
-
 
 //   // localStorage.removeItem('ingredients');
 //   // localStorage.removeItem('instructions');
@@ -858,5 +887,3 @@ if (id) {
 // if(localStorage.getItem('ingredients')){
 //     ingredientsArr= localStorage.getItem('ingredients');
 // }
-
-

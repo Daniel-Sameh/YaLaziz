@@ -315,11 +315,15 @@ def recipeDetail(request, id):
     recipe = get_object_or_404(Recipe, id=id)
     recipe.visit_count += 1
     recipe.save()
+    ing = Ingredient.objects.filter(recipe_id = id)
+    ins = Instruction.objects.filter(recipe_id = id)
     print(recipe.visit_count)
     context= {
         'Recipe': Recipe.objects.get(id=id),
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
+        'isSigned': request.user.is_authenticated,
+        'Ingredient': list(ing),
+        'Instruction': list(ins),
         # 'ingredients' : Recipe.ingredients.all().order_by('id'),
     }
     return HttpResponse(template.render(context, request))
@@ -383,7 +387,7 @@ def addRecipe(request):
     template = loader.get_template('add_recipe.html')
     context = {
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
+        'isSigned': request.user.is_authenticated,
     }
     #print('isSigned: ',request.user.is_authenticated)
     return HttpResponse(template.render(context,request))
@@ -593,3 +597,69 @@ def search(request):
         }
 
     return render(request, 'recipes.html', context)
+
+@csrf_exempt
+def editRecipe(request, Id):
+    if request.method == 'POST':
+        recipe = Recipe.objects.get(id=Id)
+        if request.POST.get('recipe_name') != "":
+            recipe.name = request.POST.get('recipe_name')
+            
+        duration_from = request.POST.get('duration_from')
+        duration_to = request.POST.get('duration_to')
+        time_unit = request.POST.get('time_unit')
+        
+        duration = f"{duration_from} to {duration_to} {time_unit}"
+        if duration_from != "" and duration_to != "" and time_unit != "":
+            recipe.duration = duration
+        if request.POST.get('meal') != "":
+            recipe.category = request.POST.get('meal')
+        if request.POST.get('occasion') != "":
+            recipe.season = request.POST.get('occasion')
+        
+        recipe_cover_image = request.FILES.get('recipe_cover_image')
+        recipe_main_image = request.FILES.get('recipe_main_image')
+        
+        if recipe_cover_image:
+            recipe.coverPhoto = recipe_cover_image
+        if recipe_main_image:
+            recipe.mainPhoto = recipe_main_image
+            
+        recipe.save()
+        
+        ingredients = Ingredient.objects.filter(recipe_id = Id)
+        instructions = Instruction.objects.filter(recipe_id = Id)
+        
+        ingredients.delete()
+        instructions.delete()
+        
+        ingredient_quantities = request.POST.getlist('ingredient_quantity[]')
+        ingredient_units = request.POST.getlist('ingredient_unit[]')
+        ingredient_names = request.POST.getlist('ingredient_name[]')
+        for quantity, unit, name in zip(ingredient_quantities, ingredient_units, ingredient_names):
+            Ingredient.objects.create(
+                name=name,
+                quantity=quantity,
+                unit=unit,
+                recipe=recipe
+            )
+        instruction_details = request.POST.getlist('instruction_details[]')
+        for details in instruction_details:
+            Instruction.objects.create(
+                details=details,
+                recipe=recipe
+            )
+
+        return HttpResponseRedirect(reverse('recipes'))
+            
+    template = loader.get_template('edit_recipe.html')
+    ing = Ingredient.objects.filter(recipe_id = Id)
+    ins = Instruction.objects.filter(recipe_id = Id)
+    context= {
+        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+        'isSigned': request.user.is_authenticated,
+        'Recipe': Recipe.objects.get(id=Id),
+        'Ingredient': list(ing),
+        'Instruction': list(ins),
+    }
+    return HttpResponse(template.render(context, request))
