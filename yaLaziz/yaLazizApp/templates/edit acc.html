@@ -9,14 +9,14 @@
     <div class="page editAccPage">
         <main>
             <div class="photo">
-                <img class="side" id="side1" src="{% static 'Photos/test.jpg' %}" alt="side photo">
+                <img class="side" id="side1" src="{% static "Photos/test.jpg" %}" alt="side photo">
 
             </div>
             <div class="form">
-                <form action="" method="" id="editAcc">
+                <form  method="post" id="editAcc">
                     <div class="editPhoto ">
                         <div class="photo1">
-                            <img class="ph1" src="" alt="Account Photo" id="ph1"></image>
+                            <img class="ph1" src="/static{{user.userphoto.url}}" alt="Account Photo" id="ph1"></image>
                         </div>
                         <div class="choosephoto">
                             <label id="lab" for="myfile">change photo</label>
@@ -65,7 +65,7 @@
     </div>
 {%endblock main%}
 {%block scripts%}
-    {% comment %} <script src="{%static 'js/main.js'%}"></script> {% endcomment %}
-    {% comment %} <script src="{%static 'js/editAcc.js'%}"></script> {% endcomment %}
-    {% comment %} <script src="{%static 'js/technicalButtons.js'%}"></script> {% endcomment %}
+     {% comment %} <script src="{%static 'js/main.js'%}"></script>
+     <script src="{%static 'js/editAcc.js'%}"></script> 
+    <script src="{%static 'js/technicalButtons.js'%}"></script> {% endcomment %}
 {%endblock%}   

@@ -3,8 +3,8 @@
 {%load static%}
 {%block additionalLinks%}
     <title>yaLaziz Account</title>
-    <link rel="stylesheet" href="{%static 'css/my acc.css'%}">
     <link rel="stylesheet" href="{%static 'css/cards.css'%}">
+    <link rel="stylesheet" href="{%static 'css/my acc.css'%}">
 
 {%endblock%}
 {%block main%}
@@ -12,7 +12,7 @@
         <main>
             <div class="header">
                 <div class="userPhoto">
-                    <img id="ph" class="photo" src="{{user.userphoto.url}}" alt="Account Photo">
+                    <img id="ph" class="photo" src="/static{{user.userphoto.url}}" alt="Account Photo">
                 </div>
                 <div class="container">
                     <div class="userName">
@@ -30,7 +30,7 @@
                         <div class="grid" id="userGrid">
                             {%for recipe in recipes%}
                             
-                             <div class="recipe" id={{recipe.id}}>
+                             <div class="recipe" id="{{recipe.id}}">
                                 <div class="edit">
                                     <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
                                     <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
@@ -40,14 +40,14 @@
                                 {% else %}
                                     <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="add to favorites" class="favorite_button">
                                 {% endif %}
-                                <img src={{recipe.coverPhoto.url}} alt="{{recipe.name}}" class="coverImg">
+                                <img src="{{recipe.coverPhoto.url}}" alt="{{recipe.name}}" class="coverImg">
                                 <div class="info">
                                     <h3>{{recipe.name}}</h3>
                                     <h5>&#x23F0; {{recipe.duration}}</h5>
                                     <p>The {{recipe.name}} recipe</p>
                                     <a href="/recipe_detail/{{recipe.id}}"><button class="btn" id="recipeLinkMain">view recipe</button></a>
                                 </div>
-                            </div>
+                             </div>
                             {% endfor %}
                             
                         </div>
@@ -62,7 +62,7 @@
 
                             {%if fav == Recipe.id%}
                         
-                             <div class="recipe" id={{Recipe.id}}>
+                            <div class="recipe" id="{{Recipe.id}}">
                                 <div class="edit">
                                     <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
                                     <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
@@ -72,7 +72,7 @@
                             
                         
     
-                                <img src={{Recipe.coverPhoto.url}} alt="{{Recipe.name}}" class="coverImg">
+                                <img src="{{Recipe.coverPhoto.url}}" alt="{{Recipe.name}}" class="coverImg">
                                 <div class="info">
                                     <h3>{{Recipe.name}}</h3>
                                     <h5>&#x23F0; {{Recipe.duration}}</h5>

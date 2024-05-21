@@ -106,7 +106,7 @@
 }
 
 #favoriteGrid {
-    max-width: 2000px;
+    /* max-width: 2000px; */
 
     display: grid;
     grid-auto-flow: column;
@@ -114,6 +114,11 @@
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     justify-content: start;
+    width: 97vw;
+}
+
+div.grid{
+    column-gap: 2.25rem;
 }
 
 #favoriteGrid::-webkit-scrollbar{
@@ -128,7 +133,7 @@
     height: 10px;
 }
 #userGrid{
-    max-width: 2000px;
+    /* max-width: 2000px; */
 
     display: grid;
     grid-auto-flow: column;
@@ -136,6 +141,7 @@
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     justify-content: start;
+    width: 97vw;
 }
 
 #userGrid::-webkit-scrollbar{
