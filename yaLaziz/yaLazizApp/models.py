@@ -28,7 +28,7 @@ class Favorite(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
-    quantity = models.IntegerField()
+    quantity = models.DecimalField(max_digits=10, decimal_places=2)
     unit = models.CharField(max_length=20)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
 
