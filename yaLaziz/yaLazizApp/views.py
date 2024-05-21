@@ -380,13 +380,16 @@ def addRecipe(request):
     #print('isSigned: ',request.user.is_authenticated)
     return HttpResponse(template.render(context,request))
 
-def myAcc(request):
+def myAcc(request,Id):
     template= loader.get_template('my account.html')
-    # favorites= Favorite.objects.filter(userId= )
+    fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
     context = {
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
         'isSigned': request.user.is_authenticated,
-        
+        'user': User.objects.get(id=Id),
+        'recipes':Recipe.objects.filter(userId=request.user),
+        'Favorites':list(fav),
+        'allRec':Recipe.objects.all(),
     }
     return HttpResponse(template.render(context,request))
 
