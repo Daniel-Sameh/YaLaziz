@@ -2,13 +2,14 @@
 {% extends "index.html" %}
 {% load static %}
 {%block additionalLinks%}
-<title>{{title|capfirst}} Recipes</title>
+<title>{{title|capfirst}}</title>
 <link rel="stylesheet" href="{% static 'css/cards.css'%}">
 {%endblock%}
 {% block main %}
 <div class="title">
-    <h1>{{title|capfirst}} Recipes</h1>
+    <h1>{{title|capfirst}}</h1>
 </div>
+
 <div class="grid" id="recipesGrid">
     {%for recipe in Recipes %}
     <div class="recipe" id={{recipe.id}}>
@@ -16,8 +17,12 @@
             <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
             <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
         </div>
-        <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="add to favorites" class="favorite_button">
-        <img src=../{{recipe.coverPhoto}} alt="{{recipe.name}}" class="coverImg">
+        {% if recipe.id in Favorites %}
+            <img src="{% static 'Photos/heartRed.png'%}" alt="" title="remove from favorites" class="favorite_button">
+        {% else %}
+            <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="add to favorites" class="favorite_button">
+        {% endif %}
+        <img src={{recipe.coverPhoto.url}} alt="{{recipe.name}}" class="coverImg">
         <div class="info">
             <h3>{{recipe.name}}</h3>
             <h5>&#x23F0; {{recipe.duration}}</h5>

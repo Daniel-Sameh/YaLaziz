@@ -33,8 +33,8 @@ document.addEventListener('submit', function (event) {
                     checkp.style.display = "block";
                     document.getElementById('UserName').style.border = "2px solid red";
                     document.getElementById('UserName').style.borderRadius = "40px";
-                } else if (response.message == 'wrongPassword') {
-                    checkp.innerHTML = "*Wrong Password, Try Again";
+                } else if (response.message == 'Invalid credentials') {
+                    checkp.innerHTML = "*Invalid credentials, Try Again";
                     checkp.style.display = "block";
                     document.getElementById('Pass').style.border = "2px solid red";
                     document.getElementById('Pass').style.borderRadius = "40px";

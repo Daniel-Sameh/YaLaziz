@@ -57,9 +57,41 @@ mainImageInput.addEventListener("change", handlePhotoSavingMain);
 
 
 function addIngredient() {
-  var unit = document.getElementById("unit-id").value;
-  var quantity = document.getElementById("quantity-id").value;
-  var name = document.getElementById("ingredient-id").value;
+  const container = document.getElementById('ingredients-container');
+    const lastIngredient = container.querySelector('.add-ing-grouping:last-child');
+
+    // Hide the last ingredient div if it exists
+    if (lastIngredient) {
+        lastIngredient.style.display = 'none';
+    }
+
+    const newIngredient = document.createElement('div');
+    newIngredient.classList.add('add-ing-grouping');
+    newIngredient.innerHTML = `
+        <input type="number" step="0.5" name="ingredient_quantity[]" class="ingredient-input-field quntityIngredient" placeholder="Quantity">
+        <select name="ingredient_unit[]" class="ingredient-input-field selectUnit">
+            <option value="" disabled selected>Select unit</option>
+            <option value="gm">Grams</option>
+            <option value="kgm">Kilograms</option>
+            <option value="lit">Liters</option>
+            <option value="Mlit">Milliliters</option>
+            <option value="Tsp">Teaspoon</option>
+            <option value="Tbsp">Tablespoon</option>
+            <option value="cup">Cup</option>
+            <option value="none">No unit</option>
+        </select>
+        <input type="text" name="ingredient_name[]" class="ingredient-input-field nameIngredient" placeholder="Ingredient">
+    `;
+    container.appendChild(newIngredient);
+
+
+  // var unitLen = document.getElementsByClassName("selectUnit").length;
+  // var quantityLen = document.getElementsByClassName("quntityIngredient").length;
+  // var nameLen = document.getElementsByClassName("nameIngredient").length;
+
+  var unit = lastIngredient.querySelector('.selectUnit').value;
+  var quantity = lastIngredient.querySelector('.quntityIngredient').value;
+  var name = lastIngredient.querySelector('.nameIngredient').value;
 
   if (quantity && name && unit) {
     ingredients.push([quantity, unit, name]);
@@ -67,34 +99,17 @@ function addIngredient() {
     listItem.textContent = quantity + " " + unit + " " + name;
     previngredients.push(listItem);
 
-  //   var ajaxrequest = new XMLHttpRequest();
-  //   ajaxrequest.open("POST", "addIngredient/", true);
-  //   ajaxrequest.setRequestHeader("Content-Type", "application/json");
-  //   ajaxrequest.onreadystatechange = function(){
-  //     if(ajaxrequest.readyState == 4 && ajaxrequest.status == 200){
-  //       alert("DONE!");
-  //     } else{
-  //       alert("ERROR!");
-  //     }
-  //   }
-  //   var data = JSON.stringify({
-  //     'name': name,
-  //     'quantity': quantity,
-  //     'unit': unit
-  // });
-  // ajaxrequest.send(data);
-    //Add Ingredients to localStorage
-    // ingredientsArr.push(listItem.textContent);
-    // localStorage.setItem('ingredients', JSON.stringify(ingredientsArr));
-
     var removeButton = document.createElement("button");
     var trashIcon = document.createElement("i");
     trashIcon.className = "fa fa-trash";
     removeButton.appendChild(trashIcon);
     removeButton.className = "Remove-button";
     removeButton.onclick = function () {
+      var list = listItem.parentElement;
+      var index = Array.from(list.children).indexOf(listItem);
       listItem.remove();
-      let index = previngredients.indexOf(removeButton.closest("li"));
+      document.querySelectorAll('.add-ing-grouping')[index].remove();
+      var index = previngredients.indexOf(removeButton.closest("li"));
       previngredients.splice(index,1);
       ingredients.splice(index,1);
       // ingredientsArr.pop();
@@ -127,8 +142,33 @@ function addIngredient() {
 //     instructionsArr= localStorage.getItem('instructions');
 // }
 function addInstruction() {
-  var instructionText = document.getElementById("instructions-id").value;
-  instructions.push(instructionText);
+ // Create a new textarea for instructions
+ const container = document.getElementById('instructions-container');
+    
+ // Get all existing instruction textareas
+ const instructionElements = container.getElementsByTagName('textarea');
+ const lastInstruction = instructionElements[instructionElements.length - 1];
+ 
+ // Hide the last instruction textarea if it exists
+ if (lastInstruction) {
+     lastInstruction.style.display = 'none';
+ }
+
+ // Retrieve the text value from the last instruction textarea
+ var instructionText = lastInstruction ? lastInstruction.value : '';
+
+ // Create a new textarea element
+ const newInstructionDiv = document.createElement('div');
+ newInstructionDiv.classList.add('instructions-div');
+
+ const newInstruction = document.createElement('textarea');
+ newInstruction.name = 'instruction_details[]';
+ newInstruction.placeholder = 'Instruction Details';
+
+ newInstructionDiv.appendChild(newInstruction);
+ container.appendChild(newInstructionDiv);
+
+ // Optional: Do something with the retrieved instruction text
   if (instructionText) {
     var listItem = document.createElement("li");
     listItem.textContent = instructionText;
@@ -143,9 +183,12 @@ function addInstruction() {
     removeButton.appendChild(trashIcon);
     removeButton.className = "Remove-button";
     removeButton.onclick = function () {
+      var list = listItem.parentElement;
+      var index = Array.from(list.children).indexOf(listItem);
       listItem.remove();
+      document.querySelectorAll('.instructions-div')[index].remove();
       // instructions.pop();
-      let index = previnstructions.indexOf(removeButton.closest("li"));
+      var index = previnstructions.indexOf(removeButton.closest("li"));
       previnstructions.splice(index,1);
       instructions.splice(index,1);
       // instructionsArr.pop();
@@ -177,60 +220,60 @@ function addInstruction() {
 
   
 
-  let info = [];
-document.getElementById("ADDFORM").addEventListener('submit', function(event){
-  event.preventDefault();
-  var RECIPENAME = document.getElementById("rname-id").value;
-  info.push(RECIPENAME);
-  var COVERIMAGE = document.getElementById("rimage-id").value;
-  info.push(COVERIMAGE);
-  var MAINIMAGE = document.getElementById("rphoto-id").value;
-  info.push(MAINIMAGE);
-  var FROM = document.getElementById("rfrom-id").value;
-  var TO = document.getElementById("rto-id").value;
-  var TIMEUNIT = document.getElementById("to-unit").value;
-  var DURATION = "from " + FROM + " to " + TO + " " + TIMEUNIT;
-  info.push(DURATION);
-  var CATEGORY = document.querySelector('input[name="meal"]:checked').id;
-  info.push(CATEGORY);
-  var OCCASION = document.querySelector('input[name="occasion"]:checked').id;
-  info.push(OCCASION);
+//   let info = [];
+// document.getElementById("ADDFORM").addEventListener('submit', function(event){
+//   event.preventDefault();
+//   var RECIPENAME = document.getElementById("rname-id").value;
+//   info.push(RECIPENAME);
+//   var COVERIMAGE = document.getElementById("rimage-id").value;
+//   info.push(COVERIMAGE);
+//   var MAINIMAGE = document.getElementById("rphoto-id").value;
+//   info.push(MAINIMAGE);
+//   var FROM = document.getElementById("rfrom-id").value;
+//   var TO = document.getElementById("rto-id").value;
+//   var TIMEUNIT = document.getElementById("to-unit").value;
+//   var DURATION = "from " + FROM + " to " + TO + " " + TIMEUNIT;
+//   info.push(DURATION);
+//   var CATEGORY = document.querySelector('input[name="meal"]:checked').id;
+//   info.push(CATEGORY);
+//   var OCCASION = document.querySelector('input[name="occasion"]:checked').id;
+//   info.push(OCCASION);
 
-    console.log("send_info is called");
-    let xmlReq = new XMLHttpRequest();
-    xmlReq.open("POST", "addRecipe/", true);
-    xmlReq.setRequestHeader("Content-Type", "application/json");
-    xmlReq.onreadystatechange = function () {
-        if (xmlReq.readyState == 4) {
-            if (xmlReq.status == 200) {
-                var response = JSON.parse(xmlReq.responseText);
-                alert(response.message); 
-            } else {
-                alert("Error: " + xmlReq.statusText); 
-            }
-        }
-    };
-    var data = JSON.stringify({
-       info : info
-    });
-    console.log("Sending data:", data);
-    xmlReq.send(data);
+//     console.log("send_info is called");
+//     let xmlReq = new XMLHttpRequest();
+//     xmlReq.open("POST", "addRecipe/", true);
+//     xmlReq.setRequestHeader("Content-Type", "application/json");
+//     xmlReq.onreadystatechange = function () {
+//         if (xmlReq.readyState == 4) {
+//             if (xmlReq.status == 200) {
+//                 var response = JSON.parse(xmlReq.responseText);
+//                 alert(response.message); 
+//             } else {
+//                 alert("Error: " + xmlReq.statusText); 
+//             }
+//         }
+//     };
+//     var data = JSON.stringify({
+//        info : info
+//     });
+//     console.log("Sending data:", data);
+//     xmlReq.send(data);
 
-    Ajax_Ing_Ins();
+//     Ajax_Ing_Ins();
 
-    var popUp = document.createElement("div");
-    popUp.id = "popUp";
-    popUp.innerHTML =
-      'Your Recipe is edited successfully!<button id="popBtn">Done</button>';
-    document.querySelector("main").appendChild(popUp);
-    popUp.style.display = "flex";
-    document.getElementById("popBtn").addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector("main").removeChild(popUp);
-      location.href = "/recipes";
-    });
+//     var popUp = document.createElement("div");
+//     popUp.id = "popUp";
+//     popUp.innerHTML =
+//       'Your Recipe is edited successfully!<button id="popBtn">Done</button>';
+//     document.querySelector("main").appendChild(popUp);
+//     popUp.style.display = "flex";
+//     document.getElementById("popBtn").addEventListener("click", function (e) {
+//       e.preventDefault();
+//       document.querySelector("main").removeChild(popUp);
+//       location.href = "/recipes";
+//     });
 
-});
+// });
 
 
 
@@ -393,7 +436,6 @@ function preview() {
   document.querySelector(".fromto-info-preview").innerHTML = "";
 
   var name = document.getElementById("rname-id").value;
-  var id = document.getElementById("rid-id").value;
   var from = document.getElementById("rfrom-id").value;
   var to = document.getElementById("rto-id").value;
   var tounit = document.getElementById("to-unit").value;
@@ -410,13 +452,7 @@ function preview() {
   addname.appendChild(addnameinfo);
   isnameadded = true;
   //-----------------------------------------------------------------------------
-  var addidstamp = document.createElement("h4");
-  var addidinfo = document.createElement("p");
-  addidstamp.innerHTML = "2- Recipe ID: ";
-  addidinfo.innerHTML = id;
-  var addid = document.querySelector(".id-info-preview");
-  addid.appendChild(addidstamp);
-  addid.appendChild(addidinfo);
+
   //------------------------------------------------------------------------------
 
   if (from == to || from > to) {
@@ -441,11 +477,9 @@ function preview() {
     addfromto.appendChild(addfromtoinfo);
   }
   if (document.querySelector(".name-info-preview").children.length == 0
-    || document.querySelector(".id-info-preview").children.length == 0
     || document.querySelector(".fromto-info-preview").children.length == 0
     || document.querySelector(".image-preview").children.length == 0
     || document.querySelector(".photo-preview").children.length == 0) {
-    e.preventDefault();
     var popUp = document.createElement("div");
     popUp.id = "popUp";
     popUp.innerHTML =

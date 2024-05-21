@@ -255,21 +255,42 @@ function getSearchValue() {
 
 const searchButtons = document.querySelectorAll("#searchBtn");
 
-searchButtons.forEach(function (button) {
-  button.addEventListener("click", function (e) {
-    const searchValue = getSearchValue().toLowerCase();
-    const Recipes = document.querySelectorAll(".recipe");
-    console.log(location.href);
-    for (let i = 0; i < Recipes.length; i++) {
-      const recipeName = Recipes[i].querySelector("h3").innerHTML.toLowerCase();
-      if (recipeName.indexOf(searchValue)) {
-        Recipes[i].style.display = "none";
-      } else {
-        Recipes[i].style.display = "block";
-      }
-    }
-  });
-});
+// searchButtons.forEach(function (button) {
+//   button.addEventListener("click", function (e) {
+//     const searchValue = getSearchValue().toLowerCase();
+//     const Recipes = document.querySelectorAll(".recipe");
+//     console.log(location.href);
+//     for (let i = 0; i < Recipes.length; i++) {
+//       const recipeName = Recipes[i].querySelector("h3").innerHTML.toLowerCase();
+//       if (recipeName.indexOf(searchValue)) {
+//         Recipes[i].style.display = "none";
+//       } else {
+//         Recipes[i].style.display = "block";
+//       }
+//     }
+//   });
+// });
+// document.getElementById("searchForm").addEventListener("submit", function(event) {
+//   event.preventDefault(); // Prevent default form submission
+
+//   var query = document.getElementById("query").value;
+//   if (query.trim() !== "") {
+//       search(query);
+//   }
+// });
+// function search(query) {
+//   var xhr = new XMLHttpRequest();
+//   xhr.onreadystatechange = function() {
+//       if (xhr.readyState == 4 && xhr.status == 200) {
+//           // document.documentElement.innerHTML = xhr.responseText;
+//           document.open();
+//           document.write(xhr.responseText);
+//           document.close();
+//       }
+//   };
+//   xhr.open("GET", "/search/?q=" + encodeURIComponent(query), true);
+//   xhr.send();
+// }
 
 //------------------------------------------------------------------
 

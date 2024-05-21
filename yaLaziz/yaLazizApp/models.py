@@ -6,7 +6,7 @@ class User(AbstractUser):
     # email = models.EmailField(max_length=255)
     # password = models.CharField(max_length=100)
     isAdmin = models.BooleanField(default=False)
-    userphoto=models.ImageField(upload_to='static/Photos/', default='static/Photos/acc pic.png')
+    userphoto=models.ImageField(upload_to='Photos/', default='static/Photos/acc pic.png')
     last_login = models.DateTimeField(null=True, blank=True)
 
     # def __str__(self) -> str:
@@ -14,8 +14,8 @@ class User(AbstractUser):
 
 class Recipe(models.Model):
     name= models.CharField(max_length=255)
-    coverPhoto= models.ImageField(upload_to='static/Photos/') 
-    mainPhoto= models.ImageField(upload_to='static/Photos/')
+    coverPhoto= models.ImageField(upload_to='Photos/') 
+    mainPhoto= models.ImageField(upload_to='Photos/')
     duration = models.CharField(max_length=255)
     category = models.CharField(max_length=100)
     season= models.CharField(max_length=100)

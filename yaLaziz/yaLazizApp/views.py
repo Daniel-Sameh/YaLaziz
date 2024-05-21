@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 
 def index(request):
@@ -20,14 +21,27 @@ def index(request):
 
 def recipes(request):
     template = loader.get_template('recipes.html')
-    context= {
-        'title' : "All Laziz",
-        'Recipes': Recipe.objects.all(),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated,
-    }
-    return HttpResponse(template.render(context, request))
-
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.all()
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "All Laziz Recipes",
+            'Recipes': Recipe.objects.all(),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "All Laziz Recipes",
+            'Recipes': Recipe.objects.all(),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
+ 
 def about(request):
     template= loader.get_template('about.html')
     context = {
@@ -109,83 +123,188 @@ def logoutUser(request):
 
 def breakfast(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"breakfast",
-        'Recipes': Recipe.objects.filter(category="breakfast"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(category="breakfast"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "breakfast Recipes",
+            'Recipes': Recipe.objects.filter(category="breakfast"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "breakfast Recipes",
+            'Recipes': Recipe.objects.filter(category="breakfast"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def lunch(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"lunch",
-        'Recipes': Recipe.objects.filter(category="lunch"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(category="lunch"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "lunch Recipes",
+            'Recipes': Recipe.objects.filter(category="lunch"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "lunch Recipes",
+            'Recipes': Recipe.objects.filter(category="breakfast"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def dinner(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"dinner",
-        'Recipes': Recipe.objects.filter(category="dinner"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(category="dinner"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "dinner Recipes",
+            'Recipes': Recipe.objects.filter(category="dinner"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "dinner Recipes",
+            'Recipes': Recipe.objects.filter(category="dinner"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def desserts(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"desserts",
-        'Recipes': Recipe.objects.filter(category="desserts"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(category="desserts"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "desserts Recipes",
+            'Recipes': Recipe.objects.filter(category="desserts"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "desserts Recipes",
+            'Recipes': Recipe.objects.filter(category="desserts"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def drinks(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"drinks",
-        'Recipes': Recipe.objects.filter(category="drinks"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(category="drinks"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "drinks Recipes",
+            'Recipes': Recipe.objects.filter(category="drinks"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "drinks Recipes",
+            'Recipes': Recipe.objects.filter(category="drinks"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def ramadan(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"ramadan",
-        'Recipes': Recipe.objects.filter(season="ramadan"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(season="ramadan"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "ramadan Recipes",
+            'Recipes': Recipe.objects.filter(season="ramadan"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "ramadan Recipes",
+            'Recipes': Recipe.objects.filter(season="ramadan"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def christmas(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"christmas",
-        'Recipes': Recipe.objects.filter(season="christmas"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(season="christmas")
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        #print(recipes.values)
+        context={
+            'title' : "christmas Recipes",
+            'Recipes': Recipe.objects.filter(season="christmas"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        #print('I am in christmas function')
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "christmas Recipes",
+            'Recipes': Recipe.objects.filter(season="christmas"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def summer(request):
     template= loader.get_template('recipes.html')
-    context= {
-        'title':"summer",
-        'Recipes': Recipe.objects.filter(season="summer"),
-        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
-    }
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        recipes=Recipe.objects.filter(season="summer"),
+        fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(fav.values())
+        context={
+            'title' : "summer Recipes",
+            'Recipes': Recipe.objects.filter(season="summer"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites':list(fav),
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        context= {
+            'title' : "summer Recipes",
+            'Recipes': Recipe.objects.filter(season="summer"),
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+        return HttpResponse(template.render(context, request))
 
 def recipeDetail(request, id):
     template= loader.get_template('recipe_detail.html')
@@ -203,54 +322,63 @@ def addRecipePage(request):
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
         'isSigned': request.user.is_authenticated
     }
+    #print('isSigned: ',request.user.is_authenticated)
     return HttpResponse(template.render(context,request))
 
     
 @csrf_exempt
 def addRecipe(request):
-    # recipeName = request.POST['recipe name']
-    # recipeCoverPhoto = "static/Photos/" + request.POST['recipe cover image']
-    # recipeMainPhoto = "static/Photos/" + request.POST['recipe main image']
-    # recipeDurationFrom = request.POST['duration from']
-    # recipeDurationTo = request.POST['duration to']
-    # recipeTimeUnit = request.POST.get('time-unit')
-    # recipeDuration = recipeDurationFrom + " to " + recipeDurationTo + " " + recipeTimeUnit
-    # recipeCategory = request.POST.get('meal')
-    # recipeSeason = request.POST.get('occasion')
-    # recipe = Recipe(name = recipeName, 
-    #                 coverPhoto = recipeCoverPhoto,
-    #                 mainPhoto = recipeMainPhoto,
-    #                 duration = recipeDuration,
-    #                 category = recipeCategory,
-    #                 season = recipeSeason,
-    #                 userId = User.objects.get(id=1))
-    recipeName = None
-    recipeCoverPhoto = None
-    recipeMainphoto = None
-    recipeDuration = None
-    recipeCategory = None
-    recipeSeason = None
-    print('before if ')
     if request.method == 'POST':
-        data = json.loads(request.body)
-        info = data.get('info', [])
-        recipeName = info[0]
-        recipeCoverPhoto = info[1]
-        recipeMainphoto = info[2]
-        recipeDuration = info[3]
-        recipeCategory = info[4]
-        recipeSeason = info[5]
-        print('after season')
-        recipe = Recipe(name = recipeName, 
-                    coverPhoto = recipeCoverPhoto,
-                    mainPhoto = recipeMainphoto,
-                    duration = recipeDuration,
-                    category = recipeCategory,
-                    season = recipeSeason,
-                    userId = User.objects.get(id=1))
-    recipe.save()
-    print('before return')
-    return HttpResponseRedirect(reverse('recipes'))
+        recipe_name = request.POST.get('recipe_name')
+        recipe_cover_image = request.FILES.get('recipe_cover_image')
+        recipe_main_image = request.FILES.get('recipe_main_image')
+        duration_from = request.POST.get('duration_from')
+        duration_to = request.POST.get('duration_to')
+        time_unit = request.POST.get('time_unit')
+        duration = f"{duration_from} to {duration_to} {time_unit}"
+        category = request.POST.get('meal')
+        season = request.POST.get('occasion')
+        
+        # Create Recipe instance
+        recipe = Recipe(
+            name=recipe_name,
+            coverPhoto=recipe_cover_image,
+            mainPhoto=recipe_main_image,
+            duration=duration,
+            category=category,
+            season=season,
+            userId=request.user # Replace with actual user logic
+        )
+        recipe.save()
+
+        # Create Ingredient instances
+        ingredient_quantities = request.POST.getlist('ingredient_quantity[]')
+        ingredient_units = request.POST.getlist('ingredient_unit[]')
+        ingredient_names = request.POST.getlist('ingredient_name[]')
+        for quantity, unit, name in zip(ingredient_quantities, ingredient_units, ingredient_names):
+            Ingredient.objects.create(
+                name=name,
+                quantity=quantity,
+                unit=unit,
+                recipe=recipe
+            )
+
+        # Create Instruction instances
+        instruction_details = request.POST.getlist('instruction_details[]')
+        for details in instruction_details:
+            Instruction.objects.create(
+                details=details,
+                recipe=recipe
+            )
+
+        return HttpResponseRedirect(reverse('recipes'))
+    template = loader.get_template('add_recipe.html')
+    context = {
+        'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+        'isSigned': request.user.is_authenticated
+    }
+    #print('isSigned: ',request.user.is_authenticated)
+    return HttpResponse(template.render(context,request))
 
 def myAcc(request):
     template= loader.get_template('my account.html')
@@ -326,15 +454,18 @@ def delFromFav(request):
         user_id = request.GET.get('userId')
         try:
             favorite = Favorite.objects.get(recipeId=recipe_id, userId=user_id)
-            favorite.delete()
+            print(favorite)
+            deletedCount, _= favorite.delete()
             return JsonResponse({'message': 'success'})
         except Favorite.DoesNotExist:
             return JsonResponse({'message': 'failed', 'error': 'Favorite not found'}, status=404)
         except Exception as e:  # Be specific in production
+            print(str(e))
             return JsonResponse({'message': 'failed', 'error': str(e)})
     else:
         return JsonResponse({'message': 'invalid request method'}, status=405)
     
+   
 @csrf_exempt
 def addIngredient(request):
     if request.method == 'POST':
@@ -414,3 +545,40 @@ def deleterecipes(request):
             return JsonResponse({'message': f'Error deleting recipe: {e}'}, status=500)
     else:
         return JsonResponse({'message': 'Invalid request method'}, status=400)
+
+def search(request):
+    print('I am here')
+    print(request.GET)
+
+    query = request.GET.get('q', '')
+    if request.user.is_authenticated:
+        recipes = Recipe.objects.filter(
+            Q(name__icontains=query) |
+            Q(ingredients__name__icontains=query) |
+            Q(instructions__details__icontains=query)
+        ).distinct() if query else Recipe.objects.all()  # Include all recipes if no query
+
+        fav = Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
+        print(list(fav))
+        context = {
+            'title': f"Search Results For \"{query}\"",
+            'Recipes': recipes,
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+            'Favorites': list(fav),
+        }
+    else:
+        recipes = Recipe.objects.filter(
+            Q(name__icontains=query) |
+            Q(ingredients__name__icontains=query) |
+            Q(instructions__details__icontains=query)
+        ).distinct() if query else Recipe.objects.all()  # Include all recipes if no query
+
+        context = {
+            'title': "Search Results",
+            'Recipes': recipes,
+            'isAdmin': request.user.is_authenticated and request.user.isAdmin,
+            'isSigned': request.user.is_authenticated,
+        }
+
+    return render(request, 'recipes.html', context)
