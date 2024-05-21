@@ -102,6 +102,26 @@
                 <div class="underline"></div>
             </div>
             <div class="grid">
+                {%for recipe in trending %}
+                <div class="recipe" id={{recipe.id}}>
+                    <div class="edit">
+                        <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
+                        <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
+                    </div>
+                    {% if recipe.id in Favorites %}
+                        <img src="{% static 'Photos/heartRed.png'%}" alt="" title="remove from favorites" class="favorite_button">
+                    {% else %}
+                        <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="add to favorites" class="favorite_button">
+                    {% endif %}
+                    <img src={{recipe.coverPhoto.url}} alt="{{recipe.name}}" class="coverImg">
+                    <div class="info">
+                        <h3>{{recipe.name}}</h3>
+                        <h5>&#x23F0; {{recipe.duration}}</h5>
+                        <p>The {{recipe.name}} recipe</p>
+                        <a href="/recipe_detail/{{recipe.id}}"><button class="btn" id="recipeLinkMain">view recipe</button></a>
+                    </div>
+                </div>
+                {% endfor%}
             </div>
             <div class="splitContainer">
                 <div class="Scontainer">
@@ -122,6 +142,26 @@
                 </div>
                 <div class="newRecipe">
                     <div class="grid">
+                        {%for recipe in newRecipes %}
+                        <div class="recipe" id={{recipe.id}}>
+                            <div class="edit">
+                                <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
+                                <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
+                            </div>
+                            {% if recipe.id in Favorites %}
+                                <img src="{% static 'Photos/heartRed.png'%}" alt="" title="remove from favorites" class="favorite_button">
+                            {% else %}
+                                <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="add to favorites" class="favorite_button">
+                            {% endif %}
+                            <img src={{recipe.coverPhoto.url}} alt="{{recipe.name}}" class="coverImg">
+                            <div class="info">
+                                <h3>{{recipe.name}}</h3>
+                                <h5>&#x23F0; {{recipe.duration}}</h5>
+                                <p>The {{recipe.name}} recipe</p>
+                                <a href="/recipe_detail/{{recipe.id}}"><button class="btn" id="recipeLinkMain">view recipe</button></a>
+                            </div>
+                        </div>
+                        {% endfor%}
                     </div>
                 </div>
             </div>

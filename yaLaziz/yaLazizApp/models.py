@@ -20,6 +20,7 @@ class Recipe(models.Model):
     category = models.CharField(max_length=100)
     season= models.CharField(max_length=100)
     userId= models.ForeignKey(User, on_delete=models.CASCADE)
+    visit_count = models.PositiveIntegerField(default=0)
 
 class Favorite(models.Model):
     userId= models.ForeignKey(User, on_delete=models.CASCADE)

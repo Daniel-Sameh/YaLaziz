@@ -16,6 +16,8 @@ def index(request):
     context = {
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
         'isSigned': request.user.is_authenticated,
+        'trending': Recipe.objects.order_by('-visit_count')[:4],
+        'newRecipes': Recipe.objects.order_by('-id')[:3],
     }
     return HttpResponse(template.render(context,request))
 
@@ -308,6 +310,10 @@ def summer(request):
 
 def recipeDetail(request, id):
     template= loader.get_template('recipe_detail.html')
+    recipe = get_object_or_404(Recipe, id=id)
+    recipe.visit_count += 1
+    recipe.save()
+    print(recipe.visit_count)
     context= {
         'Recipe': Recipe.objects.get(id=id),
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
