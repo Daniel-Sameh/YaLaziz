@@ -13,11 +13,13 @@ from django.db.models import Q
 
 def index(request):
     template= loader.get_template('index.html')
+    fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True) if request.user.is_authenticated else None
     context = {
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
         'isSigned': request.user.is_authenticated,
         'trending': Recipe.objects.order_by('-visit_count')[:4],
         'newRecipes': Recipe.objects.order_by('-id')[:3],
+        'Favorites': list(fav) if request.user.is_authenticated else None,
     }
     return HttpResponse(template.render(context,request))
 
@@ -97,7 +99,7 @@ def signupUser(request):
         # Invalid request method
         return JsonResponse({'message': 'Invalid request method'}, status=405)
 
-# @csrf_exempt
+@csrf_protect
 def loginUser(request):
     print('I am in loginUser')
     print(request.method)
@@ -113,10 +115,10 @@ def loginUser(request):
             return JsonResponse({'message': 'success', 'username': username, 'id': user.id, 'admin': user.isAdmin})
         else:
             # Authentication failed
-            return JsonResponse({'message': 'Invalid credentials'}, status=400)
+            return JsonResponse({'message': 'Invalid credentials'})
     else:
         # Invalid request method
-        return JsonResponse({'message': 'Invalid request method'}, status=405)
+        return JsonResponse({'message': 'Invalid request method'})
 
 def logoutUser(request):
     logout(request)

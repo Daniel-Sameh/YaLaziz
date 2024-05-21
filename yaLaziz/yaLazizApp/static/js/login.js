@@ -39,6 +39,8 @@ document.addEventListener('submit', function (event) {
                     document.getElementById('Pass').style.border = "2px solid red";
                     document.getElementById('Pass').style.borderRadius = "40px";
                     document.getElementById('UserName').style.border = "none";
+                    document.getElementById('UserName').style.border = "2px solid red";
+                    document.getElementById('UserName').style.borderRadius = "40px";
                 }
             } else {
                 console.log('Error occurred while logging in.');
@@ -47,7 +49,12 @@ document.addEventListener('submit', function (event) {
     };
     var encodedData = 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password);
     console.log('Sending POST request with data:', encodedData);
-    xml.send(encodedData);
+    // xml.send(encodedData);
+    try {
+        xml.send(encodedData);  // This is where the error occurs
+    } catch (e) {
+        alert('Error sending XMLHttpRequest:'+ e.toString());
+    }
     return false;
 });
 

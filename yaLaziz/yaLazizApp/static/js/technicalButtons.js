@@ -187,13 +187,13 @@ deleteButtons.forEach(function (button) {
         RECID = card.getAttribute("id");
 
         let xmlReq1 = new XMLHttpRequest();
-        xmlReq1.open("POST", "deleteRecipe/", true);
+        xmlReq1.open("POST", "/deleteRecipe/", true);
         xmlReq1.setRequestHeader("Content-Type", "application/json");
         xmlReq1.onreadystatechange = function () {
           if (xmlReq1.readyState == 4) {
             if (xmlReq1.status == 200) {
               var response = JSON.parse(xmlReq1.responseText);
-              alert(response.message); 
+              //alert(response.message); 
             } else {
               alert("Error: " + xmlReq1.statusText); 
             }
@@ -210,10 +210,11 @@ deleteButtons.forEach(function (button) {
           alert("Error sending request");
         }
 
-        allRecipe.splice(arrIdx, 1);
-        localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+        //allRecipe.splice(arrIdx, 1);
+        //localStorage.setItem("allRecipe", JSON.stringify(allRecipe));
+        document.querySelector("main").removeChild(popUp);
       }
-      document.querySelector("main").removeChild(popUp);
+      
     });
 
     document.getElementById("cancel").addEventListener("click", function (e) {
