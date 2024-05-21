@@ -4,13 +4,15 @@
 {%block additionalLinks%}
     <title>yaLaziz Account</title>
     <link rel="stylesheet" href="{%static 'css/my acc.css'%}">
+    <link rel="stylesheet" href="{%static 'css/cards.css'%}">
+
 {%endblock%}
 {%block main%}
     <div class="page myAccPage">
         <main>
             <div class="header">
                 <div class="userPhoto">
-                    <img id="ph" class="photo" src="{% static user.userPhoto %}" alt="Account Photo">
+                    <img id="ph" class="photo" src="{{user.userphoto.url}}" alt="Account Photo">
                 </div>
                 <div class="container">
                     <div class="userName">
@@ -26,13 +28,62 @@
                     <div class="add">
                         <h1 class="added">Your recipes</h1>
                         <div class="grid" id="userGrid">
+                            {%for recipe in recipes%}
+                            
+                             <div class="recipe" id={{recipe.id}}>
+                                <div class="edit">
+                                    <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
+                                    <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
+                                </div>
+                                {% if recipe.id in Favorites %}
+                                    <img src="{% static 'Photos/heartRed.png'%}" alt="" title="remove from favorites" class="favorite_button">
+                                {% else %}
+                                    <img src="{% static 'Photos/heartWhite.png'%}" alt="" title="add to favorites" class="favorite_button">
+                                {% endif %}
+                                <img src={{recipe.coverPhoto.url}} alt="{{recipe.name}}" class="coverImg">
+                                <div class="info">
+                                    <h3>{{recipe.name}}</h3>
+                                    <h5>&#x23F0; {{recipe.duration}}</h5>
+                                    <p>The {{recipe.name}} recipe</p>
+                                    <a href="/recipe_detail/{{recipe.id}}"><button class="btn" id="recipeLinkMain">view recipe</button></a>
+                                </div>
+                            </div>
+                            {% endfor %}
                             
                         </div>
                     </div>
 
                     <div class="favorite">
                         <h1 class="fav">Recipes you liked</h1>
-                        <div class="grid" id="favoriteGrid"></div>
+                        <div class="grid" id="favoriteGrid">
+                            {%for fav in Favorites %}
+                    
+                             {%for Recipe in allRec%}
+
+                            {%if fav == Recipe.id%}
+                        
+                             <div class="recipe" id={{Recipe.id}}>
+                                <div class="edit">
+                                    <img src="{% static 'Photos/editButton.png'%}" alt="" class="editRecipe" title="Edit Recipe">
+                                    <img src="{% static 'Photos/deleteButton.png'%}" alt="" class="deleteRecipe" title="Delete Recipe">
+                                </div>
+                            
+                                <img src="{% static 'Photos/heartRed.png'%}" alt="" title="remove from favorites" class="favorite_button">
+                            
+                        
+    
+                                <img src={{Recipe.coverPhoto.url}} alt="{{Recipe.name}}" class="coverImg">
+                                <div class="info">
+                                    <h3>{{Recipe.name}}</h3>
+                                    <h5>&#x23F0; {{Recipe.duration}}</h5>
+                                    <p>The {{Recipe.name}} recipe</p>
+                                    <a href="/recipe_detail/{{Recipe.id}}"><button class="btn" id="recipeLinkMain">view recipe</button></a>
+                                </div>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </section>
