@@ -111,3 +111,7 @@ div.recipeDetail .recipeBody::-webkit-scrollbar {
     width: 0px;
     height: 5px;
 }
+
+div.recipeDetail #ingredients-list {
+    padding-left: 20px;
+}
