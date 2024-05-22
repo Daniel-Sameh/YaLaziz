@@ -80,35 +80,57 @@
                 <textarea name="instruction_details[]" id="instructions-id" placeholder="Instruction Details"></textarea>
               </div>
             </div>
-            <div class="add-ins-btn">
-              <button type="button" class="instruction-btn" onclick="addInstruction()">Add instruction</button>
-            </div>
+            <button type="button" class="instruction-btn" onclick="addInstruction()">Add instruction</button>
           </div>
           <div class="meal-type">
             <h3>Category:</h3>
             <div class="meal-radio">
               <div class="radio-label">
-                <input type="radio" name="meal" id="breakfast" value="breakfast" />
+                {%if Recipe.category == "breakfast"%}
+                  <input type="radio" name="meal" id="breakfast" value="breakfast" checked/>
+                {%else%}
+                  <input type="radio" name="meal" id="breakfast" value="breakfast" />
+                {% endif %}
                 <label for="breakfast">Breakfast</label>
               </div>
               <div class="radio-label">
-                <input type="radio" name="meal" id="lunch" value="lunch" />
+                {%if Recipe.category == "lunch"%}
+                  <input type="radio" name="meal" id="lunch" value="lunch" checked/>
+                {%else%}
+                  <input type="radio" name="meal" id="lunch" value="lunch" />
+                {% endif %}
                 <label for="lunch">Lunch</label>
               </div>
               <div class="radio-label">
+                {%if Recipe.category == "dinner"%}
+                <input type="radio" name="meal" id="dinner" value="dinner" checked/>
+                {%else%}
                 <input type="radio" name="meal" id="dinner" value="dinner" />
+                {% endif %}
                 <label for="dinner">Dinner</label>
               </div>
               <div class="radio-label">
+                {%if Recipe.category == "supper"%}
+                <input type="radio" name="meal" id="supper" value="supper" checked/>
+                {%else%}
                 <input type="radio" name="meal" id="supper" value="supper" />
+                {% endif %}
                 <label for="supper">Supper</label>
               </div>
               <div class="radio-label">
+                {%if Recipe.category == "desserts"%}
+                <input type="radio" name="meal" id="desserts" value="desserts" checked/>
+                {%else%}
                 <input type="radio" name="meal" id="desserts" value="desserts" />
+                {% endif %}
                 <label for="desserts">Desserts</label>
               </div>
               <div class="radio-label">
+                {%if Recipe.category == "drinks"%}
+                <input type="radio" name="meal" id="drinks" value="drinks" checked/>
+                {%else%}
                 <input type="radio" name="meal" id="drinks" value="drinks" />
+                {% endif %}
                 <label for="drinks">Drinks</label>
               </div>
             </div>
@@ -117,19 +139,35 @@
             <h3>Occasion:</h3>
             <div class="occasion-check">
               <div class="check-label">
+                {%if Recipe.season == "ramadan"%}
+                <input type="radio" id="ramadan" name="occasion" value="ramadan" checked/>
+                {%else%}
                 <input type="radio" id="ramadan" name="occasion" value="ramadan" />
+                {% endif %}
                 <label for="ramadan">Ramadan</label>
               </div>
               <div class="check-label">
+                {%if Recipe.season == "christmas"%}
+                <input type="radio" id="christmas" name="occasion" value="christmas" checked/>
+                {%else%}
                 <input type="radio" id="christmas" name="occasion" value="christmas" />
+                {% endif %}
                 <label for="christmas">Christmas</label>
               </div>
               <div class="check-label">
+                {%if Recipe.season == "summer"%}
+                <input type="radio" id="summer" name="occasion" value="summer" checked />
+                {%else%}
                 <input type="radio" id="summer" name="occasion" value="summer" />
+                {% endif %}
                 <label for="summer">Summer</label>
               </div>
               <div class="check-label">
+                {%if Recipe.season == "general"%}
                 <input type="radio" id="general" name="occasion" value="general" checked />
+                {%else%}
+                <input type="radio" id="general" name="occasion" value="general" />
+                {% endif %}
                 <label for="general">General</label>
               </div>
             </div>
