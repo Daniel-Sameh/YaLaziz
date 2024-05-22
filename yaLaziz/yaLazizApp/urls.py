@@ -32,6 +32,8 @@ urlpatterns = [
     path('api/recipes/', views.get_all_recipes, name='get-all-recipes'),
     path('edit_recipe/<int:Id>', views.editRecipe, name='editRecipe'),
     path('search/',views.search,name='search'),
+    path('help/', views.help, name="help"),
+    path('help/report/', views.report, name="report")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

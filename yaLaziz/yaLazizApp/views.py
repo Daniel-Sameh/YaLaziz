@@ -702,3 +702,11 @@ def editRecipe(request, Id):
         'Instruction': list(ins),
     }
     return HttpResponse(template.render(context, request))
+
+def help(request):
+    template = loader.get_template('Help.html')
+    return HttpResponse(template.render({}, request))
+
+def report(request):
+    template = loader.get_template('Report_a_problem.html')
+    return HttpResponse(template.render({}, request))
