@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -392,31 +393,69 @@ def addRecipe(request):
     #print('isSigned: ',request.user.is_authenticated)
     return HttpResponse(template.render(context,request))
 
-def myAcc(request,Id):
+@login_required
+def myAcc(request):
     template= loader.get_template('my account.html')
     fav= Favorite.objects.filter(userId=request.user.id).values_list('recipeId', flat=True)
     context = {
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
         'isSigned': request.user.is_authenticated,
-        'user': User.objects.get(id=Id),
+        'user': request.user,
         'recipes':Recipe.objects.filter(userId=request.user),
         'Favorites':list(fav),
         'allRec':Recipe.objects.all(),
     }
     return HttpResponse(template.render(context,request))
 
-@csrf_protect
-def editAcc(request):
-    template= loader.get_template('edit acc.html')
+
+
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, HttpResponseRedirect
+from django.template import loader
+from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import update_session_auth_hash
+
+
+@login_required
+@csrf_exempt  # Use this only if you have a specific reason to disable CSRF protection
+def editedAcc(request):
+    if request.method == 'POST':
+        current_password = request.POST.get('old_pass')
+        new_password = request.POST.get('edited_pass')
+        confirm_pass = request.POST.get('confirm_pass')
+        Name = request.POST.get('Name')
+        mail = request.POST.get('Email')
+        photo = request.FILES.get('myfile')
+
+        if not request.user.check_password(current_password):
+            return JsonResponse({'message': 'The current password is incorrect.'}, status=400)
+        
+        if new_password != confirm_pass:
+            return JsonResponse({'message': 'New password and confirm password do not match.'}, status=400)
+        
+
+        if photo:
+            request.user.userphoto = photo
+        request.user.username = Name
+        request.user.email = mail
+        if new_password != "":
+            request.user.set_password(new_password)
+        request.user.save()
+        
+        # Automatically log the user back in after password change
+        update_session_auth_hash(request, request.user)
+        
+        return HttpResponseRedirect(reverse('myAcc'))
+
+    template = loader.get_template('edit acc.html')
     context = {
         'isAdmin': request.user.is_authenticated and request.user.isAdmin,
-        'isSigned': request.user.is_authenticated
+        'isSigned': request.user.is_authenticated,
+        'user' : request.user
     }
-    return HttpResponse(template.render(context,request))
-
-@csrf_protect
-def editedAcc(request):
-    pass
+    return HttpResponse(template.render(context, request))
+            
 @csrf_exempt
 def get_all_recipes(request):
     if request.method == 'GET':
@@ -663,3 +702,11 @@ def editRecipe(request, Id):
         'Instruction': list(ins),
     }
     return HttpResponse(template.render(context, request))
+
+def help(request):
+    template = loader.get_template('Help.html')
+    return HttpResponse(template.render({}, request))
+
+def report(request):
+    template = loader.get_template('Report_a_problem.html')
+    return HttpResponse(template.render({}, request))
