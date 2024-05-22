@@ -590,7 +590,7 @@ def search(request):
         ).distinct() if query else Recipe.objects.all()  # Include all recipes if no query
 
         context = {
-            'title': "Search Results",
+            'title': f"Search Results For \"{query}\"",
             'Recipes': recipes,
             'isAdmin': request.user.is_authenticated and request.user.isAdmin,
             'isSigned': request.user.is_authenticated,
