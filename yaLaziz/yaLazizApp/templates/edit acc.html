@@ -13,14 +13,14 @@
 
             </div>
             <div class="form">
-                <form  method="post" id="editAcc">
+                <form  method="post" id="editAcc" enctype="multipart/form-data">
                     <div class="editPhoto ">
                         <div class="photo1">
-                            <img class="ph1" src="/static{{user.userphoto.url}}" alt="Account Photo" id="ph1"></image>
+                            <img class="ph1" src="{{user.userphoto.url}}" alt="Account Photo" id="ph1"></image>
                         </div>
                         <div class="choosephoto">
                             <label id="lab" for="myfile">change photo</label>
-                            <input type="file" id="myfile" name="myfile" accept="image/*">
+                            <input type="file" id="myfile" name="myfile"  accept="image/*">
                         </div>
                         &nbsp;
 
@@ -28,29 +28,29 @@
                     &nbsp;
                     <label for="name">Username:</label>
                     <div id="name" class="editName">
-                        <input id="inName" type="text" placeholder="Enter full name" required>
+                        <input id="inName" type="text"  name="Name" placeholder="Enter full name" value={{user.username}} required>
                     </div>
                     &nbsp;
                     <label for="mail">Email:</label>
                     <div id="emil" class="editMail">
-                        <input id="inEmil" type="Email" name="Email" id="" required placeholder="Enter email">
+                        <input id="inEmil" type="Email" name="Email" value={{user.email}} required placeholder="Enter email">
                     </div>
                     &nbsp;
                     <label for="oldPass">old Password:</label>
                     <div id="oldPass" class="oldPass">
-                        <input id="inOldPass" type="password" placeholder="Enter old password" required>
+                        <input id="inOldPass" type="password"  name="old_pass" placeholder="Enter old password" required>
                     </div>
                     <p id="checksOldPass"></p>
                     &nbsp;
                     <label for="edpass">New Password:</label>
                     <div id="edpass" class="editPass">
-                        <input id="inEdPass" type="password" placeholder="Enter new password" >
+                        <input id="inEdPass" type="password" name="edited_pass" placeholder="Enter new password" >
                     </div>
                     <p id="checksPass"></p>
                     &nbsp;
                     <label for="conFpass">Confirm Password:</label>
                     <div id="confPass" class="confirmEditedPass">
-                        <input id="inConfPass" type="password" placeholder="Confirm Password" >
+                        <input id="inConfPass" type="password"  name="confirm_pass" placeholder="Confirm Password" >
                     </div>
                     <p id="checks"></p>
                     &nbsp;
@@ -65,7 +65,7 @@
     </div>
 {%endblock main%}
 {%block scripts%}
-     {% comment %} <script src="{%static 'js/main.js'%}"></script>
+     <script src="{%static 'js/main.js'%}"></script>
      <script src="{%static 'js/editAcc.js'%}"></script> 
-    <script src="{%static 'js/technicalButtons.js'%}"></script> {% endcomment %}
+    <script src="{%static 'js/technicalButtons.js'%}"></script>
 {%endblock%}   

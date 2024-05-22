@@ -73,7 +73,7 @@
                             <button type="submit" id="searchBtn" onclick="search()">&#128269;</button> {% endcomment %}
                         </li>
                         {% if user.is_authenticated %}
-                        <li class="account"><a href="/myaccount/{{user.id}}" class="navLink">{{user.username}}</a></li>
+                        <li class="account"><a href="/myaccount" class="navLink">{{user.username}}</a></li>
                         {% else %}
                         <li class="account"><a class="navLink">Account</a></li>
                         {% endif %}
