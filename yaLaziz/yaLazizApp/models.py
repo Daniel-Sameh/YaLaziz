@@ -6,7 +6,7 @@ class User(AbstractUser):
     # email = models.EmailField(max_length=255)
     # password = models.CharField(max_length=100)
     isAdmin = models.BooleanField(default=False)
-    userphoto=models.ImageField(upload_to='Photos/', default='acc pic.png')
+    userphoto=models.ImageField(upload_to='Photos/', default='Photos/acc pic.png')
     last_login = models.DateTimeField(null=True, blank=True)
 
     # def __str__(self) -> str:
