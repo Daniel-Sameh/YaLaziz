@@ -26,6 +26,7 @@
             <section class="section">
                 <div class="content">
                     <div class="add">
+                        {%if isAdmin%}
                         <h1 class="added">Your recipes</h1>
                         <div class="grid" id="userGrid">
                             {%for recipe in recipes%}
@@ -49,7 +50,7 @@
                                 </div>
                              </div>
                             {% endfor %}
-                            
+                            {%endif%}
                         </div>
                     </div>
 
