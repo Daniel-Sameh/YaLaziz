@@ -1,5 +1,5 @@
 document.getElementById("signupForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
 
     // Get values from form inputs
     var username = document.getElementById("username").value;
@@ -49,7 +49,7 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         xml.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
         xml.onreadystatechange = function() {
             if (xml.readyState == 4 && xml.status == 200) {
-                // Request was successful, handle response here
+                // Request was successful
                 var response = JSON.parse(xml.responseText);
                 if (response.message === 'User created successfully') {
                     // User was created successfully, perform necessary actions
@@ -61,17 +61,14 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
                     document.getElementById('popBtn').addEventListener('click', function(e){
                         e.preventDefault();
                         document.querySelector('main').removeChild(popUp);
-                        // Redirect to login page
                         window.location.href = "/login";
                     });
                 } else {
-                    // User creation failed, display error message
                     alert("Failed to create user: " + response.message);
                 }
             }
         };
 
-        // Prepare data to send
         var data = "username=" + encodeURIComponent(username) +
                 "&email=" + encodeURIComponent(email) +
                 "&password=" + encodeURIComponent(password) +

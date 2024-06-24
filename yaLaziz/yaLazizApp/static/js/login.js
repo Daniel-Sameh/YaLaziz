@@ -8,13 +8,12 @@ document.addEventListener('submit', function (event) {
     var form = document.getElementById('login-form');
     var formData = new FormData(form);
 
-    // Get the CSRF token from the CSRF input field in the form
     //var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
     var xml = new XMLHttpRequest();
     xml.open("POST", "loginUser/", true);
     xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xml.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));  // Set the CSRF token header
+    xml.setRequestHeader("X-CSRFToken", getCookie('csrftoken')); 
     xml.onreadystatechange = function() {
         if (xml.readyState == 4) {
             if (xml.status == 200) {
@@ -51,7 +50,7 @@ document.addEventListener('submit', function (event) {
     console.log('Sending POST request with data:', encodedData);
     // xml.send(encodedData);
     try {
-        xml.send(encodedData);  // This is where the error occurs
+        xml.send(encodedData);  
     } catch (e) {
         alert('Error sending XMLHttpRequest:'+ e.toString());
     }
@@ -65,7 +64,6 @@ function getCookie(name) {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
